@@ -1,0 +1,370 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "Gastronom Catering GASTRONOM CATERING" [ref=e6] [cursor=pointer]:
+        - /url: "#"
+        - img "Gastronom Catering"
+        - generic [ref=e7]:
+          - generic [ref=e8]: GASTRONOM
+          - generic [ref=e9]: CATERING
+      - generic [ref=e10]:
+        - link "Форматы" [ref=e11] [cursor=pointer]:
+          - /url: "#formats"
+        - link "Меню" [ref=e12] [cursor=pointer]:
+          - /url: "#menu"
+        - link "Расчёт" [ref=e13] [cursor=pointer]:
+          - /url: "#calc"
+        - link "Вопросы" [ref=e14] [cursor=pointer]:
+          - /url: "#faq"
+      - generic [ref=e15]:
+        - link "+7 (993) 418-53-43" [ref=e16] [cursor=pointer]:
+          - /url: tel:+79934185343
+          - text: +7 (993) 418-53-43
+        - link "Перезвоните мне!" [ref=e18] [cursor=pointer]:
+          - /url: "#cta"
+          - generic [ref=e19]: Перезвоните мне!
+          - img [ref=e20]
+  - generic [ref=e24]:
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - img [ref=e28]
+          - text: В Казани с 2017 года
+        - heading "Кейтеринг в Казани от 600 ₽/чел." [level=1] [ref=e34]:
+          - text: Кейтеринг
+          - text: в Казани
+          - emphasis [ref=e35]: от 600 ₽
+          - text: /чел.
+      - paragraph [ref=e36]: От доставки боксов до банкета под ключ — подготовим персональное предложение под любое мероприятие.
+      - generic [ref=e37]:
+        - link "Получить предложение" [ref=e38] [cursor=pointer]:
+          - /url: "#calc"
+          - text: Получить предложение
+          - img [ref=e39]
+        - link "Смотреть меню" [ref=e41] [cursor=pointer]:
+          - /url: "#menu"
+    - generic [ref=e42]:
+      - img "Фуршетный стол с канапе" [ref=e43]
+      - generic [ref=e44]:
+        - img [ref=e45]
+        - text: Халяль по запросу
+      - link "Популярно Гастробоксы с доставкой" [ref=e47] [cursor=pointer]:
+        - /url: "#formats"
+        - generic [ref=e48]:
+          - generic [ref=e49]: Популярно
+          - generic [ref=e50]: Гастробоксы с доставкой
+        - img [ref=e52]
+  - region "Цифры" [ref=e54]:
+    - generic [ref=e56]:
+      - generic [ref=e57]:
+        - generic [ref=e58]: "0"
+        - generic [ref=e59]: лет опыта в кейтеринге
+      - generic [ref=e60]:
+        - generic [ref=e61]: 0+
+        - generic [ref=e62]: накрытых столов на мероприятиях
+      - generic [ref=e63]:
+        - generic [ref=e64]: 0%+
+        - generic [ref=e65]: клиентов по рекомендациям в 2025 г.
+      - generic [ref=e66]:
+        - generic [ref=e67]: 0%+
+        - generic [ref=e68]: клиентов обращаются повторно
+  - generic [ref=e70]:
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e73]: 01 · Форматы
+        - heading "Кейтеринг на любой случай" [level=2] [ref=e75]:
+          - text: Кейтеринг
+          - emphasis [ref=e76]: на любой
+          - text: случай
+      - paragraph [ref=e77]: Сохраняем высокий уровень на заказах любого масштаба — от доставки боксов до крупных банкетов.
+    - generic [ref=e78]:
+      - generic [ref=e79]:
+        - generic [ref=e80]:
+          - button "Гастробоксы" [ref=e81] [cursor=pointer]:
+            - img [ref=e83]
+            - generic [ref=e87]: Гастробоксы
+          - button "Фуршет" [ref=e88] [cursor=pointer]:
+            - img [ref=e90]
+            - generic [ref=e92]: Фуршет
+          - button "Выпускной" [ref=e93] [cursor=pointer]:
+            - img [ref=e95]
+            - generic [ref=e98]: Выпускной
+          - button "Свадьба" [ref=e99] [cursor=pointer]:
+            - img [ref=e101]
+            - generic [ref=e106]: Свадьба
+          - button "День рождения" [ref=e107] [cursor=pointer]:
+            - img [ref=e109]
+            - generic [ref=e112]: День рождения
+          - button "Корпоратив" [ref=e113] [cursor=pointer]:
+            - img [ref=e115]
+            - generic [ref=e118]: Корпоратив
+          - button "Банкет" [ref=e119] [cursor=pointer]:
+            - img [ref=e121]
+            - generic [ref=e126]: Банкет
+          - button "Детский праздник" [ref=e127] [cursor=pointer]:
+            - img [ref=e129]
+            - generic [ref=e135]: Детский праздник
+          - button "Девичник / Мальчишник" [ref=e136] [cursor=pointer]:
+            - img [ref=e138]
+            - generic [ref=e140]: Девичник / Мальчишник
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - img [ref=e144]
+            - generic [ref=e147]: Не нашли свой формат?
+          - link "Подобрать" [ref=e148] [cursor=pointer]:
+            - /url: "#cta"
+            - text: Подобрать
+            - img [ref=e149]
+      - generic [ref=e151]:
+        - img "Гастробоксы" [ref=e153]
+        - generic [ref=e157]: канапе и фуршетные столы
+        - generic [ref=e161]: выпускной вечер
+        - generic [ref=e165]: свадебная подача
+        - generic [ref=e169]: стол ко дню рождения
+        - generic [ref=e173]: офисный кейтеринг
+        - generic [ref=e177]: сервированный банкетный зал
+        - generic [ref=e181]: детские десерты
+        - generic [ref=e185]: бокалы и закуски
+        - generic [ref=e187]:
+          - generic [ref=e189]: Гастробоксы
+          - img [ref=e191]
+  - generic [ref=e194]:
+    - generic [ref=e195]:
+      - generic [ref=e196]:
+        - generic [ref=e197]: 02 · Почему мы
+        - heading "Пять причин доверить нам событие" [level=2] [ref=e199]:
+          - text: Пять причин
+          - emphasis [ref=e200]: доверить
+          - text: нам событие
+      - paragraph [ref=e201]: 5 причин, по которым к нам возвращаются и рекомендуют друзьям и коллегам.
+    - generic [ref=e202]:
+      - generic [ref=e203]:
+        - generic [ref=e204]:
+          - generic [ref=e206]: "фото: блюдо от шеф-повара"
+          - img [ref=e208]
+        - generic [ref=e210]:
+          - generic [ref=e211]: Вкусно
+          - paragraph [ref=e212]: Меню и подачу продумывает шеф-повар с многолетним опытом.
+      - generic [ref=e213]:
+        - generic [ref=e214]:
+          - generic [ref=e216]: "фото: сервировка фуршета"
+          - img [ref=e218]
+        - generic [ref=e220]:
+          - generic [ref=e221]: Красиво
+          - paragraph [ref=e222]: Готовые варианты оформления, проверенные на многочисленных мероприятиях.
+      - generic [ref=e223]:
+        - generic [ref=e224]:
+          - generic [ref=e226]: "фото: команда на выезде"
+          - img [ref=e228]
+        - generic [ref=e230]:
+          - generic [ref=e231]: Надёжно
+          - paragraph [ref=e232]: Проверенная система работы — без сбоев и накладок в день мероприятия.
+      - generic [ref=e233]:
+        - img [ref=e234]
+        - img [ref=e281]
+        - generic [ref=e283]:
+          - generic [ref=e284]: Индивидуально
+          - paragraph [ref=e285]: Соберём меню, оформление и формат под ваш повод и задачи.
+      - generic [ref=e286]:
+        - img [ref=e287]
+        - img [ref=e292]
+        - generic [ref=e294]:
+          - generic [ref=e295]: Безопасно
+          - paragraph [ref=e296]: Свежие продукты, проверенные поставщики и регулярный санитарный контроль.
+  - generic [ref=e300]:
+    - generic [ref=e301]:
+      - generic [ref=e302]: Калькулятор · 30 сек
+      - heading "Ответьте на 3 вопроса — рассчитаем стоимость" [level=2] [ref=e304]:
+        - text: Ответьте на
+        - emphasis [ref=e305]: 3 вопроса
+        - text: —
+        - text: рассчитаем стоимость
+      - generic [ref=e310]: Шаг 1 из 3
+    - generic [ref=e311]:
+      - generic [ref=e312]: Вопрос 1
+      - heading "Какое у вас мероприятие?" [level=3] [ref=e313]
+      - generic [ref=e314]:
+        - button "День рождения" [ref=e315] [cursor=pointer]:
+          - generic [ref=e316]: День рождения
+        - button "Свадьба" [ref=e317] [cursor=pointer]:
+          - generic [ref=e318]: Свадьба
+        - button "Банкет" [ref=e319] [cursor=pointer]:
+          - generic [ref=e320]: Банкет
+        - button "Корпоратив" [ref=e321] [cursor=pointer]:
+          - generic [ref=e322]: Корпоратив
+        - button "Вечеринка" [ref=e323] [cursor=pointer]:
+          - generic [ref=e324]: Вечеринка
+        - button "Другое" [ref=e325] [cursor=pointer]:
+          - generic [ref=e326]: Другое
+      - generic [ref=e327]:
+        - button "← Назад" [disabled] [ref=e328]
+        - button "Далее" [disabled] [ref=e329]:
+          - text: Далее
+          - img [ref=e330]
+  - generic [ref=e333]:
+    - generic [ref=e334]:
+      - generic [ref=e335]:
+        - generic [ref=e336]: 03 · Меню
+        - heading "120+ позиций собственной кухни" [level=2] [ref=e338]:
+          - text: 120+ позиций
+          - emphasis [ref=e339]: собственной кухни
+      - generic [ref=e340]:
+        - button "Канапе" [ref=e341] [cursor=pointer]
+        - button "Горячее" [ref=e342] [cursor=pointer]
+        - button "Салаты" [ref=e343] [cursor=pointer]
+        - button "Десерты" [ref=e344] [cursor=pointer]
+        - button "Напитки" [ref=e345] [cursor=pointer]
+    - generic [ref=e346]:
+      - generic [ref=e347]:
+        - generic [ref=e348]:
+          - generic [ref=e350]: строганина из форели
+          - generic [ref=e351]: холодное
+        - generic [ref=e352]:
+          - generic [ref=e353]: Строганина из форели
+          - generic [ref=e354]: 180 ₽
+      - generic [ref=e355]:
+        - generic [ref=e356]:
+          - generic [ref=e358]: тартар из говядины на чипсе
+          - generic [ref=e359]: хит
+        - generic [ref=e360]:
+          - generic [ref=e361]: Тартар из говядины на чипсе
+          - generic [ref=e362]: 220 ₽
+      - generic [ref=e363]:
+        - generic [ref=e366]: козий сыр с грушей
+        - generic [ref=e367]:
+          - generic [ref=e368]: Козий сыр с грушей
+          - generic [ref=e369]: 160 ₽
+      - generic [ref=e370]:
+        - generic [ref=e371]:
+          - generic [ref=e373]: хумус с гранатом
+          - generic [ref=e374]: veg
+        - generic [ref=e375]:
+          - generic [ref=e376]: Хумус с гранатом
+          - generic [ref=e377]: 140 ₽
+      - generic [ref=e378]:
+        - generic [ref=e381]: креветка в кадаифи
+        - generic [ref=e382]:
+          - generic [ref=e383]: Креветка в кадаифи
+          - generic [ref=e384]: 260 ₽
+      - generic [ref=e385]:
+        - generic [ref=e388]: ростбиф с трюфельным кремом
+        - generic [ref=e389]:
+          - generic [ref=e390]: Ростбиф с трюфельным кремом
+          - generic [ref=e391]: 240 ₽
+  - generic [ref=e393]:
+    - generic [ref=e394]:
+      - generic [ref=e395]: 04 · Как это работает
+      - heading "От заявки до события — 4 шага" [level=2] [ref=e397]:
+        - text: От
+        - emphasis [ref=e398]: заявки
+        - text: до события — 4 шага
+    - generic [ref=e399]:
+      - generic [ref=e400]:
+        - generic [ref=e401]: "01"
+        - generic [ref=e402]:
+          - generic [ref=e403]:
+            - generic [ref=e404]: Бриф
+            - generic [ref=e405]: ~ 10 мин
+          - generic [ref=e406]: Формат, гости, дата, бюджет. В мессенджере или голосом.
+      - generic [ref=e407]:
+        - generic [ref=e408]: "02"
+        - generic [ref=e409]:
+          - generic [ref=e410]:
+            - generic [ref=e411]: Меню + расчёт
+            - generic [ref=e412]: ~ 2 часа
+          - generic [ref=e413]: Пришлём 2–3 варианта с ценами. Правим, пока не подойдёт.
+      - generic [ref=e414]:
+        - generic [ref=e415]: "03"
+        - generic [ref=e416]:
+          - generic [ref=e417]:
+            - generic [ref=e418]: Дегустация
+            - generic [ref=e419]: ~ опц.
+          - generic [ref=e420]: На встречу в шоурум или привезём боксом — попробовать заранее.
+      - generic [ref=e421]:
+        - generic [ref=e422]: "04"
+        - generic [ref=e423]:
+          - generic [ref=e424]:
+            - generic [ref=e425]: Событие
+            - generic [ref=e426]: ~ в день
+          - generic [ref=e427]: Привозим за 2 часа. Расставляем. Убираем. Вы — гость на своём празднике.
+  - generic [ref=e430]:
+    - generic [ref=e431]:
+      - generic [ref=e432]: 05 · Вопросы
+      - heading "Часто спрашивают" [level=2] [ref=e434]
+      - paragraph [ref=e435]: Не нашли ответ? Напишите в мессенджер — отвечаем за 15 минут.
+      - link "Написать менеджеру" [ref=e436] [cursor=pointer]:
+        - /url: "#cta"
+        - img [ref=e437]
+        - text: Написать менеджеру
+    - generic [ref=e439]:
+      - generic [ref=e440] [cursor=pointer]:
+        - generic [ref=e441]:
+          - generic [ref=e442]: За сколько дней нужно бронировать?
+          - img [ref=e444]
+        - paragraph [ref=e447]: Гастробоксы — от 3 дней. Фуршеты и кофе-брейки — от 7 дней. Банкеты и свадьбы — от 2–3 недель. В пиковые даты (14 февраля, 8 марта, новогодние) — раньше.
+      - generic [ref=e448] [cursor=pointer]:
+        - generic [ref=e449]:
+          - generic [ref=e450]: Привозите ли посуду и сервировку?
+          - img [ref=e452]
+        - paragraph [ref=e454]: Да. В стоимость уже входят тарелки, приборы, бокалы, текстиль и расстановка. Стилизованная сервировка (флористика, ассессуары) — опция, обсуждаем отдельно.
+      - generic [ref=e455] [cursor=pointer]:
+        - generic [ref=e456]:
+          - generic [ref=e457]: Что с остатками еды?
+          - img [ref=e459]
+        - paragraph [ref=e461]: Невскрытые блюда собираем в гастроконтейнеры и оставляем заказчику. Вскрытое — по СанПиН утилизируем.
+      - generic [ref=e462] [cursor=pointer]:
+        - generic [ref=e463]:
+          - generic [ref=e464]: Можно ли безлактозное / халяль / веган?
+          - img [ref=e466]
+        - paragraph [ref=e468]: Да. Отмечаете при брифе — шеф адаптирует меню. У нас есть сертифицированные халяль-поставщики мяса.
+      - generic [ref=e469] [cursor=pointer]:
+        - generic [ref=e470]:
+          - generic [ref=e471]: Как платим?
+          - img [ref=e473]
+        - paragraph [ref=e475]: Для частных лиц — 50% предоплата, остаток в день события. Для юрлиц — по счёту, постоплата возможна по договору.
+      - generic [ref=e476] [cursor=pointer]:
+        - generic [ref=e477]:
+          - generic [ref=e478]: Работаете за пределами Казани?
+          - img [ref=e480]
+        - paragraph [ref=e482]: Да, выезжаем по РТ и соседним регионам. Логистику считаем индивидуально.
+  - generic [ref=e486]:
+    - generic [ref=e487]:
+      - generic [ref=e488]: Свободные даты — май, июнь
+      - heading "Начнём с мессенджера?" [level=2] [ref=e490]:
+        - text: Начнём
+        - emphasis [ref=e491]: с мессенджера?
+      - paragraph [ref=e492]: Пришлите дату и формат — в течение часа вернёмся с расчётом и вариантами меню.
+      - generic [ref=e493]:
+        - button "Telegram" [ref=e494] [cursor=pointer]:
+          - text: Telegram
+          - img [ref=e495]
+        - button "WhatsApp" [ref=e497] [cursor=pointer]
+        - button "+7 843 ..." [ref=e498] [cursor=pointer]:
+          - img [ref=e499]
+          - text: +7 843 ...
+    - generic [ref=e501]:
+      - generic [ref=e502]: Быстрый бриф
+      - textbox "Ваше имя" [ref=e503]
+      - textbox "Телефон или @ник" [ref=e504]
+      - textbox "Дата, формат, число гостей" [ref=e505]
+      - button "Отправить заявку" [ref=e506] [cursor=pointer]:
+        - text: Отправить заявку
+        - img [ref=e507]
+      - generic [ref=e509]: Обычно отвечаем в течение часа
+  - contentinfo [ref=e510]:
+    - generic [ref=e511]:
+      - generic [ref=e512]:
+        - generic [ref=e514]: GASTRONOM CATERING
+        - generic [ref=e515]: Казань · с 2017
+      - generic [ref=e516]:
+        - link "Политика конф." [ref=e517] [cursor=pointer]:
+          - /url: "#"
+        - link "Договор оферты" [ref=e518] [cursor=pointer]:
+          - /url: "#"
+        - link "Реквизиты" [ref=e519] [cursor=pointer]:
+          - /url: "#"
+        - link "Telegram" [ref=e520] [cursor=pointer]:
+          - /url: "#"
+        - link "Instagram" [ref=e521] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=e522]: © 2026 GASTRONOM CATERING
