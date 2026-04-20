@@ -115,7 +115,7 @@ const Formats = () => {
             </h2>
           </div>
           <p style={{maxWidth: 340, color:'var(--ink-60)', fontSize: 15}}>
-            Наведите на формат — покажем подачу. Клик — заполнит расчёт.
+            Сохраняем высокий уровень на заказах любого масштаба — от доставки боксов до крупных банкетов.
           </p>
         </div>
 
@@ -294,32 +294,37 @@ const FormatPill = ({ f, active, onEnter, onClick }) => {
 // ---------- QUIZ CALCULATOR ----------
 const QuizCalc = () => {
   const [step, setStep] = React.useState(0);
-  const [answers, setAnswers] = React.useState({ format: null, people: 50, budget: null });
+  const [answers, setAnswers] = React.useState({ event: null, people: 50, budget: null });
+  const [phone, setPhone] = React.useState('');
+  const [agree, setAgree] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
 
   const steps = [
     {
-      q: 'Какой формат события?',
-      k: 'format',
+      q: 'Какое у вас мероприятие?',
+      k: 'event',
       opts: [
-        { v: 'furshet', label: 'Фуршет', hint: 'канапе, напитки' },
-        { v: 'banket', label: 'Банкет', hint: 'полноценная подача' },
-        { v: 'box', label: 'Гастробоксы', hint: 'доставка по адресам' },
-        { v: 'coffee', label: 'Кофе-брейк', hint: 'конференции, митапы' },
+        { v: 'bday', label: 'День рождения' },
+        { v: 'wedding', label: 'Свадьба' },
+        { v: 'banket', label: 'Банкет' },
+        { v: 'corporate', label: 'Корпоратив' },
+        { v: 'party', label: 'Вечеринка' },
+        { v: 'other', label: 'Другое' },
       ],
     },
     {
-      q: 'Сколько гостей?',
+      q: 'Сколько будет гостей?',
       k: 'people',
-      slider: { min: 10, max: 300, step: 5 },
+      slider: { min: 5, max: 300, step: 5 },
     },
     {
-      q: 'Какой у вас бюджет на гостя?',
+      q: 'Желаемый бюджет на персону',
       k: 'budget',
       opts: [
-        { v: 'eco', label: 'до 900 ₽', hint: 'базовый формат' },
-        { v: 'med', label: '900 – 1 800 ₽', hint: 'расширенное меню' },
-        { v: 'pre', label: '1 800 – 3 000 ₽', hint: 'премиум' },
-        { v: 'any', label: 'пока не знаю', hint: 'подберите под событие' },
+        { v: '600-1000', label: '600 – 1 000 ₽' },
+        { v: '1000-1300', label: '1 000 – 1 300 ₽' },
+        { v: '1300-1500', label: '1 300 – 1 500 ₽' },
+        { v: 'custom', label: 'Свой вариант' },
       ],
     },
   ];
@@ -328,13 +333,6 @@ const QuizCalc = () => {
   const setAns = (k, v) => setAnswers(a => ({ ...a, [k]: v }));
   const canProceed = answers[cur?.k] != null;
   const done = step >= steps.length;
-
-  // estimate
-  const rates = { furshet: 1100, banket: 2400, box: 650, coffee: 500 };
-  const budgetMult = { eco: 0.85, med: 1, pre: 1.4, any: 1 };
-  const est = done
-    ? Math.round((rates[answers.format] || 1000) * answers.people * (budgetMult[answers.budget] || 1))
-    : null;
 
   return (
     <section id="calc" style={{padding: '80px 0'}}>
@@ -360,13 +358,10 @@ const QuizCalc = () => {
                 <span className="chip-dot" style={{background:'white'}}></span>
                 Калькулятор · 30 сек
               </span>
-              <h2 className="display" style={{fontSize:'clamp(40px, 5vw, 68px)', fontWeight: 800, marginTop: 20, marginBottom: 16, letterSpacing:'-0.03em'}}>
+              <h2 className="display" style={{fontSize:'clamp(40px, 5vw, 68px)', fontWeight: 800, marginTop: 20, marginBottom: 32, letterSpacing:'-0.03em'}}>
                 Ответьте на <em className="accent-italic" style={{color:'white', fontWeight: 500}}>3 вопроса</em> —<br/>
-                посчитаем бюджет
+                рассчитаем стоимость
               </h2>
-              <p style={{opacity: 0.9, fontSize: 17, maxWidth: 360, marginBottom: 32}}>
-                Мгновенная оценка без созвонов. Точный расчёт — после короткого брифа с менеджером.
-              </p>
 
               {/* Progress */}
               <div style={{display:'flex', gap: 8, marginBottom: 20}}>
@@ -379,7 +374,7 @@ const QuizCalc = () => {
                 ))}
               </div>
               <div style={{fontSize: 13, opacity: 0.85, fontFamily:'JetBrains Mono, monospace', letterSpacing: '0.1em', textTransform: 'uppercase'}}>
-                {done ? 'Результат' : `Шаг ${step + 1} из ${steps.length}`}
+                {done ? (submitted ? 'Готово' : 'Контакты') : `Шаг ${step + 1} из ${steps.length}`}
               </div>
             </div>
 
@@ -418,8 +413,7 @@ const QuizCalc = () => {
                               transition: 'all .2s',
                             }}
                           >
-                            <div style={{fontWeight: 600, fontSize: 15, marginBottom: 2}}>{o.label}</div>
-                            <div style={{fontSize: 12, color:'var(--ink-60)'}}>{o.hint}</div>
+                            <div style={{fontWeight: 600, fontSize: 15}}>{o.label}</div>
                           </button>
                         );
                       })}
@@ -434,13 +428,21 @@ const QuizCalc = () => {
                       </div>
                       <input type="range"
                         min={cur.slider.min} max={cur.slider.max} step={cur.slider.step}
-                        value={answers.people}
+                        value={Math.max(cur.slider.min, Math.min(cur.slider.max, answers.people))}
                         onChange={e => setAns('people', +e.target.value)}
                         style={{width:'100%', marginTop: 20, accentColor:'var(--tomato)'}}
                       />
                       <div style={{display:'flex', justifyContent:'space-between', fontSize: 12, color:'var(--ink-60)', fontFamily:'JetBrains Mono, monospace', marginTop: 8}}>
                         <span>{cur.slider.min}</span>
                         <span>{cur.slider.max}+</span>
+                      </div>
+                      <div style={{marginTop: 16, display:'flex', alignItems:'center', gap: 10}}>
+                        <label style={{fontSize: 13, color:'var(--ink-60)'}}>Или введите точное число:</label>
+                        <input type="number" min={2} max={1000}
+                          value={answers.people}
+                          onChange={e => setAns('people', Math.max(2, +e.target.value || 2))}
+                          style={{width: 90, padding: '8px 10px', borderRadius: 10, border: '1.5px solid var(--ink-15)', fontSize: 14, fontFamily: 'inherit'}}
+                        />
                       </div>
                     </div>
                   )}
@@ -464,13 +466,19 @@ const QuizCalc = () => {
                       className="btn btn-primary"
                       style={{ opacity: canProceed ? 1 : 0.5, cursor: canProceed ? 'pointer' : 'default' }}
                     >
-                      {step === steps.length - 1 ? 'Показать расчёт' : 'Далее'}
+                      {step === steps.length - 1 ? 'Далее' : 'Далее'}
                       <Icon.Arrow/>
                     </button>
                   </div>
                 </>
+              ) : submitted ? (
+                <ThankYouPane/>
               ) : (
-                <ResultPane answers={answers} est={est} onReset={() => { setStep(0); setAnswers({ format: null, people: 50, budget: null }); }}/>
+                <LeadFormPane
+                  phone={phone} setPhone={setPhone}
+                  agree={agree} setAgree={setAgree}
+                  onSubmit={() => { if (phone && agree) setSubmitted(true); }}
+                />
               )}
             </div>
           </div>
@@ -480,44 +488,68 @@ const QuizCalc = () => {
   );
 };
 
-const ResultPane = ({ answers, est, onReset }) => {
-  const fmtMap = { furshet: 'Фуршет', banket: 'Банкет', box: 'Гастробоксы', coffee: 'Кофе-брейк' };
+const LeadFormPane = ({ phone, setPhone, agree, setAgree, onSubmit }) => {
+  const valid = phone.replace(/\D/g, '').length >= 10 && agree;
   return (
     <div style={{display:'flex', flexDirection:'column', height:'100%'}}>
-      <div style={{fontSize: 13, color:'var(--ink-60)', textTransform:'uppercase', letterSpacing:'0.1em', marginBottom: 10, fontFamily:'JetBrains Mono, monospace'}}>
-        Предварительная стоимость
-      </div>
-      <div className="display" style={{fontSize: 'clamp(48px, 6vw, 84px)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1, color: 'var(--ink)'}}>
-        {est.toLocaleString('ru-RU')} ₽
-      </div>
-      <div style={{color:'var(--ink-60)', marginTop: 6, fontSize: 15}}>
-        ≈ {Math.round(est / answers.people).toLocaleString('ru-RU')} ₽ на гостя
-      </div>
+      <h3 className="display" style={{fontSize: 26, fontWeight: 600, letterSpacing:'-0.02em', lineHeight: 1.15}}>
+        Получите персональное предложение по вашему мероприятию
+      </h3>
+      <p style={{color:'var(--ink-60)', fontSize: 14, lineHeight: 1.5, marginTop: 12, marginBottom: 20}}>
+        Оставьте номер телефона — подготовим предложение и рассчитаем стоимость с учётом количества гостей, бюджета и ваших пожеланий.
+      </p>
 
-      <div className="calc-opts" style={{marginTop: 24, display:'grid', gridTemplateColumns:'1fr 1fr', gap: 10}}>
-        <SummaryItem label="Формат" value={fmtMap[answers.format]}/>
-        <SummaryItem label="Гостей" value={answers.people}/>
-      </div>
+      <label style={{fontSize: 12, color:'var(--ink-60)', textTransform:'uppercase', letterSpacing:'0.1em', fontFamily:'JetBrains Mono, monospace', marginBottom: 6}}>
+        Ваш номер телефона
+      </label>
+      <input
+        type="tel"
+        placeholder="+7 ___ ___ __ __"
+        value={phone}
+        onChange={e => setPhone(e.target.value)}
+        style={{
+          padding: '14px 16px', borderRadius: 14,
+          border: '1.5px solid var(--ink-15)', background:'white',
+          fontSize: 16, fontFamily: 'inherit',
+          marginBottom: 16,
+        }}
+      />
 
-      <div style={{
-        marginTop: 20, padding: 16, borderRadius: 18,
-        background: 'var(--cream-100)', border: '1px solid var(--ink-08)',
-      }}>
-        <div style={{fontSize: 13, color:'var(--ink-60)', marginBottom: 4}}>Что дальше</div>
-        <div style={{fontSize: 14, fontWeight: 500}}>
-          Оставьте телефон — менеджер пришлёт 2–3 варианта меню и точный расчёт в мессенджер в течение часа.
-        </div>
-      </div>
+      <button
+        onClick={onSubmit}
+        disabled={!valid}
+        className="btn btn-primary"
+        style={{ justifyContent:'center', opacity: valid ? 1 : 0.5, cursor: valid ? 'pointer' : 'default' }}
+      >
+        Получить предложение <Icon.Arrow/>
+      </button>
 
-      <div style={{marginTop: 'auto', display:'flex', gap: 10, paddingTop: 20, flexWrap:'wrap'}}>
-        <button className="btn btn-primary" style={{flex: 1}}>
-          Получить меню <Icon.Arrow/>
-        </button>
-        <button onClick={onReset} className="btn btn-ghost">Пересчитать</button>
-      </div>
+      <label style={{display:'flex', alignItems:'flex-start', gap: 10, marginTop: 14, fontSize: 12, lineHeight: 1.45, color:'var(--ink-60)', cursor:'pointer'}}>
+        <input type="checkbox" checked={agree} onChange={e => setAgree(e.target.checked)}
+          style={{marginTop: 2, accentColor:'var(--tomato)', flexShrink: 0, width: 16, height: 16}}/>
+        <span>Я согласен на обработку персональных данных согласно политике конфиденциальности</span>
+      </label>
     </div>
   );
 };
+
+const ThankYouPane = () => (
+  <div style={{display:'flex', flexDirection:'column', height:'100%', justifyContent:'center', alignItems:'flex-start', gap: 16}}>
+    <div style={{
+      width: 56, height: 56, borderRadius: '50%',
+      background: 'var(--tomato)', color: 'white',
+      display:'flex', alignItems:'center', justifyContent:'center',
+    }}>
+      <Icon.Check size={28}/>
+    </div>
+    <h3 className="display" style={{fontSize: 36, fontWeight: 700, letterSpacing:'-0.02em'}}>
+      Спасибо!
+    </h3>
+    <p style={{color:'var(--ink-60)', fontSize: 15, lineHeight: 1.5, maxWidth: 420}}>
+      Скоро свяжемся с вами, чтобы уточнить детали и предложить подходящий формат, меню и стоимость.
+    </p>
+  </div>
+);
 
 const SummaryItem = ({ label, value }) => (
   <div style={{padding: '12px 14px', background:'white', borderRadius: 14, border: '1px solid var(--ink-08)'}}>
@@ -1015,7 +1047,7 @@ const Advantages = () => {
             </h2>
           </div>
           <p style={{maxWidth: 340, color:'var(--ink-60)', fontSize: 15}}>
-            Сохраняем одинаковый уровень на заказах от гастробоксов на 10 человек до банкетов на 300.
+            5 причин, по которым к нам возвращаются и рекомендуют друзьям и коллегам.
           </p>
         </div>
 

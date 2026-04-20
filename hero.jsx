@@ -40,6 +40,7 @@ const HeroSplit = () => {
             border: '1px solid rgba(255, 255, 255, 0.6)',
             boxShadow: '0 1px 0 rgba(255,255,255,0.7) inset, 0 4px 14px -6px rgba(28,20,15,0.08)',
           }}>
+            <LucideIcon name="Medal" size={14} color="var(--tomato)" strokeWidth={2}/>
             В Казани с 2017 года
           </span>
           <h1 className="display hero-title" style={{
@@ -66,7 +67,7 @@ const HeroSplit = () => {
         </p>
         <div style={{display:'flex', gap: 14, flexWrap:'wrap', alignItems:'center'}}>
           <a href="#calc" className="btn btn-primary">Получить предложение <Icon.Arrow/></a>
-          <a href="#menu" className="btn btn-glass">Меню</a>
+          <a href="#menu" className="btn btn-glass" style={{background: '#F9F5EB'}}>Смотреть меню</a>
         </div>
       </div>
 
@@ -79,7 +80,7 @@ const HeroSplit = () => {
       }}>
         <img src="images/hero.jpeg" alt="Фуршетный стол с канапе" style={{position:'absolute', inset: 0, width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
         <div style={{
-          position:'absolute', top: 16, left: 16,
+          position:'absolute', top: 'clamp(24px, 3.4vw, 48px)', left: 'clamp(24px, 3.4vw, 48px)',
           display:'inline-flex', alignItems:'center', gap: 8,
           padding: '8px 14px',
           background: 'rgba(255, 249, 241, 0.45)',
@@ -93,6 +94,34 @@ const HeroSplit = () => {
           <span style={{width: 8, height: 8, borderRadius: 999, background: 'var(--tomato)'}}/>
           Халяль по запросу
         </div>
+
+        {/* Bottom glass plate with label + CTA */}
+        <a href="#formats" style={{
+          position:'absolute', left: 'clamp(24px, 3.4vw, 48px)', right: 'clamp(24px, 3.4vw, 48px)', bottom: 'clamp(24px, 3.4vw, 48px)',
+          display:'flex', alignItems:'center', justifyContent:'space-between', gap: 12,
+          padding: '10px 10px 10px 20px',
+          background: 'rgba(255, 249, 241, 0.55)',
+          backdropFilter: 'blur(16px) saturate(1.4)',
+          WebkitBackdropFilter: 'blur(16px) saturate(1.4)',
+          border: '1px solid rgba(255,255,255,0.6)',
+          borderRadius: 999,
+          color: 'var(--ink)',
+          textDecoration: 'none',
+          boxShadow: '0 1px 0 rgba(255,255,255,0.7) inset, 0 8px 22px -8px rgba(28,20,15,0.18)',
+        }}>
+          <div style={{minWidth: 0}}>
+            <div className="mono" style={{fontSize: 11, textTransform:'uppercase', letterSpacing:'0.12em', color:'var(--ink-60)', lineHeight: 1}}>Популярно</div>
+            <div style={{fontSize: 15, fontWeight: 600, marginTop: 4, lineHeight: 1.2, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis'}}>Гастробоксы с доставкой</div>
+          </div>
+          <span style={{
+            flexShrink: 0,
+            width: 40, height: 40, borderRadius: '50%',
+            background: 'var(--ink)', color: 'var(--cream-50)',
+            display:'inline-flex', alignItems:'center', justifyContent:'center',
+          }}>
+            <Icon.Arrow size={16}/>
+          </span>
+        </a>
       </div>
     </div>
   );
