@@ -493,7 +493,7 @@ const LeadFormPane = ({ phone, setPhone, agree, setAgree, onSubmit }) => {
   return (
     <div style={{display:'flex', flexDirection:'column', height:'100%'}}>
       <h3 className="display" style={{fontSize: 26, fontWeight: 600, letterSpacing:'-0.02em', lineHeight: 1.15}}>
-        Получите персональное предложение по вашему мероприятию
+        Получите расчёт стоимости по вашему мероприятию
       </h3>
       <p style={{color:'var(--ink-60)', fontSize: 14, lineHeight: 1.5, marginTop: 12, marginBottom: 20}}>
         Оставьте номер телефона — подготовим предложение и рассчитаем стоимость с учётом количества гостей, бюджета и ваших пожеланий.
@@ -704,7 +704,7 @@ const Process = () => {
         <div style={{marginBottom: 40}}>
           <SecLabel>04 · Как это работает</SecLabel>
           <h2 className="display" style={{fontSize:'clamp(40px, 5vw, 72px)', fontWeight: 600, marginTop: 16, maxWidth: 800}}>
-            От идеи до <em className="accent-italic">«гости в восторге»</em> — 4 шага
+            От <em className="accent-italic">заявки</em> до события — 4 шага
           </h2>
         </div>
 
@@ -717,7 +717,7 @@ const Process = () => {
               color: i === 3 ? 'var(--cream-50)' : 'var(--ink)',
               borderRadius: 24,
               padding: 24,
-              minHeight: 280,
+              minHeight: 180,
               display:'flex', flexDirection:'column', justifyContent:'space-between',
               position:'relative', overflow:'hidden',
             }}>

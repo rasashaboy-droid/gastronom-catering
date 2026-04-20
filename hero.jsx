@@ -91,7 +91,9 @@ const HeroSplit = () => {
           fontSize: 13, fontWeight: 600,
           boxShadow: '0 1px 0 rgba(255,255,255,0.65) inset, 0 8px 22px -8px rgba(28,20,15,0.18)',
         }}>
-          <span style={{width: 8, height: 8, borderRadius: 999, background: 'var(--tomato)'}}/>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tomato)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M12 1 L15 4 L20 4 L20 9 L23 12 L20 15 L20 20 L15 20 L12 23 L9 20 L4 20 L4 15 L1 12 L4 9 L4 4 L9 4 Z"/>
+          </svg>
           Халяль по запросу
         </div>
 
@@ -99,7 +101,7 @@ const HeroSplit = () => {
         <a href="#formats" style={{
           position:'absolute', left: 'calc(clamp(24px, 3.4vw, 48px) - 24px)', right: 'calc(clamp(24px, 3.4vw, 48px) - 24px)', bottom: 'calc(clamp(24px, 3.4vw, 48px) - 24px)',
           display:'flex', alignItems:'center', justifyContent:'space-between', gap: 12,
-          padding: '10px 10px 10px 20px',
+          padding: '13px 10px 13px 20px',
           background: 'rgba(255, 249, 241, 0.55)',
           backdropFilter: 'blur(16px) saturate(1.4)',
           WebkitBackdropFilter: 'blur(16px) saturate(1.4)',
