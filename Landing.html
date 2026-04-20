@@ -108,18 +108,24 @@
     border-radius: 999px;
     max-width: 1296px; margin: 0 auto;
     gap: 12px;
+    background: rgba(255, 255, 255, 0.65);
   }
   .logo {
     display: flex; align-items: center; gap: 10px;
     font-family: 'Unbounded', sans-serif;
-    font-weight: 200; letter-spacing: 0.02em;
+    font-weight: 300; letter-spacing: 0.02em;
   }
   .logo-text { display: flex; flex-direction: column; line-height: 1.05; align-items: center; text-align: center; }
-  .logo-text-main { font-size: 16px; font-weight: 200; }
-  .logo-text-sub { font-size: 11px; font-weight: 200; letter-spacing: 0.24em; margin-top: 2px; }
+  .logo-text-main { font-size: 16px; font-weight: 300; }
+  .logo-text-sub { font-size: 11px; font-weight: 300; letter-spacing: 0.24em; margin-top: 2px; }
   .logo-img {
-    height: 40px; width: auto; display: block;
+    height: 44px; width: auto; display: block;
     flex-shrink: 0;
+  }
+  @media (max-width: 560px) {
+    .logo-img { height: 52px; }
+    .logo-text-main { font-size: 14px; }
+    .logo-text-sub { font-size: 10px; }
   }
   .nav-links { display: flex; gap: 4px; }
   .nav-links a {
