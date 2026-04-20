@@ -1093,8 +1093,9 @@ const AdvCard = ({ item, style }) => {
         borderRadius: 24,
         background: item.bg,
         color: item.fg,
-        padding: isBig ? '22px 22px 32px' : '20px 20px 28px',
+        padding: isBig ? '22px 22px 16px' : '20px 20px 16px',
         display:'flex', flexDirection:'column',
+        justifyContent: hasImg ? 'flex-start' : 'flex-end',
         gap: 14,
         transform: 'none',
         transition: 'transform .25s ease, box-shadow .25s',
@@ -1126,20 +1127,19 @@ const AdvCard = ({ item, style }) => {
         </div>
       )}
 
-      {/* Text-only cards: spark in top-right of card */}
+      {/* Text-only cards: spark in top-right, absolutely positioned so it doesn't affect flex centering */}
       {!hasImg && (
-        <div style={{position:'relative', zIndex:2, display:'flex', justifyContent:'flex-end'}}>
-          <div style={{
-            width: 28, height: 28, borderRadius: '50%',
-            background: item.fg === 'var(--ink)' ? 'rgba(28,20,15,0.08)' : 'rgba(255,255,255,0.18)',
-            display:'flex', alignItems:'center', justifyContent:'center',
-          }}>
-            <Icon.Spark size={12}/>
-          </div>
+        <div style={{
+          position:'absolute', top: 16, right: 16, zIndex: 3,
+          width: 28, height: 28, borderRadius: '50%',
+          background: item.fg === 'var(--ink)' ? 'rgba(28,20,15,0.08)' : 'rgba(255,255,255,0.18)',
+          display:'flex', alignItems:'center', justifyContent:'center',
+        }}>
+          <Icon.Spark size={12}/>
         </div>
       )}
 
-      <div style={{position:'relative', zIndex:2, marginTop: hasImg ? 0 : 'auto'}}>
+      <div style={{position:'relative', zIndex:2, marginTop: 0}}>
         <div className="display" style={{
           fontSize: isBig ? 'clamp(28px, 2.8vw, 40px)' : 'clamp(22px, 2vw, 30px)',
           fontWeight: 600,

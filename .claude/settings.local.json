@@ -11,7 +11,21 @@
       "Bash(python3 -c \"import socket; s=socket.socket\\(\\); s.bind\\(\\('',0\\)\\); print\\(s.getsockname\\(\\)[1]\\); s.close\\(\\)\")",
       "Bash(python3 -m http.server 55582)",
       "Bash(gh repo *)",
-      "Bash(gh api *)"
+      "Bash(gh api *)",
+      "Bash(claude mcp *)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:55582/Landing.html)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:55582/Landing.html)",
+      "Bash(lsof -iTCP:55582 -sTCP:LISTEN)",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_navigate",
+      "Bash(lsof -iTCP:55582 -sTCP:LISTEN -nP)",
+      "Bash(curl -v --max-time 2 http://localhost:55582/)",
+      "Bash(python3 -m http.server 55582 --bind 127.0.0.1)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:55582/Landing.html)",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_take_screenshot"
     ]
   }
 }
