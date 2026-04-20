@@ -91,7 +91,7 @@ const StatsBand = () => {
 const Formats = () => {
   // 10 formats. Each has a pill color and a paired image placeholder.
   const formats = [
-    { title: 'Гастробоксы',          sub: 'от 600 ₽/чел',   color: 'var(--peach)',      icon: 'Package',         iconColor: 'var(--tomato)',  img: 'боксы с подачей',          imgVariant: 'peach' },
+    { title: 'Гастробоксы',          sub: 'от 600 ₽/чел',   color: 'var(--peach)',      icon: 'Package',         iconColor: 'var(--tomato)',  img: 'боксы с подачей',          imgVariant: 'peach', photo: 'images/s1.jpg' },
     { title: 'Фуршет',               sub: 'от 900 ₽/чел',   color: 'var(--cream-100)',  icon: 'Martini',         iconColor: 'var(--coral)',   img: 'канапе и фуршетные столы', imgVariant: 'peach' },
     { title: 'Банкет',               sub: 'от 2 400 ₽/чел', color: 'var(--cream-200)',  icon: 'UtensilsCrossed', iconColor: 'var(--tomato)',  img: 'сервированный банкетный зал', imgVariant: 'cream' },
     { title: 'Свадьба',              sub: 'под ключ',       color: 'var(--peach)',      icon: 'HeartHandshake',  iconColor: 'var(--raspberry)',  img: 'свадебная подача',         imgVariant: 'peach' },
@@ -156,8 +156,8 @@ const Formats = () => {
               display: 'flex', alignItems: 'center', justifyContent:'space-between', gap: 12, flexWrap: 'wrap',
             }}>
               <div style={{display:'flex', alignItems:'center', gap: 12}}>
-                <div style={{width: 34, height: 34, borderRadius:'50%', background:'var(--tomato)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink: 0}}>
-                  <Icon.Spark size={14}/>
+                <div style={{width: 34, height: 34, borderRadius:'50%', background:'var(--tomato)', color:'var(--cream-50)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink: 0}}>
+                  <LucideIcon name="HelpCircle" size={18} color="currentColor" strokeWidth={2}/>
                 </div>
                 <div className="display" style={{fontFamily:'Unbounded, sans-serif', fontSize: 15, fontWeight: 500, letterSpacing:'-0.01em'}}>
                   Не нашли свой формат?
@@ -184,11 +184,15 @@ const Formats = () => {
                 transform: active === i ? 'scale(1)' : 'scale(1.04)',
                 transition: 'opacity .45s ease, transform .8s ease',
               }}>
-                <Placeholder
-                  label={f.img}
-                  variant={f.imgVariant || 'peach'}
-                  style={{width:'100%', height:'100%'}}
-                />
+                {f.photo ? (
+                  <img src={f.photo} alt={f.title} style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
+                ) : (
+                  <Placeholder
+                    label={f.img}
+                    variant={f.imgVariant || 'peach'}
+                    style={{width:'100%', height:'100%'}}
+                  />
+                )}
                 <div style={{
                   position:'absolute', inset: 0,
                   background: 'linear-gradient(180deg, transparent 40%, rgba(28,20,15,0.55))',
@@ -215,9 +219,6 @@ const Formats = () => {
                 )}
                 <div className="display" style={{fontFamily:'Unbounded, sans-serif', fontSize: 'clamp(26px, 2.6vw, 36px)', fontWeight: 600, letterSpacing:'-0.02em', lineHeight: 1.05, marginTop: 8}}>
                   {formats[active].title}
-                </div>
-                <div style={{fontSize: 14, opacity: 0.85, marginTop: 4}}>
-                  {formats[active].sub}
                 </div>
               </div>
               <div style={{
