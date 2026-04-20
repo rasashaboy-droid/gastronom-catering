@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Подача — кейтеринг на любой случай</title>
+<title>GASTRONOM CATERING — кейтеринг в Казани</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -140,6 +140,29 @@
     transition: transform .2s, background .2s;
     white-space: nowrap;
   }
+  .nav-phone {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 500;
+    color: var(--ink);
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background .2s;
+  }
+  .nav-phone:hover { background: var(--ink-08); }
+  .online-dot {
+    width: 8px; height: 8px; border-radius: 999px;
+    background: #3FB56A;
+    box-shadow: 0 0 0 3px rgba(63, 181, 106, 0.22), 0 0 8px rgba(63, 181, 106, 0.6);
+    animation: pulse-green 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(63, 181, 106, 0.22), 0 0 8px rgba(63, 181, 106, 0.6); }
+    50% { box-shadow: 0 0 0 5px rgba(63, 181, 106, 0.12), 0 0 12px rgba(63, 181, 106, 0.8); }
+  }
+  @media (max-width: 720px) { .nav-phone { display: none; } }
   .nav-cta:hover { transform: translateY(-1px); background: var(--raspberry); }
   .nav-burger {
     display: none;
@@ -206,6 +229,18 @@
   .btn-ghost:hover { background: var(--ink); color: var(--cream-50); border-color: var(--ink); }
   .btn-light { background: var(--cream-50); color: var(--ink); box-shadow: 0 8px 20px -6px rgba(28,20,15,0.15); }
   .btn-light:hover { transform: translateY(-2px); }
+  .btn-glass {
+    background: rgba(255, 249, 241, 0.55);
+    backdrop-filter: blur(14px) saturate(1.3);
+    -webkit-backdrop-filter: blur(14px) saturate(1.3);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 8px 20px -8px rgba(28,20,15,0.1);
+    color: var(--ink);
+    padding: 16px 56px;
+    min-width: 180px;
+    justify-content: center;
+  }
+  .btn-glass:hover { transform: translateY(-2px); background: rgba(255, 249, 241, 0.8); }
 
   @media (max-width: 560px) {
     .btn { padding: 14px 20px; font-size: 14px; }
@@ -223,6 +258,21 @@
   .sec-label .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--raspberry); }
 
   .icon-glow { filter: drop-shadow(0 0 4px #FF8383); }
+
+  /* Soft multi-direction shadow for all card-like containers (pills excluded) */
+  .adv-card,
+  .hero-photo,
+  .formats-split > div:last-child,
+  .calc-shell,
+  .calc-shell .glass,
+  .process-grid > div,
+  .menu-card,
+  .cta-split .glass-dark {
+    box-shadow:
+      6px -6px 24px -10px rgba(28,20,15,0.07),
+      -6px 6px 24px -10px rgba(28,20,15,0.07),
+      0 10px 30px -15px rgba(28,20,15,0.08) !important;
+  }
 
   .chip {
     display: inline-flex; align-items: center; gap: 8px;
