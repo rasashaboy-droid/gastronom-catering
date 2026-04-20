@@ -93,11 +93,11 @@ const Formats = () => {
   const formats = [
     { title: 'Гастробоксы',          sub: 'от 600 ₽/чел',   color: 'var(--peach)',      icon: 'Package',         iconColor: 'var(--tomato)',  img: 'боксы с подачей',          imgVariant: 'peach', photo: 'images/s1.jpg' },
     { title: 'Фуршет',               sub: 'от 900 ₽/чел',   color: 'var(--cream-100)',  icon: 'Martini',         iconColor: 'var(--coral)',   img: 'канапе и фуршетные столы', imgVariant: 'peach' },
-    { title: 'Банкет',               sub: 'от 2 400 ₽/чел', color: 'var(--cream-200)',  icon: 'UtensilsCrossed', iconColor: 'var(--tomato)',  img: 'сервированный банкетный зал', imgVariant: 'cream' },
+    { title: 'Выпускной',            sub: 'от 1 500 ₽/чел', color: 'var(--cream-100)',  icon: 'GraduationCap',   iconColor: 'var(--coral)',   img: 'выпускной вечер',          imgVariant: 'cream' },
     { title: 'Свадьба',              sub: 'под ключ',       color: 'var(--peach)',      icon: 'HeartHandshake',  iconColor: 'var(--raspberry)',  img: 'свадебная подача',         imgVariant: 'peach' },
     { title: 'День рождения',        sub: 'от 800 ₽/чел',   color: 'var(--cream-200)',  icon: 'Cake',            iconColor: 'var(--coral)', img: 'стол ко дню рождения',     imgVariant: 'cream' },
     { title: 'Корпоратив',           sub: 'от 1 200 ₽/чел', color: 'var(--cream-300)',  icon: 'Briefcase',       iconColor: 'var(--tomato)',     img: 'офисный кейтеринг',        imgVariant: 'peach' },
-    { title: 'Выпускной',            sub: 'от 1 500 ₽/чел', color: 'var(--cream-100)',  icon: 'GraduationCap',   iconColor: 'var(--coral)',   img: 'выпускной вечер',          imgVariant: 'cream' },
+    { title: 'Банкет',               sub: 'от 2 400 ₽/чел', color: 'var(--cream-200)',  icon: 'UtensilsCrossed', iconColor: 'var(--tomato)',  img: 'сервированный банкетный зал', imgVariant: 'cream' },
     { title: 'Детский праздник',     sub: 'от 700 ₽/чел',   color: 'var(--peach)',      icon: 'PartyPopper',     iconColor: 'var(--raspberry)',  img: 'детские десерты',          imgVariant: 'cream' },
     { title: 'Девичник / Мальчишник',sub: 'от 1 000 ₽/чел', color: 'var(--cream-200)',  icon: 'Wine',            iconColor: 'var(--coral)',   img: 'бокалы и закуски',         imgVariant: 'peach' },
   ];
@@ -127,7 +127,7 @@ const Formats = () => {
         }}>
           {/* LEFT: pill list + compact footer */}
           <div style={{display:'flex', flexDirection:'column', gap: 14}}>
-            <div style={{
+            <div className="formats-pills" style={{
               display:'flex', flexWrap:'wrap',
               gap: 10,
             }}>
@@ -136,9 +136,9 @@ const Formats = () => {
                   key={f.title}
                   f={f}
                   active={active === i}
-                  onEnter={() => setActive(i)}
+                  onEnter={() => { if (window.innerWidth > 900) setActive(i); }}
                   onClick={() => {
-                    setActive(i);
+                    if (window.innerWidth > 900) setActive(i);
                     const el = document.getElementById('calc');
                     if (el) window.scrollTo({top: el.offsetTop - 40, behavior: 'smooth'});
                   }}
@@ -387,7 +387,7 @@ const QuizCalc = () => {
             <div className="glass" style={{
               borderRadius: 28,
               padding: 28,
-              background: 'rgba(255,249,241,0.92)',
+              background: '#FFEAD9',
               color: 'var(--ink)',
               minHeight: 420,
               display:'flex', flexDirection:'column',

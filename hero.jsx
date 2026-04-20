@@ -34,7 +34,7 @@ const HeroSplit = () => {
         <div>
           <span className="chip" style={{
             marginBottom: 'clamp(16px, 2.4vw, 24px)',
-            background: 'rgba(255, 249, 241, 0.55)',
+            background: '#FFEAD9',
             backdropFilter: 'blur(12px) saturate(1.3)',
             WebkitBackdropFilter: 'blur(12px) saturate(1.3)',
             border: '1px solid rgba(255, 255, 255, 0.6)',
@@ -80,8 +80,8 @@ const HeroSplit = () => {
         <img src="images/hero.jpeg" alt="Фуршетный стол с канапе" style={{position:'absolute', inset: 0, width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
         <div style={{
           position:'absolute', top: 16, left: 16,
-          display:'inline-flex', alignItems:'center', gap: 10,
-          padding: '10px 18px',
+          display:'inline-flex', alignItems:'center', gap: 8,
+          padding: '8px 14px',
           background: 'rgba(255, 249, 241, 0.45)',
           backdropFilter: 'blur(14px) saturate(1.4)',
           WebkitBackdropFilter: 'blur(14px) saturate(1.4)',

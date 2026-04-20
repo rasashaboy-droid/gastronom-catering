@@ -25,7 +25,11 @@
       "Bash(python3 -m http.server 55582 --bind 127.0.0.1)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:55582/Landing.html)",
       "mcp__playwright__browser_evaluate",
-      "mcp__playwright__browser_take_screenshot"
+      "mcp__playwright__browser_take_screenshot",
+      "Bash(pkill -f \"http.server 55582\")",
+      "Bash(python3 -m http.server 55582 --bind 0.0.0.0)",
+      "Bash(ipconfig getifaddr *)",
+      "Bash(curl -s -o /dev/null -w \"server: %{http_code}\\\\n\" http://127.0.0.1:55582/Landing.html)"
     ]
   }
 }
