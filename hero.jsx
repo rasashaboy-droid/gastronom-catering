@@ -29,7 +29,7 @@ const HeroSplit = () => {
         justifyContent: 'space-between',
         gap: 'clamp(24px, 3vw, 32px)',
         minHeight: 550,
-        boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 10px 30px -15px rgba(28,20,15,0.08)',
+        boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 6px -6px 24px -10px rgba(28,20,15,0.07), -6px 6px 24px -10px rgba(28,20,15,0.07), 0 10px 30px -15px rgba(28,20,15,0.08)',
       }}>
         <div>
           <span className="chip" style={{

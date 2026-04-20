@@ -623,6 +623,7 @@ const MenuCard = ({ item, delay }) => {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      className="menu-card"
       style={{
         background: 'var(--cream-100)',
         borderRadius: 24,

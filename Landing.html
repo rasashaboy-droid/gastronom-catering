@@ -259,6 +259,21 @@
 
   .icon-glow { filter: drop-shadow(0 0 4px #FF8383); }
 
+  /* Soft multi-direction shadow for all card-like containers (pills excluded) */
+  .adv-card,
+  .hero-photo,
+  .formats-split > div:last-child,
+  .calc-shell,
+  .calc-shell .glass,
+  .process-grid > div,
+  .menu-card,
+  .cta-split .glass-dark {
+    box-shadow:
+      6px -6px 24px -10px rgba(28,20,15,0.07),
+      -6px 6px 24px -10px rgba(28,20,15,0.07),
+      0 10px 30px -15px rgba(28,20,15,0.08) !important;
+  }
+
   .chip {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 8px 14px;
