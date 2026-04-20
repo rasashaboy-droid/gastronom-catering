@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(mkdir -p \"/tmp/design-extract\")",
+      "Read(//tmp/**)",
+      "Bash(gunzip -c \"/Users/ryanlee/.claude/projects/-Users-ryanlee-Documents-claude-new-catering/6836e3f3-4087-4ee6-990c-5ed7541c21ee/tool-results/webfetch-1776643316710-ank39v.bin\")",
+      "Bash(tar -tf out.tar)",
+      "Read(//private/tmp/design-extract/**)",
+      "Bash(tar -xf out.tar)",
+      "Bash(python3 -c \"import socket; s=socket.socket\\(\\); s.bind\\(\\('',0\\)\\); print\\(s.getsockname\\(\\)[1]\\); s.close\\(\\)\")",
+      "Bash(python3 -m http.server 55582)"
+    ]
+  }
+}
