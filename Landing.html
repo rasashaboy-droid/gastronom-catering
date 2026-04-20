@@ -15,7 +15,7 @@
     --yellow: #FFEB69;
     --yellow-soft: #FFF4A8;
 
-    --cream-50: #FFF6EC;
+    --cream-50: #FFFCF9;
     --cream-100: #FFEADA;
     --cream-200: #FFD9C2;
     --cream-300: #FFEB69;
@@ -246,12 +246,14 @@
   @media (max-width: 980px) {
     .hero-split { grid-template-columns: 1fr !important; }
     .hero-split > div { min-height: auto !important; }
-    .hero-photo { min-height: 0 !important; aspect-ratio: 4 / 3; }
+    .hero-photo { min-height: 0 !important; aspect-ratio: 4 / 3; width: 100%; height: auto; }
+    .hero-photo > img { position: static !important; height: auto !important; }
   }
   @media (max-width: 560px) {
     /* Equal-height text card & photo: same min-height, no aspect-ratio */
     .hero-split > div:first-child { min-height: 420px !important; }
-    .hero-photo { aspect-ratio: auto !important; min-height: 420px !important; }
+    .hero-photo { aspect-ratio: 4 / 3 !important; min-height: 0 !important; }
+    .hero-photo > img { position: static !important; height: auto !important; }
   }
 
   /* Stats band collapses (keeps its own rules but also tweak margins) */
