@@ -80,7 +80,7 @@ const HeroSplit = () => {
       }}>
         <img src="images/hero.jpeg" alt="Фуршетный стол с канапе" style={{position:'absolute', inset: 0, width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
         <div style={{
-          position:'absolute', top: 'calc(clamp(24px, 3.4vw, 48px) - 24px)', left: 'clamp(24px, 3.4vw, 48px)',
+          position:'absolute', top: 'clamp(16px, 1.6vw, 22px)', left: 'clamp(16px, 1.6vw, 22px)',
           display:'inline-flex', alignItems:'center', gap: 8,
           padding: '8px 14px',
           background: 'rgba(255, 249, 241, 0.45)',
@@ -97,14 +97,14 @@ const HeroSplit = () => {
 
         {/* Bottom glass plate with label + CTA */}
         <a href="#formats" style={{
-          position:'absolute', left: 'clamp(24px, 3.4vw, 48px)', right: 'clamp(24px, 3.4vw, 48px)', bottom: 'calc(clamp(24px, 3.4vw, 48px) - 24px)',
+          position:'absolute', left: 'calc(clamp(24px, 3.4vw, 48px) - 24px)', right: 'calc(clamp(24px, 3.4vw, 48px) - 24px)', bottom: 'calc(clamp(24px, 3.4vw, 48px) - 24px)',
           display:'flex', alignItems:'center', justifyContent:'space-between', gap: 12,
           padding: '10px 10px 10px 20px',
           background: 'rgba(255, 249, 241, 0.55)',
           backdropFilter: 'blur(16px) saturate(1.4)',
           WebkitBackdropFilter: 'blur(16px) saturate(1.4)',
           border: '1px solid rgba(255,255,255,0.6)',
-          borderRadius: 999,
+          borderRadius: 20,
           color: 'var(--ink)',
           textDecoration: 'none',
           boxShadow: '0 1px 0 rgba(255,255,255,0.7) inset, 0 8px 22px -8px rgba(28,20,15,0.18)',
