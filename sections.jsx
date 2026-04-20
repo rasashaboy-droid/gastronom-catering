@@ -91,15 +91,15 @@ const StatsBand = () => {
 const Formats = () => {
   // 10 formats. Each has a pill color and a paired image placeholder.
   const formats = [
-    { title: 'Гастробоксы',          sub: 'от 600 ₽/чел',   color: 'var(--peach)',     dot: 'var(--tomato)',  img: 'боксы с подачей',          imgVariant: 'peach' },
-    { title: 'Фуршет',               sub: 'от 900 ₽/чел',   color: 'var(--cream-100)',  dot: 'var(--coral)',   img: 'канапе и фуршетные столы', imgVariant: 'peach' },
-    { title: 'Банкет',               sub: 'от 2 400 ₽/чел', color: 'var(--cream-200)',  dot: 'var(--brick)',   img: 'сервированный банкетный зал', imgVariant: 'cream' },
-    { title: 'Свадьба',              sub: 'под ключ',       color: 'var(--peach)',      dot: 'var(--tomato)',  img: 'свадебная подача',         imgVariant: 'peach' },
-    { title: 'День рождения',        sub: 'от 800 ₽/чел',   color: 'var(--cream-200)',  dot: 'var(--cream-300)', img: 'стол ко дню рождения',     imgVariant: 'cream' },
-    { title: 'Корпоратив',           sub: 'от 1 200 ₽/чел', color: 'var(--cream-300)',  dot: 'var(--ink)',     img: 'офисный кейтеринг',        imgVariant: 'peach' },
-    { title: 'Выпускной',            sub: 'от 1 500 ₽/чел', color: 'var(--cream-100)',  dot: 'var(--coral)',   img: 'выпускной вечер',          imgVariant: 'cream' },
-    { title: 'Детский праздник',     sub: 'от 700 ₽/чел',   color: 'var(--peach)',      dot: 'var(--tomato)',  img: 'детские десерты',          imgVariant: 'cream' },
-    { title: 'Девичник / Мальчишник',sub: 'от 1 000 ₽/чел', color: 'var(--cream-200)',  dot: 'var(--brick)',   img: 'бокалы и закуски',         imgVariant: 'peach' },
+    { title: 'Гастробоксы',          sub: 'от 600 ₽/чел',   color: 'var(--peach)',      icon: 'Package',         iconColor: 'var(--tomato)',  img: 'боксы с подачей',          imgVariant: 'peach' },
+    { title: 'Фуршет',               sub: 'от 900 ₽/чел',   color: 'var(--cream-100)',  icon: 'Martini',         iconColor: 'var(--coral)',   img: 'канапе и фуршетные столы', imgVariant: 'peach' },
+    { title: 'Банкет',               sub: 'от 2 400 ₽/чел', color: 'var(--cream-200)',  icon: 'UtensilsCrossed', iconColor: 'var(--tomato)',  img: 'сервированный банкетный зал', imgVariant: 'cream' },
+    { title: 'Свадьба',              sub: 'под ключ',       color: 'var(--peach)',      icon: 'HeartHandshake',  iconColor: 'var(--raspberry)',  img: 'свадебная подача',         imgVariant: 'peach' },
+    { title: 'День рождения',        sub: 'от 800 ₽/чел',   color: 'var(--cream-200)',  icon: 'Cake',            iconColor: 'var(--coral)', img: 'стол ко дню рождения',     imgVariant: 'cream' },
+    { title: 'Корпоратив',           sub: 'от 1 200 ₽/чел', color: 'var(--cream-300)',  icon: 'Briefcase',       iconColor: 'var(--tomato)',     img: 'офисный кейтеринг',        imgVariant: 'peach' },
+    { title: 'Выпускной',            sub: 'от 1 500 ₽/чел', color: 'var(--cream-100)',  icon: 'GraduationCap',   iconColor: 'var(--coral)',   img: 'выпускной вечер',          imgVariant: 'cream' },
+    { title: 'Детский праздник',     sub: 'от 700 ₽/чел',   color: 'var(--peach)',      icon: 'PartyPopper',     iconColor: 'var(--raspberry)',  img: 'детские десерты',          imgVariant: 'cream' },
+    { title: 'Девичник / Мальчишник',sub: 'от 1 000 ₽/чел', color: 'var(--cream-200)',  icon: 'Wine',            iconColor: 'var(--coral)',   img: 'бокалы и закуски',         imgVariant: 'peach' },
   ];
 
   const [active, setActive] = React.useState(0);
@@ -265,11 +265,11 @@ const FormatPill = ({ f, active, onEnter, onClick }) => {
       }}
     >
       <span style={{
-        width: 14, height: 14, borderRadius:'50%',
-        background: f.dot || 'var(--tomato)',
-        boxShadow: active ? 'inset 0 0 0 2px rgba(255,255,255,0.6)' : 'inset 0 0 0 2px rgba(255,255,255,0.8)',
+        display:'inline-flex', alignItems:'center', justifyContent:'center',
         flexShrink: 0,
-      }}/>
+      }}>
+        <LucideIcon name={f.icon} color={f.iconColor || 'var(--tomato)'} size={20} strokeWidth={2} glow/>
+      </span>
       <span>{f.title}</span>
       {f.tag && (
         <span style={{

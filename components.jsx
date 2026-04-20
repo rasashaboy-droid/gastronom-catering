@@ -91,6 +91,38 @@ const Icon = {
   ),
 };
 
+// Universal lucide icon renderer. Usage: <LucideIcon name="Cake" color="var(--tomato)" size={20} glow/>
+// Loads from window.lucide (UMD). Converts lucide node [tag, attrs, children] into React SVG.
+const LucideIcon = ({ name, size = 20, color, glow = false, strokeWidth, style, className = '' }) => {
+  const lib = typeof window !== 'undefined' ? window.lucide : null;
+  const icons = lib && (lib.icons || lib);
+  const node = icons && icons[name];
+  if (!node) return null;
+  const [tag, rawAttrs, rawChildren = []] = node;
+  const toCamel = (k) => k.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+  const convertAttrs = (attrs) => {
+    const out = {};
+    for (const k in attrs) {
+      if (k === 'class') continue; // we set className explicitly
+      out[toCamel(k)] = attrs[k];
+    }
+    return out;
+  };
+  const rootAttrs = {
+    ...convertAttrs(rawAttrs),
+    width: size,
+    height: size,
+    stroke: color || 'currentColor',
+    strokeWidth: strokeWidth != null ? strokeWidth : (rawAttrs['stroke-width'] || 2),
+    className: `${glow ? 'icon-glow ' : ''}${className}`.trim(),
+    style,
+  };
+  const kids = rawChildren.map(([t, a], i) =>
+    React.createElement(t, { ...convertAttrs(a), key: i })
+  );
+  return React.createElement(tag, rootAttrs, kids);
+};
+
 // Decorative wavy gradient blob
 const Blob = ({ style, color = 'var(--peach)', size = 220 }) => (
   <div className="blob" style={{
@@ -156,5 +188,5 @@ const useCountUp = (end, duration = 1200, start = 0) => {
 };
 
 Object.assign(window, {
-  Placeholder, Chip, SecLabel, Icon, Blob, Marquee, useCountUp,
+  Placeholder, Chip, SecLabel, Icon, LucideIcon, Blob, Marquee, useCountUp,
 });
