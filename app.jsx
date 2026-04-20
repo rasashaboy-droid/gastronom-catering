@@ -15,7 +15,7 @@ const Nav = () => {
       <nav className="nav">
         <div className="nav-inner glass">
           <a href="#" className="logo">
-            <span className="logo-mark"></span>
+            <img src="images/logo.png" alt="Gastronom Catering" className="logo-img"/>
             GASTRONOM CATERING
           </a>
           <div className="nav-links">

@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "catering",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "55582"],
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "http-server", ".", "-p", "55582", "-c-1"],
       "port": 55582
     }
   ]

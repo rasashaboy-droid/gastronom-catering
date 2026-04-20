@@ -80,7 +80,7 @@ const HeroSplit = () => {
       }}>
         <img src="images/hero.jpeg" alt="Фуршетный стол с канапе" style={{position:'absolute', inset: 0, width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
         <div style={{
-          position:'absolute', top: 'clamp(24px, 3.4vw, 48px)', left: 'clamp(24px, 3.4vw, 48px)',
+          position:'absolute', top: 'calc(clamp(24px, 3.4vw, 48px) - 24px)', left: 'clamp(24px, 3.4vw, 48px)',
           display:'inline-flex', alignItems:'center', gap: 8,
           padding: '8px 14px',
           background: 'rgba(255, 249, 241, 0.45)',
@@ -97,7 +97,7 @@ const HeroSplit = () => {
 
         {/* Bottom glass plate with label + CTA */}
         <a href="#formats" style={{
-          position:'absolute', left: 'clamp(24px, 3.4vw, 48px)', right: 'clamp(24px, 3.4vw, 48px)', bottom: 'clamp(24px, 3.4vw, 48px)',
+          position:'absolute', left: 'clamp(24px, 3.4vw, 48px)', right: 'clamp(24px, 3.4vw, 48px)', bottom: 'calc(clamp(24px, 3.4vw, 48px) - 24px)',
           display:'flex', alignItems:'center', justifyContent:'space-between', gap: 12,
           padding: '10px 10px 10px 20px',
           background: 'rgba(255, 249, 241, 0.55)',

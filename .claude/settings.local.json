@@ -31,7 +31,8 @@
       "Bash(ipconfig getifaddr *)",
       "Bash(curl -s -o /dev/null -w \"server: %{http_code}\\\\n\" http://127.0.0.1:55582/Landing.html)",
       "mcp__playwright__browser_tabs",
-      "mcp__playwright__browser_close"
+      "mcp__playwright__browser_close",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:55582/images/logo.jpeg\")"
     ]
   }
 }
