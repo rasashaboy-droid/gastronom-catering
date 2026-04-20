@@ -32,15 +32,16 @@ const HeroSplit = () => {
         boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 10px 30px -15px rgba(28,20,15,0.08)',
       }}>
         <div>
-          <Chip style={{marginBottom: 'clamp(16px, 2.4vw, 24px)', background: 'var(--cream-100)', border:'1px solid var(--ink-08)'}}>
-            <Icon.Spark size={14}/> Кейтеринг в Казани с 2017 года
-          </Chip>
-          <h1 className="display" style={{
+          <span className="chip" style={{marginBottom: 'clamp(16px, 2.4vw, 24px)', background: 'var(--cream-100)', border:'1px solid var(--ink-08)'}}>
+            В Казани с 2017 года
+          </span>
+          <h1 className="display hero-title" style={{
             fontFamily: 'Unbounded, sans-serif',
-            fontSize: 'clamp(36px, 6.2vw, 76px)',
+            fontSize: 'clamp(34px, 4.6vw, 60px)',
             fontWeight: 800,
             letterSpacing: '-0.035em',
-            lineHeight: 0.98,
+            lineHeight: 1.04,
+            whiteSpace: 'nowrap',
           }}>
             Кейтеринг<br/>
             в Казани<br/>
@@ -59,8 +60,8 @@ const HeroSplit = () => {
             От доставки боксов до банкета под ключ — подготовим персональное предложение под любое мероприятие.
           </p>
           <div style={{display:'flex', gap: 14, flexWrap:'wrap', alignItems:'center'}}>
-            <a href="#calc" className="btn btn-primary">Рассчитать стоимость <Icon.Arrow/></a>
-            <a href="#menu" className="btn btn-ghost" style={{border:'none', padding:'16px 8px'}}>Меню</a>
+            <a href="#calc" className="btn btn-primary">Получить предложение <Icon.Arrow/></a>
+            <a href="#menu" className="btn btn-glass">Меню</a>
           </div>
         </div>
       </div>
@@ -83,8 +84,8 @@ const HeroSplit = () => {
           fontSize: 13, fontWeight: 600,
           boxShadow: '0 4px 14px rgba(28,20,15,0.08)',
         }}>
-          <span style={{width: 8, height: 8, borderRadius: 999, background: '#3FB56A'}}/>
-          Свободны на эту неделю
+          <span style={{width: 8, height: 8, borderRadius: 999, background: 'var(--tomato)'}}/>
+          Халяль по запросу
         </div>
       </div>
     </div>

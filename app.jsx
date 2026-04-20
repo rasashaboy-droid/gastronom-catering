@@ -16,7 +16,7 @@ const Nav = () => {
         <div className="nav-inner glass">
           <a href="#" className="logo">
             <span className="logo-mark"></span>
-            Подача
+            GASTRONOM CATERING
           </a>
           <div className="nav-links">
             <a href="#formats">Форматы</a>
@@ -24,9 +24,13 @@ const Nav = () => {
             <a href="#calc">Расчёт</a>
             <a href="#faq">Вопросы</a>
           </div>
-          <div style={{display: 'flex', gap: 8, alignItems: 'center'}}>
+          <div style={{display: 'flex', gap: 10, alignItems: 'center'}}>
+            <a href="tel:+79934185343" className="nav-phone">
+              <span className="online-dot"></span>
+              +7 (993) 418-53-43
+            </a>
             <a href="#cta" className="nav-cta">
-              <span className="nav-cta-label">Заказать</span>
+              <span className="nav-cta-label">Перезвоните мне!</span>
               <Icon.Arrow size={14}/>
             </a>
             <button className="nav-burger" onClick={() => setMenuOpen(true)} aria-label="Меню">
@@ -53,10 +57,10 @@ const Nav = () => {
         <a href="#faq" onClick={close}>Вопросы</a>
         <div className="cta-row">
           <a href="#cta" onClick={close} className="btn btn-primary" style={{justifyContent: 'center'}}>
-            Заказать <Icon.Arrow/>
+            Перезвоните мне! <Icon.Arrow/>
           </a>
-          <a href="tel:+78430000000" onClick={close} className="btn" style={{justifyContent: 'center', background: 'rgba(255,255,255,0.1)', color: 'var(--cream-50)', border: '1px solid rgba(255,255,255,0.18)'}}>
-            <Icon.Phone size={16}/> +7 843 ...
+          <a href="tel:+79934185343" onClick={close} className="btn" style={{justifyContent: 'center', background: 'rgba(255,255,255,0.1)', color: 'var(--cream-50)', border: '1px solid rgba(255,255,255,0.18)'}}>
+            <Icon.Phone size={16}/> +7 (993) 418-53-43
           </a>
         </div>
       </div>

@@ -942,7 +942,7 @@ const Footer = () => (
     <div className="wrap" style={{display:'flex', justifyContent:'space-between', gap: 20, flexWrap:'wrap', alignItems:'center'}}>
       <div style={{display:'flex', alignItems:'center', gap: 10}}>
         <span className="logo-mark" style={{width: 24, height: 24}}></span>
-        <span style={{fontFamily:'Unbounded, sans-serif', fontWeight: 700, fontSize: 16}}>Подача</span>
+        <span style={{fontFamily:'Unbounded, sans-serif', fontWeight: 700, fontSize: 16, letterSpacing:'0.02em'}}>GASTRONOM CATERING</span>
         <span style={{color:'var(--ink-60)', fontSize: 13, marginLeft: 8}}>Казань · с 2017</span>
       </div>
       <div style={{display:'flex', gap: 20, fontSize: 13, color:'var(--ink-60)', flexWrap:'wrap'}}>
@@ -952,7 +952,7 @@ const Footer = () => (
         <a href="#">Telegram</a>
         <a href="#">Instagram</a>
       </div>
-      <div style={{fontSize: 13, color:'var(--ink-60)'}}>© 2026 ООО «Подача»</div>
+      <div style={{fontSize: 13, color:'var(--ink-60)'}}>© 2026 GASTRONOM CATERING</div>
     </div>
   </footer>
 );
