@@ -63,10 +63,10 @@ const HeroSplit = () => {
           maxWidth: 440,
           lineHeight: 1.45,
         }}>
-          От доставки боксов до банкета под ключ — подготовим персональное предложение под любое мероприятие.
+          От доставки боксов до банкета под ключ — рассчитаем стоимость под любое мероприятие.
         </p>
         <div className="hero-cta" style={{display:'flex', gap: 14, flexWrap:'wrap', alignItems:'center'}}>
-          <a href="#calc" className="btn btn-primary hero-cta__primary">Получить предложение <Icon.Arrow/></a>
+          <a href="#calc" className="btn btn-primary hero-cta__primary">Рассчитать стоимость <Icon.Arrow/></a>
           <a href="#menu" className="btn btn-glass hero-cta__ghost" style={{background: '#F9F5EB'}}>Смотреть меню</a>
         </div>
       </div>
