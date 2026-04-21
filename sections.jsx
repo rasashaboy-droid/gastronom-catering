@@ -909,14 +909,14 @@ const FinalCTA = () => {
             <div>
               <span className="chip" style={{background:'rgba(255,255,255,0.1)', color:'white', border:'1px solid rgba(255,255,255,0.2)'}}>
                 <span className="chip-dot" style={{background:'var(--coral)'}}></span>
-                Свободные даты — май, июнь
+                Свяжитесь с нами
               </span>
               <h2 className="display" style={{fontSize:'clamp(28px, 6vw, 80px)', fontWeight: 800, marginTop: 24, letterSpacing:'-0.04em', lineHeight: 0.95}}>
-                <span style={{display:'block'}}>Начнём</span>
-                <em className="accent-italic" style={{display:'block', color:'var(--yellow)', fontWeight: 500}}>с мессенджера?</em>
+                <span style={{display:'block'}}>Остались</span>
+                <em className="accent-italic" style={{display:'block', color:'var(--yellow)', fontWeight: 500}}>вопросы?</em>
               </h2>
               <p style={{opacity: 0.7, fontSize: 17, marginTop: 20, maxWidth: 440}}>
-                Пришлите дату и формат — в течение часа вернёмся с расчётом и вариантами меню.
+                Свяжитесь с нами удобным способом — ответим в течение часа.
               </p>
               <div style={{display:'flex', gap: 10, marginTop: 28, flexWrap:'wrap'}}>
                 <button className="btn btn-primary">
@@ -936,10 +936,9 @@ const FinalCTA = () => {
                 Быстрый бриф
               </div>
               <input placeholder="Ваше имя" style={ctaInput}/>
-              <input placeholder="Телефон или @ник" style={ctaInput}/>
-              <textarea placeholder="Дата, формат, число гостей" rows="3" style={{...ctaInput, resize:'none', fontFamily:'inherit'}}/>
+              <input placeholder="Номер телефона" style={ctaInput}/>
               <button className="btn btn-primary" style={{width:'100%', justifyContent:'center', marginTop: 8}}>
-                Отправить заявку <Icon.Arrow/>
+                Отправить <Icon.Arrow/>
               </button>
               <div style={{fontSize: 12, opacity: 0.5, marginTop: 12, textAlign:'center'}}>
                 Обычно отвечаем в течение часа
