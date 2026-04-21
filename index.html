@@ -317,21 +317,42 @@
     width: 100%;
     height: 52px;
     border-radius: 999px;
-    background: var(--raspberry);
-    box-shadow: 0 10px 24px -8px rgba(233,30,76,0.55), inset 0 1px 0 rgba(255,255,255,0.3);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 55%),
+      radial-gradient(circle at 115% 140%,
+        color-mix(in oklch, color-mix(in oklch, var(--yellow) 50%, var(--tomato) 50%) 55%, var(--peach) 45%) 0%,
+        var(--coral) 32%,
+        var(--raspberry) 78%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.45),
+      inset 0 0 0 1px rgba(255,255,255,0.22),
+      inset 0 -6px 18px -6px rgba(255,255,255,0.22),
+      0 10px 24px -8px rgba(233,30,76,0.45),
+      0 4px 14px -6px rgba(255,159,120,0.4);
+    backdrop-filter: blur(8px) saturate(1.2);
+    -webkit-backdrop-filter: blur(8px) saturate(1.2);
     transition: background .3s cubic-bezier(.22,.9,.3,1),
                 box-shadow .3s cubic-bezier(.22,.9,.3,1),
-                transform .18s ease;
+                transform .18s ease,
+                filter .18s ease;
     overflow: hidden;
   }
   .qty-wrap--sm { height: 40px; }
   .qty-wrap:not(.qty-wrap--active):hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 30px -8px rgba(233,30,76,0.7), inset 0 1px 0 rgba(255,255,255,0.3);
+    filter: brightness(1.04);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.55),
+      inset 0 0 0 1px rgba(255,255,255,0.28),
+      inset 0 -6px 18px -6px rgba(255,255,255,0.28),
+      0 16px 32px -8px rgba(233,30,76,0.55),
+      0 6px 18px -6px rgba(255,159,120,0.5);
   }
-  .qty-wrap:not(.qty-wrap--active):active { transform: translateY(0); }
+  .qty-wrap:not(.qty-wrap--active):active { transform: translateY(0); filter: brightness(0.98); }
   .qty-wrap--active {
     background: var(--cream-100);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     box-shadow: inset 0 0 0 1px var(--ink-08);
   }
 
@@ -485,15 +506,21 @@
     opacity: 0;
     transform: translateY(16px);
     pointer-events: none;
-    transition: opacity .32s cubic-bezier(.22,.9,.3,1),
-                transform .32s cubic-bezier(.22,.9,.3,1);
     visibility: hidden;
+    transition:
+      opacity .32s cubic-bezier(.22,.9,.3,1),
+      transform .32s cubic-bezier(.22,.9,.3,1),
+      visibility 0s linear .32s;
   }
   .cart-overlay--visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
     visibility: visible;
+    transition:
+      opacity .32s cubic-bezier(.22,.9,.3,1),
+      transform .32s cubic-bezier(.22,.9,.3,1),
+      visibility 0s linear 0s;
   }
 
   /* ---------- FLOATING CART BUTTON ---------- */
