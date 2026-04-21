@@ -427,7 +427,17 @@ const QuizCalc = () => {
                   {cur.slider && (
                     <div style={{marginTop: 8}}>
                       <div className="display" style={{fontSize: 72, fontWeight: 700, color:'var(--tomato)', lineHeight: 1, letterSpacing:'-0.03em'}}>
-                        {answers.people}
+                        <input type="text" inputMode="numeric" pattern="[0-9]*"
+                          value={answers.people}
+                          onChange={e => { const v = e.target.value.replace(/\D/g, ''); setAns('people', Math.max(2, Math.min(1000, +v || 2))); }}
+                          style={{
+                            fontFamily: 'Unbounded, sans-serif',
+                            fontSize: 72, fontWeight: 700, color:'var(--tomato)', lineHeight: 1, letterSpacing:'-0.03em',
+                            width: `${String(answers.people).length}ch`,
+                            padding: 0, margin: 0, border: 'none', outline: 'none', background: 'transparent',
+                            verticalAlign: 'baseline',
+                          }}
+                        />
                         <span style={{fontSize: 24, color:'var(--ink-60)', fontWeight: 500, marginLeft: 8}}>гостей</span>
                       </div>
                       <input type="range"
@@ -439,14 +449,6 @@ const QuizCalc = () => {
                       <div style={{display:'flex', justifyContent:'space-between', fontSize: 12, color:'var(--ink-60)', fontFamily:'JetBrains Mono, monospace', marginTop: 8}}>
                         <span>{cur.slider.min}</span>
                         <span>{cur.slider.max}+</span>
-                      </div>
-                      <div style={{marginTop: 16, display:'flex', alignItems:'center', gap: 10}}>
-                        <label style={{fontSize: 13, color:'var(--ink-60)'}}>Или введите точное число:</label>
-                        <input type="number" min={2} max={1000}
-                          value={answers.people}
-                          onChange={e => setAns('people', Math.max(2, +e.target.value || 2))}
-                          style={{width: 90, padding: '8px 10px', borderRadius: 10, border: '1.5px solid var(--ink-15)', fontSize: 14, fontFamily: 'inherit'}}
-                        />
                       </div>
                     </div>
                   )}
@@ -940,17 +942,18 @@ const FinalCTA = () => {
               borderRadius: 28, padding: 28,
               background: 'rgba(255,255,255,0.06)',
             }}>
-              <div className="mono" style={{fontSize: 12, opacity: 0.6, marginBottom: 16, letterSpacing:'0.1em', textTransform:'uppercase'}}>
-                Быстрый бриф
+              <div className="mono" style={{fontSize: 'clamp(9.5px, 2.8vw, 12px)', opacity: 0.6, marginBottom: 16, letterSpacing:'0.08em', textTransform:'uppercase', whiteSpace:'nowrap'}}>
+                Обычно отвечаем в течение часа
               </div>
               <input placeholder="Ваше имя" style={ctaInput}/>
               <input placeholder="Номер телефона" style={ctaInput}/>
               <button className="btn btn-primary" style={{width:'100%', justifyContent:'center', marginTop: 8}}>
                 Отправить <Icon.Arrow/>
               </button>
-              <div style={{fontSize: 12, opacity: 0.5, marginTop: 12, textAlign:'center'}}>
-                Обычно отвечаем в течение часа
-              </div>
+              <label style={{display:'flex', alignItems:'flex-start', gap: 10, marginTop: 14, fontSize: 12, lineHeight: 1.45, opacity: 0.7, cursor:'pointer'}}>
+                <input type="checkbox" style={{marginTop: 2, accentColor:'var(--tomato)', flexShrink: 0, width: 16, height: 16}}/>
+                <span>Я согласен на обработку персональных данных согласно политике конфиденциальности</span>
+              </label>
             </div>
           </div>
         </div>
@@ -978,8 +981,11 @@ const Footer = () => (
   <footer style={{padding: '40px 0 30px', borderTop:'1px solid var(--ink-08)', marginTop: 40}}>
     <div className="wrap" style={{display:'flex', justifyContent:'space-between', gap: 20, flexWrap:'wrap', alignItems:'center'}}>
       <div style={{display:'flex', alignItems:'center', gap: 10}}>
-        <span className="logo-mark" style={{width: 24, height: 24}}></span>
-        <span style={{fontFamily:'Unbounded, sans-serif', fontWeight: 700, fontSize: 16, letterSpacing:'0.02em'}}>GASTRONOM CATERING</span>
+        <img src="images/logo.png" alt="Gastronom Catering" style={{height: 36, width:'auto', display:'block'}}/>
+        <span className="logo-text" style={{fontFamily:'Unbounded, sans-serif'}}>
+          <span className="logo-text-main">GASTRONOM</span>
+          <span className="logo-text-sub">CATERING</span>
+        </span>
         <span style={{color:'var(--ink-60)', fontSize: 13, marginLeft: 8}}>Казань · с 2017</span>
       </div>
       <div style={{display:'flex', gap: 20, fontSize: 13, color:'var(--ink-60)', flexWrap:'wrap'}}>
@@ -1001,8 +1007,9 @@ const Advantages = () => {
       n: '01',
       kicker: 'Вкусно',
       text: 'Меню и подачу продумывает шеф-повар с многолетним опытом.',
-      bg: 'var(--coral)', fg: 'white',
+      bg: '#ed1d51', fg: 'white',
       img: 'фото: блюдо от шеф-повара',
+      photo: 'images/1.jpg',
       imgVariant: 'peach',
       decor: 'rings',
     },
@@ -1010,8 +1017,9 @@ const Advantages = () => {
       n: '02',
       kicker: 'Красиво',
       text: 'Готовые варианты оформления, проверенные на многочисленных мероприятиях.',
-      bg: 'var(--yellow)', fg: 'var(--ink)',
+      bg: '#ffe270', fg: 'var(--ink)',
       img: 'фото: сервировка фуршета',
+      photo: 'images/2.jpg',
       imgVariant: 'cream',
       decor: 'grid',
     },
@@ -1019,15 +1027,16 @@ const Advantages = () => {
       n: '03',
       kicker: 'Индивидуально',
       text: 'Соберём меню, оформление и формат под ваш повод и задачи.',
-      bg: 'var(--peach)', fg: 'var(--ink)',
+      bg: '#fbebdb', fg: 'var(--ink)',
       decor: 'dots',
     },
     {
       n: '04',
       kicker: 'Надёжно',
       text: 'Проверенная система работы — без сбоев и накладок в день мероприятия.',
-      bg: 'var(--brick)', fg: 'var(--cream-50)',
+      bg: '#ffbfa3', fg: 'var(--ink)',
       img: 'фото: команда на выезде',
+      photo: 'images/3.jpg',
       imgVariant: 'peach',
       decor: 'waves',
     },
@@ -1035,7 +1044,7 @@ const Advantages = () => {
       n: '05',
       kicker: 'Безопасно',
       text: 'Свежие продукты, проверенные поставщики и регулярный санитарный контроль.',
-      bg: 'var(--yellow-soft)', fg: 'var(--ink)',
+      bg: '#ffffff', fg: 'var(--ink)',
       decor: 'arc',
     },
   ];
@@ -1144,12 +1153,16 @@ const AdvCard = ({ item, style }) => {
 
       {/* Image placeholder, fills available space. Spark badge overlays top-right. */}
       {hasImg && (
-        <div style={{
+        <div className="adv-photo" style={{
           position:'relative', zIndex:1,
           flex: 1, minHeight: 0,
           borderRadius: 16, overflow:'hidden',
         }}>
-          <Placeholder label={item.img} variant={item.imgVariant || 'peach'} style={{width:'100%', height:'100%'}}/>
+          {item.photo ? (
+            <img src={item.photo} alt={item.img} style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
+          ) : (
+            <Placeholder label={item.img} variant={item.imgVariant || 'peach'} style={{width:'100%', height:'100%'}}/>
+          )}
           <div style={{
             position:'absolute', top: 12, right: 12,
             width: 32, height: 32, borderRadius: '50%',

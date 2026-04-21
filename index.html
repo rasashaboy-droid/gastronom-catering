@@ -263,7 +263,12 @@
   }
   .sec-label .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--raspberry); }
 
-  .icon-glow { filter: drop-shadow(0 0 3px #FF8383); }
+  .icon-glow { filter: drop-shadow(0 0 1px #FF8383); }
+
+  /* Hide spinner arrows on number inputs */
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type=number] { -moz-appearance: textfield; }
 
   /* Soft multi-direction shadow for all card-like containers (pills excluded) */
   .adv-card,
@@ -310,7 +315,7 @@
   @media (max-width: 560px) {
     /* Equal-height text card & photo: same min-height, no aspect-ratio */
     .hero-split > div:first-child { min-height: 420px !important; }
-    .hero-photo { aspect-ratio: 4 / 3 !important; min-height: 0 !important; }
+    .hero-photo { aspect-ratio: 1 / 1 !important; min-height: 0 !important; }
     .hero-photo > img { position: static !important; height: auto !important; }
   }
 
@@ -368,6 +373,24 @@
     }
     .adv-bento > :nth-child(2) p, .adv-bento > :nth-child(3) p {
       font-size: 12.5px !important;
+    }
+    /* Shrink spark badge on photo cards */
+    .adv-photo > div:last-child {
+      width: 22px !important; height: 22px !important;
+      top: 8px !important; right: 8px !important;
+    }
+    .adv-photo > div:last-child svg {
+      width: 9px !important; height: 9px !important;
+    }
+    /* Fix collapsing photos inside small square tiles */
+    .adv-bento > :nth-child(1) .adv-photo { min-height: 180px; }
+    .adv-bento > :nth-child(2),
+    .adv-bento > :nth-child(3) { aspect-ratio: auto !important; min-height: 260px; }
+    .adv-bento > :nth-child(2) .adv-photo,
+    .adv-bento > :nth-child(3) .adv-photo {
+      flex: none !important;
+      height: 120px !important;
+      min-height: 120px !important;
     }
   }
 
