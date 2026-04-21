@@ -63,7 +63,7 @@ const HeroSplit = () => {
           maxWidth: 440,
           lineHeight: 1.45,
         }}>
-          От доставки боксов до банкета под ключ — рассчитаем стоимость под любое мероприятие.
+          От доставки боксов до банкета под ключ — <span style={{color:'#f32353', fontWeight: 600}}>рассчитаем стоимость</span> под любое мероприятие.
         </p>
         <div className="hero-cta" style={{display:'flex', gap: 14, flexWrap:'wrap', alignItems:'center'}}>
           <a href="#calc" className="btn btn-primary hero-cta__primary">Рассчитать стоимость</a>
@@ -91,9 +91,7 @@ const HeroSplit = () => {
           fontSize: 13, fontWeight: 600,
           boxShadow: '0 1px 0 rgba(255,255,255,0.65) inset, 0 8px 22px -8px rgba(28,20,15,0.18)',
         }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--tomato)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M12 1 L15 4 L20 4 L20 9 L23 12 L20 15 L20 20 L15 20 L12 23 L9 20 L4 20 L4 15 L1 12 L4 9 L4 4 L9 4 Z"/>
-          </svg>
+          <img src="images/halal.png" alt="Halal" width="18" height="18" style={{display:'block', objectFit:'contain'}}/>
           Халяль по запросу
         </div>
 
