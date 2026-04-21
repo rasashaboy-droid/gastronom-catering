@@ -151,8 +151,9 @@ const Formats = () => {
               marginTop: 'auto',
               padding: '14px 18px',
               borderRadius: 999,
-              background: 'var(--ink)',
-              color: 'var(--cream-50)',
+              background: 'white',
+              color: 'var(--ink)',
+              border: '1px solid var(--ink-08)',
               display: 'flex', alignItems: 'center', justifyContent:'space-between', gap: 12, flexWrap: 'wrap',
             }}>
               <div style={{display:'flex', alignItems:'center', gap: 12}}>
@@ -163,7 +164,7 @@ const Formats = () => {
                   Не нашли свой формат?
                 </div>
               </div>
-              <a href="#cta" className="btn" style={{background:'var(--cream-50)', color:'var(--ink)', padding: '10px 18px', fontSize: 13}}>
+              <a href="#cta" className="btn" style={{background:'rgb(26, 10, 15)', color:'#fff', padding: '10px 18px', fontSize: 13}}>
                 Подобрать <Icon.Arrow size={13}/>
               </a>
             </div>
