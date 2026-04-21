@@ -683,6 +683,23 @@
     .hero-split > div:first-child { min-height: 420px !important; }
     .hero-photo { aspect-ratio: 1 / 1 !important; min-height: 0 !important; }
     .hero-photo > img { position: static !important; height: auto !important; }
+
+    /* Hero CTA stack on mobile: primary full-width, ghost as plain centered text */
+    .hero-cta { flex-direction: column !important; align-items: stretch !important; gap: 10px !important; }
+    .hero-cta__primary { width: 100% !important; justify-content: center !important; }
+    .hero-cta__ghost {
+      background: transparent !important;
+      border: none !important;
+      padding: 6px 0 !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      justify-content: center !important;
+      text-decoration: none !important;
+      color: var(--ink-60) !important;
+      font-weight: 500 !important;
+    }
+    .hero-cta__ghost:hover { transform: none !important; color: var(--ink) !important; }
   }
 
   /* Stats band collapses (keeps its own rules but also tweak margins) */
@@ -695,9 +712,14 @@
     .formats-split > div:first-child { order: 1; }
 
     /* Pills size to content */
+    .formats-pills {
+      gap: 8px !important;
+      justify-content: flex-start !important;
+    }
     .formats-pills > button {
-      padding: 14px 18px !important;
-      font-size: 15px !important;
+      padding: 13px 16px !important;
+      font-size: 13.5px !important;
+      gap: 10px !important;
     }
 
     /* "Не нашли свой формат" — transparent, no card on mobile */
