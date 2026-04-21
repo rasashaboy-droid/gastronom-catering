@@ -211,9 +211,10 @@
     .nav-links { display: none; }
   }
   @media (max-width: 560px) {
-    .nav-cta span.nav-cta-label { display: none; }
-    .nav-cta { padding: 12px 14px; }
+    .nav-cta { display: none !important; }
     .nav-burger { display: inline-flex; }
+    .mobile-menu a { font-size: 21px !important; }
+    .mobile-menu .btn { font-size: 13px !important; padding: 12px 18px !important; }
     .hero-photo a[href="#formats"] {
       left: clamp(16px, 1.6vw, 22px) !important;
       right: clamp(16px, 1.6vw, 22px) !important;
