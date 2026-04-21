@@ -656,23 +656,14 @@ const MenuHighlights = () => {
 };
 
 const MenuCard = ({ item, delay }) => {
-  const [hover, setHover] = React.useState(false);
   return (
     <div
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
       className="menu-card"
       style={{
         background: 'var(--cream-100)',
         borderRadius: 24,
         overflow:'hidden',
-        transition: 'transform .2s ease, box-shadow .2s ease',
-        transform: hover ? 'translateY(-3px)' : 'none',
-        boxShadow: hover
-          ? '0 14px 26px -14px rgba(28,20,15,0.22), 0 6px 14px -8px rgba(28,20,15,0.14)'
-          : undefined,
         animation: `fadeUp .5s ${delay}ms both`,
-        cursor: 'pointer',
       }}
     >
       <div style={{height: 180, position:'relative'}}>

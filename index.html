@@ -112,7 +112,7 @@
     border-radius: 999px;
     max-width: 1296px; margin: 0 auto;
     gap: 12px;
-    background: rgba(255, 255, 255, 0.65);
+    background: transparent;
   }
   .logo {
     display: flex; align-items: center; gap: 10px;
@@ -282,12 +282,21 @@
   .calc-shell,
   .calc-shell .glass,
   .process-grid > div,
-  .menu-card,
   .cta-split .glass-dark {
     box-shadow:
       6px -6px 24px -10px rgba(28,20,15,0.07),
       -6px 6px 24px -10px rgba(28,20,15,0.07),
       0 10px 30px -15px rgba(28,20,15,0.08) !important;
+  }
+  .menu-card {
+    box-shadow: none !important;
+    transition: box-shadow .25s ease !important;
+  }
+  .menu-card:hover {
+    box-shadow:
+      5px -5px 20px -8px rgba(28,20,15,0.14),
+      -5px 5px 20px -8px rgba(28,20,15,0.14),
+      0 14px 30px -12px rgba(28,20,15,0.18) !important;
   }
 
   .chip {
