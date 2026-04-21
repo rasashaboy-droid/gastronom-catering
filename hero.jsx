@@ -66,8 +66,8 @@ const HeroSplit = () => {
           От доставки боксов до банкета под ключ — рассчитаем стоимость под любое мероприятие.
         </p>
         <div className="hero-cta" style={{display:'flex', gap: 14, flexWrap:'wrap', alignItems:'center'}}>
-          <a href="#calc" className="btn btn-primary hero-cta__primary">Рассчитать стоимость <Icon.Arrow/></a>
-          <a href="#menu" className="btn btn-glass hero-cta__ghost" style={{background: '#F9F5EB'}}>Смотреть меню</a>
+          <a href="#calc" className="btn btn-primary hero-cta__primary">Рассчитать стоимость</a>
+          <a href="#menu" className="btn btn-glass hero-cta__ghost" style={{background: '#F9F5EB'}}>Смотреть меню <Icon.Arrow/></a>
         </div>
       </div>
 
