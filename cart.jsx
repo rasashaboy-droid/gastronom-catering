@@ -103,15 +103,22 @@ const useHashRoute = () => {
 const FloatingCartButton = () => {
   const cart = useCart();
   const hash = useHashRoute();
-  if (hash === '#/cart') return null;
+  const hidden = hash === '#/cart';
   const count = cart.count();
   const goToCart = (e) => {
     e.preventDefault();
-    window.PageState.scrollY = window.scrollY;
-    window.location.hash = '#/cart';
+    history.pushState(null, '', '#/cart');
+    window.dispatchEvent(new Event('hashchange'));
   };
   return (
-    <a href="#/cart" onClick={goToCart} className="cart-fab" aria-label={`Корзина, позиций: ${count}`}>
+    <a
+      href="#/cart"
+      onClick={goToCart}
+      className={'cart-fab' + (hidden ? ' cart-fab--hidden' : '')}
+      aria-hidden={hidden}
+      tabIndex={hidden ? -1 : 0}
+      aria-label={`Корзина, позиций: ${count}`}
+    >
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="9" cy="20" r="1.5"/>
         <circle cx="18" cy="20" r="1.5"/>
@@ -134,7 +141,11 @@ const CartPage = () => {
         <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom: 32, gap: 20, flexWrap:'wrap'}}>
           <a
             href="#"
-            onClick={(e) => { e.preventDefault(); window.location.hash = ''; }}
+            onClick={(e) => {
+              e.preventDefault();
+              history.pushState(null, '', location.pathname + location.search);
+              window.dispatchEvent(new Event('hashchange'));
+            }}
             style={{display:'inline-flex', alignItems:'center', gap: 8, color:'var(--ink-60)', fontSize: 14, textDecoration:'none'}}
           >
             ← На главную
@@ -161,7 +172,13 @@ const CartPage = () => {
             <div style={{fontSize: 17, marginBottom: 16}}>Корзина пуста</div>
             <a
               href="#menu"
-              onClick={(e) => { e.preventDefault(); window.location.hash = ''; setTimeout(() => { const el = document.getElementById('menu'); if (el) window.scrollTo({top: el.offsetTop - 60}); }, 20); }}
+              onClick={(e) => {
+                e.preventDefault();
+                history.pushState(null, '', location.pathname + location.search);
+                window.dispatchEvent(new Event('hashchange'));
+                const el = document.getElementById('menu');
+                if (el) window.scrollTo({top: el.offsetTop - 60});
+              }}
               className="btn btn-primary" style={{display:'inline-flex'}}
             >К меню</a>
           </div>

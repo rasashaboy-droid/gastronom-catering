@@ -474,6 +474,28 @@
     .cart-row__qty { flex: 1; }
   }
 
+  /* ---------- CART PAGE OVERLAY (fade + slide) ---------- */
+  .cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--cream-50);
+    z-index: 70;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    opacity: 0;
+    transform: translateY(16px);
+    pointer-events: none;
+    transition: opacity .32s cubic-bezier(.22,.9,.3,1),
+                transform .32s cubic-bezier(.22,.9,.3,1);
+    visibility: hidden;
+  }
+  .cart-overlay--visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+  }
+
   /* ---------- FLOATING CART BUTTON ---------- */
   .cart-fab {
     position: fixed;
@@ -499,6 +521,11 @@
       0 6px 14px -4px rgba(26,10,15,0.3);
   }
   .cart-fab:active { transform: translateY(0) scale(0.98); }
+  .cart-fab--hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8) translateY(12px);
+  }
   .cart-fab__badge {
     position: absolute;
     top: -4px; right: -4px;

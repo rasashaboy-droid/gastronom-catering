@@ -75,12 +75,12 @@ const App = () => {
   const hash = useHashRoute();
   const isCart = hash === '#/cart';
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
     if (isCart) {
-      window.scrollTo(0, 0);
-    } else {
-      window.scrollTo(0, window.PageState.scrollY || 0);
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = prev; };
     }
   }, [isCart]);
 
@@ -92,23 +92,22 @@ const App = () => {
           to { opacity: 1; transform: none; }
         }
       `}</style>
-      {isCart ? (
+      <Nav/>
+      <Hero/>
+      <StatsBand/>
+      <Formats/>
+      <Advantages/>
+      <QuizCalc/>
+      <MenuHighlights/>
+      <Process/>
+      <FAQ/>
+      <FinalCTA/>
+      <Footer/>
+
+      <div className={'cart-overlay' + (isCart ? ' cart-overlay--visible' : '')} aria-hidden={!isCart}>
         <CartPage/>
-      ) : (
-        <>
-          <Nav/>
-          <Hero/>
-          <StatsBand/>
-          <Formats/>
-          <Advantages/>
-          <QuizCalc/>
-          <MenuHighlights/>
-          <Process/>
-          <FAQ/>
-          <FinalCTA/>
-          <Footer/>
-        </>
-      )}
+      </div>
+
       <FloatingCartButton/>
     </div>
   );
