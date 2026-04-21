@@ -1,6 +1,46 @@
 // ============ EPHEMERAL PAGE STATE (for restoring scroll/category on nav) ============
 window.PageState = window.PageState || { scrollY: 0, menuCategory: 'canape' };
 
+// ============ OPTIMIZED IMAGE HELPER ============
+// Takes "images/foo.jpeg" → { src: "images/optimized/foo-600.jpg",
+//                             srcSet: "...-600.jpg 600w, ...-1200.jpg 1200w" }
+const getOptimizedPhoto = (p) => {
+  if (!p) return null;
+  const m = p.match(/^(.+)\/([^/]+)\.([^.]+)$/);
+  if (!m) return null;
+  const dir = m[1], base = m[2];
+  const enc = (s) => encodeURI(s);
+  return {
+    src: enc(`${dir}/optimized/${base}-600.jpg`),
+    srcSet: `${enc(`${dir}/optimized/${base}-600.jpg`)} 600w, ${enc(`${dir}/optimized/${base}-1200.jpg`)} 1200w`,
+  };
+};
+window.getOptimizedPhoto = getOptimizedPhoto;
+
+// Drop-in <img> replacement: optimized srcset + lazy + graceful fallback to original on 404.
+const OptImg = ({ photo, alt, sizes, style, className }) => {
+  const [errored, setErrored] = React.useState(false);
+  const opt = getOptimizedPhoto(photo);
+  if (!photo) return null;
+  if (!opt || errored) {
+    return <img src={photo} alt={alt || ''} loading="lazy" decoding="async" style={style} className={className}/>;
+  }
+  return (
+    <img
+      src={opt.src}
+      srcSet={opt.srcSet}
+      sizes={sizes || '(max-width: 640px) 50vw, 600px'}
+      alt={alt || ''}
+      loading="lazy"
+      decoding="async"
+      style={style}
+      className={className}
+      onError={() => setErrored(true)}
+    />
+  );
+};
+window.OptImg = OptImg;
+
 // ============ CART STORE (global, with localStorage persistence) ============
 (() => {
   const KEY = 'gc_cart_v1';
@@ -160,7 +200,7 @@ const CartRow = ({ item, qty }) => {
     <div className="cart-row">
       <div className="cart-row__photo">
         {item.photo ? (
-          <img src={item.photo} alt={item.name} style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
+          <OptImg photo={item.photo} alt={item.name} sizes="84px" style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
         ) : null}
       </div>
       <div className="cart-row__body">
@@ -199,7 +239,7 @@ const QtyStepper = ({ item, size = 'md' }) => {
   const cart = useCart();
   const qty = cart.get(item.name);
   const active = qty > 0;
-  const addLabel = size === 'sm' ? 'Добавить в корзину' : '+ В корзину';
+  const addLabel = 'В корзину';
 
   const onAdd = (e) => { e.stopPropagation(); cart.add(item, 1); };
   const onSub = (e) => { e.stopPropagation(); cart.add(item, -1); };

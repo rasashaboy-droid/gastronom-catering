@@ -34,7 +34,20 @@
       "mcp__playwright__browser_close",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:55582/images/logo.jpeg\")",
       "mcp__playwright__browser_snapshot",
-      "mcp__playwright__browser_hover"
+      "mcp__playwright__browser_hover",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(cwebp -version)",
+      "Bash(ffmpeg -version)",
+      "Bash(chmod +x compress-images.sh)",
+      "Bash(./compress-images.sh)",
+      "Bash(ffmpeg -encoders)",
+      "Bash(ffmpeg -codecs)",
+      "Bash(brew list *)",
+      "Bash(sips --help)",
+      "Bash(sips -s format webp)",
+      "Bash(sips --formats)",
+      "Bash(ffmpeg -muxers)",
+      "Bash(brew --version)"
     ]
   }
 }

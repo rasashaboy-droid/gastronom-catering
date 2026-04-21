@@ -712,7 +712,7 @@ const MenuDrawer = ({ item, onClose }) => {
             marginBottom: 20,
           }}>
             {item.photo ? (
-              <img src={item.photo} alt={item.name} style={{width:'100%', height:'100%', objectFit:'cover', position:'absolute', inset: 0}}/>
+              <OptImg photo={item.photo} alt={item.name} sizes="(max-width: 720px) 100vw, 624px" style={{width:'100%', height:'100%', objectFit:'cover', position:'absolute', inset: 0}}/>
             ) : (
               <Placeholder label={item.name.toLowerCase()} variant="cream" style={{width:'100%', height:'100%', position:'absolute', inset: 0}}/>
             )}
@@ -771,7 +771,7 @@ const MenuCard = ({ item, delay, onClick }) => {
     >
       <div style={{height: 180, position:'relative'}}>
         {item.photo ? (
-          <img src={item.photo} alt={item.name} style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
+          <OptImg photo={item.photo} alt={item.name} sizes="(max-width: 640px) 48vw, 300px" style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
         ) : (
           <Placeholder label={item.name.toLowerCase()} variant="cream" style={{width:'100%', height:'100%'}}/>
         )}
