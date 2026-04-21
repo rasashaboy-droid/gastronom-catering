@@ -263,7 +263,7 @@
   }
   .sec-label .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--raspberry); }
 
-  .icon-glow { filter: drop-shadow(0 0 4px #FF8383); }
+  .icon-glow { filter: drop-shadow(0 0 3px #FF8383); }
 
   /* Soft multi-direction shadow for all card-like containers (pills excluded) */
   .adv-card,
@@ -320,8 +320,8 @@
   @media (max-width: 900px) {
     .formats-split { grid-template-columns: 1fr !important; gap: 18px !important; }
     /* Photo block goes AFTER left column (default DOM order), half height */
-    .formats-split > div:last-child { min-height: 160px !important; order: 1; }
-    .formats-split > div:first-child { order: 0; }
+    .formats-split > div:last-child { min-height: 160px !important; order: 0; }
+    .formats-split > div:first-child { order: 1; }
 
     /* Pills size to content */
     .formats-pills > button {

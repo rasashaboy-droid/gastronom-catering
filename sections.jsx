@@ -165,7 +165,7 @@ const Formats = () => {
                 </div>
               </div>
               <a href="#cta" className="btn" style={{background:'rgb(26, 10, 15)', color:'#fff', padding: '10px 18px', fontSize: 13}}>
-                Подобрать <Icon.Arrow size={13}/>
+                Подобрать решение <Icon.Arrow size={13}/>
               </a>
             </div>
           </div>

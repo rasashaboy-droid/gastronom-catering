@@ -34,7 +34,7 @@ const HeroSplit = () => {
         <div>
           <span className="chip" style={{
             marginBottom: 'clamp(16px, 2.4vw, 24px)',
-            background: '#FFEAD9',
+            background: '#f7ece4',
             backdropFilter: 'blur(12px) saturate(1.3)',
             WebkitBackdropFilter: 'blur(12px) saturate(1.3)',
             border: '1px solid rgba(255, 255, 255, 0.6)',
