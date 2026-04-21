@@ -577,41 +577,55 @@ const MenuHighlights = () => {
   ];
   const items = {
     canape: [
-      { name: 'Строганина из форели', price: 180, tag: 'холодное' },
-      { name: 'Тартар из говядины на чипсе', price: 220, tag: 'хит' },
-      { name: 'Козий сыр с грушей', price: 160 },
-      { name: 'Хумус с гранатом', price: 140, tag: 'veg' },
-      { name: 'Креветка в кадаифи', price: 260 },
-      { name: 'Ростбиф с трюфельным кремом', price: 240 },
+      { name: 'Строганина из форели', price: 180, tag: 'холодное', weight: '35 г', desc: 'Слабосолёная форель, крем-сыр с лимонной цедрой, микс-салат, чёрный хлеб на закваске, перечная икра.' },
+      { name: 'Тартар из говядины на чипсе', price: 220, tag: 'хит', weight: '40 г', desc: 'Вырезка ангус, дижонская горчица, каперсы, перепелиный желток, хрустящий картофельный чипс.' },
+      { name: 'Козий сыр с грушей', price: 160, weight: '30 г', desc: 'Мягкий козий сыр, карамелизированная груша конференс, мёд с тимьяном, орех пекан.' },
+      { name: 'Хумус с гранатом', price: 140, tag: 'veg', weight: '45 г', desc: 'Хумус из нута, тахини, оливковое масло, зёрна граната, кунжут, питта на пару.' },
+      { name: 'Креветка в кадаифи', price: 260, weight: '35 г', desc: 'Тигровая креветка в тесте кадаифи, соус манго-чили, свежая кинза.' },
+      { name: 'Ростбиф с трюфельным кремом', price: 240, weight: '40 г', desc: 'Говяжья вырезка slow-cook, крем на основе маскарпоне и трюфельного масла, руккола, багет.' },
     ],
     hot: [
-      { name: 'Томлёная телятина', price: 560 },
-      { name: 'Лосось на гриле', price: 640, tag: 'хит' },
-      { name: 'Утиная грудка · апельсин', price: 590 },
-      { name: 'Ризотто с белыми грибами', price: 420, tag: 'veg' },
-      { name: 'Стейк мираторг · картофель', price: 780 },
-      { name: 'Треска · цветная капуста', price: 480 },
+      { name: 'Томлёная телятина', price: 560, weight: '180 г', desc: 'Телячья щека 8 часов в красном вине, пюре из корня сельдерея, демиглас, жареный лук-шалот.' },
+      { name: 'Лосось на гриле', price: 640, tag: 'хит', weight: '160 г', desc: 'Филе лосося, соус бёрр-блан, спаржа гриль, лимон, укропное масло.' },
+      { name: 'Утиная грудка · апельсин', price: 590, weight: '170 г', desc: 'Грудка утки medium, апельсиновый жю, пюре из батата, свекольные чипсы.' },
+      { name: 'Ризотто с белыми грибами', price: 420, tag: 'veg', weight: '220 г', desc: 'Арборио, белые грибы, пармезан 24 мес, трюфельное масло, петрушка.' },
+      { name: 'Стейк мираторг · картофель', price: 780, weight: '200 г', desc: 'Стейк Рибай Black Angus, картофель бейби на углях, розмарин, соус BBQ домашний.' },
+      { name: 'Треска · цветная капуста', price: 480, weight: '160 г', desc: 'Филе трески су-вид, пюре из цветной капусты, капуста романеско, соус на белом вине.' },
     ],
     salad: [
-      { name: 'Цезарь с креветкой', price: 380 },
-      { name: 'Руккола · груша · пармезан', price: 340, tag: 'veg' },
-      { name: 'Тёплый салат с уткой', price: 420 },
-      { name: 'Оливье премиум', price: 360 },
+      { name: 'Цезарь с креветкой', price: 380, weight: '220 г', desc: 'Микс-салат, тигровые креветки, черри, гренки из чиабатты, пармезан, классический соус цезарь.' },
+      { name: 'Руккола · груша · пармезан', price: 340, tag: 'veg', weight: '200 г', desc: 'Руккола, груша конференс, пармезан хлопьями, кедровый орех, бальзамический крем.' },
+      { name: 'Тёплый салат с уткой', price: 420, weight: '210 г', desc: 'Копчёная утиная грудка, микс-салат, печёная свёкла, апельсин, малиновый соус.' },
+      { name: 'Оливье премиум', price: 360, weight: '220 г', desc: 'Телячий язык, перепелиные яйца, корнишоны, картофель, домашний майонез, чёрная икра.' },
     ],
     dessert: [
-      { name: 'Павлова с ягодами', price: 240, tag: 'хит' },
-      { name: 'Трюфели ручной работы', price: 180 },
-      { name: 'Чизкейк нью-йорк', price: 220 },
-      { name: 'Эклеры ассорти · 3 шт', price: 260 },
+      { name: 'Павлова с ягодами', price: 240, tag: 'хит', weight: '90 г', desc: 'Безе, крем маскарпоне с ванилью, свежая клубника, малина, голубика, мятный сироп.' },
+      { name: 'Трюфели ручной работы', price: 180, weight: '3 шт', desc: 'Шоколад 70%, сливки, ассорти: фундук, какао, малина. Ручная работа.' },
+      { name: 'Чизкейк нью-йорк', price: 220, weight: '110 г', desc: 'Классический чизкейк на песочной основе, сливочный сыр, ягодный кули.' },
+      { name: 'Эклеры ассорти · 3 шт', price: 260, weight: '3 шт', desc: 'Ваниль, фисташка, шоколад. Заварное тесто, крем на сливочном масле.' },
     ],
     drinks: [
-      { name: 'Домашний лимонад', price: 180 },
-      { name: 'Вино Rioja, 150мл', price: 420 },
-      { name: 'Свежий сок апельсин', price: 220 },
-      { name: 'Чайная станция', price: 80, tag: 'на гостя' },
+      { name: 'Домашний лимонад', price: 180, weight: '300 мл', desc: 'На выбор: облепиха-имбирь, малина-базилик, тархун-лайм. Без сахара, на стевии по запросу.' },
+      { name: 'Вино Rioja, 150мл', price: 420, weight: '150 мл', desc: 'Испания, Rioja Reserva 2019, темпранильо. Ноты вишни, ванили и табака.' },
+      { name: 'Свежий сок апельсин', price: 220, weight: '250 мл', desc: 'Фреш из сицилийского апельсина, отжим в день мероприятия.' },
+      { name: 'Чайная станция', price: 80, tag: 'на гостя', weight: 'станция', desc: 'Ассорти чаёв: эрл грей, зелёный жасмин, ройбуш, травяные сборы. Термосы, чашки, мёд, лимон.' },
     ],
   };
   const list = items[cat];
+  const [selected, setSelected] = React.useState(null);
+
+  React.useEffect(() => {
+    if (selected) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      const onKey = (e) => { if (e.key === 'Escape') setSelected(null); };
+      window.addEventListener('keydown', onKey);
+      return () => {
+        document.body.style.overflow = prev;
+        window.removeEventListener('keydown', onKey);
+      };
+    }
+  }, [selected]);
 
   return (
     <section id="menu" style={{padding: '80px 0'}}>
@@ -647,18 +661,91 @@ const MenuHighlights = () => {
           gap: 16,
         }}>
           {list.map((it, i) => (
-            <MenuCard key={cat + i} item={it} delay={i * 60}/>
+            <MenuCard key={cat + i} item={it} delay={i * 60} onClick={() => setSelected(it)}/>
           ))}
         </div>
       </div>
+      {selected && <MenuDrawer item={selected} onClose={() => setSelected(null)}/>}
     </section>
   );
 };
 
-const MenuCard = ({ item, delay }) => {
+const MenuDrawer = ({ item, onClose }) => {
+  return (
+    <>
+      <div className="menu-drawer-backdrop" onClick={onClose}/>
+      <aside className="menu-drawer" role="dialog" aria-modal="true" aria-label={item.name}>
+        <div className="menu-drawer__head">
+          <h3 className="display" style={{fontSize: 'clamp(22px, 2.4vw, 28px)', fontWeight: 700, lineHeight: 1.2, margin: 0}}>
+            {item.name}
+          </h3>
+          <button className="menu-drawer__close" onClick={onClose} aria-label="Закрыть">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+              <path d="M3 3L13 13M13 3L3 13"/>
+            </svg>
+          </button>
+        </div>
+        <div className="menu-drawer__body">
+          <div style={{
+            position:'relative',
+            borderRadius: 20,
+            overflow:'hidden',
+            aspectRatio: '4 / 3',
+            marginBottom: 20,
+          }}>
+            <Placeholder label={item.name.toLowerCase()} variant="cream" style={{width:'100%', height:'100%', position:'absolute', inset: 0}}/>
+            {item.tag && (
+              <span style={{
+                position:'absolute', top: 14, left: 14,
+                padding: '6px 12px', borderRadius: 999,
+                background: item.tag === 'хит' ? 'var(--tomato)' : (item.tag === 'veg' ? '#5a7a3a' : 'rgba(255,249,241,0.9)'),
+                color: item.tag === 'хит' || item.tag === 'veg' ? 'white' : 'var(--ink)',
+                fontSize: 11, textTransform:'uppercase', letterSpacing:'0.08em', fontWeight: 600,
+              }}>
+                {item.tag}
+              </span>
+            )}
+          </div>
+
+          <div style={{fontWeight: 700, fontSize: 14, letterSpacing:'0.06em', textTransform:'uppercase', color:'var(--ink)', marginBottom: 10}}>
+            Состав
+          </div>
+          <p style={{fontSize: 15, lineHeight: 1.55, color:'var(--ink-60)', margin: 0}}>
+            {item.desc}
+          </p>
+          {item.weight && (
+            <div className="mono" style={{
+              marginTop: 16,
+              display:'inline-flex', padding:'6px 12px', borderRadius: 999,
+              background: 'var(--cream-100)', fontSize: 12, color: 'var(--ink-60)',
+            }}>
+              {item.weight}
+            </div>
+          )}
+        </div>
+        <div className="menu-drawer__foot">
+          <button
+            className="btn btn-primary"
+            style={{width:'100%', justifyContent:'space-between', padding:'16px 22px', fontSize: 15}}
+            onClick={onClose}
+          >
+            <span>+ В корзину</span>
+            <span className="mono" style={{fontWeight: 600}}>{item.price} ₽</span>
+          </button>
+        </div>
+      </aside>
+    </>
+  );
+};
+
+const MenuCard = ({ item, delay, onClick }) => {
   return (
     <div
       className="menu-card"
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick && onClick(); } }}
       style={{
         background: 'var(--cream-100)',
         borderRadius: 24,

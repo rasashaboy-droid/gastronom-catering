@@ -2,7 +2,7 @@
 
 const Hero = () => {
   return (
-    <section style={{ padding: '20px 0 48px', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ padding: '20px 0 48px', position: 'relative', overflowX: 'clip' }}>
       <div className="wrap" style={{ position: 'relative' }}>
         <Blob color="var(--peach)" size={420} style={{ top: -80, left: -120, opacity: 0.4 }}/>
         <Blob color="var(--coral)" size={360} style={{ top: 200, right: -80, opacity: 0.35 }}/>
