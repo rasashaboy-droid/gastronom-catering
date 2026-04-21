@@ -567,7 +567,8 @@ const SummaryItem = ({ label, value }) => (
 
 // ---------- MENU HIGHLIGHTS ----------
 const MenuHighlights = () => {
-  const [cat, setCat] = React.useState('canape');
+  const [cat, setCat] = React.useState(() => (window.PageState && window.PageState.menuCategory) || 'canape');
+  React.useEffect(() => { window.PageState.menuCategory = cat; }, [cat]);
   const cats = [
     { v: 'canape', label: 'Канапе' },
     { v: 'hot', label: 'Горячее' },
@@ -577,12 +578,14 @@ const MenuHighlights = () => {
   ];
   const items = {
     canape: [
-      { name: 'Строганина из форели', price: 180, tag: 'холодное', weight: '35 г', desc: 'Слабосолёная форель, крем-сыр с лимонной цедрой, микс-салат, чёрный хлеб на закваске, перечная икра.' },
-      { name: 'Тартар из говядины на чипсе', price: 220, tag: 'хит', weight: '40 г', desc: 'Вырезка ангус, дижонская горчица, каперсы, перепелиный желток, хрустящий картофельный чипс.' },
-      { name: 'Козий сыр с грушей', price: 160, weight: '30 г', desc: 'Мягкий козий сыр, карамелизированная груша конференс, мёд с тимьяном, орех пекан.' },
-      { name: 'Хумус с гранатом', price: 140, tag: 'veg', weight: '45 г', desc: 'Хумус из нута, тахини, оливковое масло, зёрна граната, кунжут, питта на пару.' },
-      { name: 'Креветка в кадаифи', price: 260, weight: '35 г', desc: 'Тигровая креветка в тесте кадаифи, соус манго-чили, свежая кинза.' },
-      { name: 'Ростбиф с трюфельным кремом', price: 240, weight: '40 г', desc: 'Говяжья вырезка slow-cook, крем на основе маскарпоне и трюфельного масла, руккола, багет.' },
+      { name: 'Моцарелла и черри', price: 110, weight: '30 г', desc: 'Моцарелла, томаты, соус песто.', photo: 'images/Канапе моцарелла  с томатами черри и соусом песто .jpeg' },
+      { name: 'Старорусское', price: 90, weight: '30 г', desc: 'Филе сельди с луком на бородинском хлебе.', photo: 'images/Канапе "Старорусская".jpeg' },
+      { name: 'Тигровая креветка с черри', price: 135, weight: '30 г', desc: 'Тигровая креветка, томаты черри, соус «азиатский».', photo: 'images/Канапе с тигровой креветкой и томатами черри в азиатском соусе.jpeg' },
+      { name: 'Фрукты в шоколаде', price: 155, weight: '50 г', desc: 'Клубника, мандарин, банан, шоколад.', photo: 'images/Канапе «Фрукты в шоколаде».jpeg' },
+      { name: 'Красная икра на сендвичном хлебе', price: 170, weight: '40 г', desc: 'Хлеб сендвичный, красная икра, масло сливочное.', photo: 'images/Канапе с красной икрой на сендвичном хлебе.jpeg' },
+      { name: 'Греческое', price: 110, weight: '30 г', desc: 'Маслины, сыр, томаты черри, огурец.', photo: 'images/Канапе Греческое.jpeg' },
+      { name: 'Сыр и виноград', price: 75, weight: '30 г', desc: 'Виноград, сыр, грецкий орех.', photo: 'images/Канапе сыр виноград.jpeg' },
+      { name: 'Сыр бри и ягоды', price: 170, weight: '40 г', desc: 'Сыр бри, голубика, клубника.', photo: 'images/Канапе сыр Бри,клубника,голубика.jpeg' },
     ],
     hot: [
       { name: 'Томлёная телятина', price: 560, weight: '180 г', desc: 'Телячья щека 8 часов в красном вине, пюре из корня сельдерея, демиглас, жареный лук-шалот.' },
@@ -618,12 +621,7 @@ const MenuHighlights = () => {
     if (selected) {
       const prev = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
-      const onKey = (e) => { if (e.key === 'Escape') setSelected(null); };
-      window.addEventListener('keydown', onKey);
-      return () => {
-        document.body.style.overflow = prev;
-        window.removeEventListener('keydown', onKey);
-      };
+      return () => { document.body.style.overflow = prev; };
     }
   }, [selected]);
 
@@ -655,7 +653,7 @@ const MenuHighlights = () => {
           </div>
         </div>
 
-        <div style={{
+        <div className="menu-grid" style={{
           display:'grid',
           gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))',
           gap: 16,
@@ -671,15 +669,35 @@ const MenuHighlights = () => {
 };
 
 const MenuDrawer = ({ item, onClose }) => {
+  const [closing, setClosing] = React.useState(false);
+  const requestClose = React.useCallback(() => setClosing(true), []);
+
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') requestClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [requestClose]);
+
+  const handleAnimEnd = (e) => {
+    if (closing && e.target === e.currentTarget) onClose();
+  };
+
   return (
     <>
-      <div className="menu-drawer-backdrop" onClick={onClose}/>
-      <aside className="menu-drawer" role="dialog" aria-modal="true" aria-label={item.name}>
+      <div
+        className={'menu-drawer-backdrop' + (closing ? ' closing' : '')}
+        onClick={requestClose}
+      />
+      <aside
+        className={'menu-drawer' + (closing ? ' closing' : '')}
+        role="dialog" aria-modal="true" aria-label={item.name}
+        onAnimationEnd={handleAnimEnd}
+      >
         <div className="menu-drawer__head">
           <h3 className="display" style={{fontSize: 'clamp(22px, 2.4vw, 28px)', fontWeight: 700, lineHeight: 1.2, margin: 0}}>
             {item.name}
           </h3>
-          <button className="menu-drawer__close" onClick={onClose} aria-label="Закрыть">
+          <button className="menu-drawer__close" onClick={requestClose} aria-label="Закрыть">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
               <path d="M3 3L13 13M13 3L3 13"/>
             </svg>
@@ -693,7 +711,11 @@ const MenuDrawer = ({ item, onClose }) => {
             aspectRatio: '4 / 3',
             marginBottom: 20,
           }}>
-            <Placeholder label={item.name.toLowerCase()} variant="cream" style={{width:'100%', height:'100%', position:'absolute', inset: 0}}/>
+            {item.photo ? (
+              <img src={item.photo} alt={item.name} style={{width:'100%', height:'100%', objectFit:'cover', position:'absolute', inset: 0}}/>
+            ) : (
+              <Placeholder label={item.name.toLowerCase()} variant="cream" style={{width:'100%', height:'100%', position:'absolute', inset: 0}}/>
+            )}
             {item.tag && (
               <span style={{
                 position:'absolute', top: 14, left: 14,
@@ -724,14 +746,7 @@ const MenuDrawer = ({ item, onClose }) => {
           )}
         </div>
         <div className="menu-drawer__foot">
-          <button
-            className="btn btn-primary"
-            style={{width:'100%', justifyContent:'space-between', padding:'16px 22px', fontSize: 15}}
-            onClick={onClose}
-          >
-            <span>+ В корзину</span>
-            <span className="mono" style={{fontWeight: 600}}>{item.price} ₽</span>
-          </button>
+          <QtyStepper item={item} size="md"/>
         </div>
       </aside>
     </>
@@ -751,10 +766,15 @@ const MenuCard = ({ item, delay, onClick }) => {
         borderRadius: 24,
         overflow:'hidden',
         animation: `fadeUp .5s ${delay}ms both`,
+        display: 'flex', flexDirection: 'column',
       }}
     >
       <div style={{height: 180, position:'relative'}}>
-        <Placeholder label={item.name.toLowerCase()} variant="cream" style={{width:'100%', height:'100%'}}/>
+        {item.photo ? (
+          <img src={item.photo} alt={item.name} style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
+        ) : (
+          <Placeholder label={item.name.toLowerCase()} variant="cream" style={{width:'100%', height:'100%'}}/>
+        )}
         {item.tag && (
           <span style={{
             position:'absolute', top: 12, left: 12,
@@ -767,10 +787,15 @@ const MenuCard = ({ item, delay, onClick }) => {
           </span>
         )}
       </div>
-      <div style={{padding: 18, display:'flex', justifyContent:'space-between', alignItems:'center', gap: 10}}>
-        <div style={{fontWeight: 600, fontSize: 15, lineHeight: 1.3}}>{item.name}</div>
-        <div className="mono" style={{fontSize: 14, fontWeight: 600, color: 'var(--tomato)', whiteSpace:'nowrap'}}>
-          {item.price} ₽
+      <div className="menu-card__body" style={{padding: 18, display:'flex', flexDirection:'column', gap: 12, flex: 1}}>
+        <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap: 10}}>
+          <div style={{fontWeight: 600, fontSize: 15, lineHeight: 1.3}}>{item.name}</div>
+          <div className="mono" style={{fontSize: 14, fontWeight: 600, color: 'var(--tomato)', whiteSpace:'nowrap'}}>
+            {item.price != null ? `${item.price} ₽` : '—'}
+          </div>
+        </div>
+        <div style={{marginTop:'auto'}}>
+          <QtyStepper item={item} size="sm"/>
         </div>
       </div>
     </div>

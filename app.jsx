@@ -72,25 +72,44 @@ const Nav = () => {
 };
 
 const App = () => {
+  const hash = useHashRoute();
+  const isCart = hash === '#/cart';
+
+  React.useLayoutEffect(() => {
+    if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+    if (isCart) {
+      window.scrollTo(0, 0);
+    } else {
+      window.scrollTo(0, window.PageState.scrollY || 0);
+    }
+  }, [isCart]);
+
   return (
-    <div data-screen-label="Landing">
+    <div data-screen-label={isCart ? 'Cart' : 'Landing'}>
       <style>{`
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(12px); }
           to { opacity: 1; transform: none; }
         }
       `}</style>
-      <Nav/>
-      <Hero/>
-      <StatsBand/>
-      <Formats/>
-      <Advantages/>
-      <QuizCalc/>
-      <MenuHighlights/>
-      <Process/>
-      <FAQ/>
-      <FinalCTA/>
-      <Footer/>
+      {isCart ? (
+        <CartPage/>
+      ) : (
+        <>
+          <Nav/>
+          <Hero/>
+          <StatsBand/>
+          <Formats/>
+          <Advantages/>
+          <QuizCalc/>
+          <MenuHighlights/>
+          <Process/>
+          <FAQ/>
+          <FinalCTA/>
+          <Footer/>
+        </>
+      )}
+      <FloatingCartButton/>
     </div>
   );
 };
