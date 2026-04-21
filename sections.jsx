@@ -911,9 +911,9 @@ const FinalCTA = () => {
                 <span className="chip-dot" style={{background:'var(--coral)'}}></span>
                 Свободные даты — май, июнь
               </span>
-              <h2 className="display" style={{fontSize:'clamp(44px, 6vw, 96px)', fontWeight: 800, marginTop: 24, letterSpacing:'-0.04em', lineHeight: 0.95}}>
-                Начнём<br/>
-                <em className="accent-italic" style={{color:'var(--yellow)', fontWeight: 500}}>с мессенджера?</em>
+              <h2 className="display" style={{fontSize:'clamp(28px, 6vw, 80px)', fontWeight: 800, marginTop: 24, letterSpacing:'-0.04em', lineHeight: 0.95}}>
+                <span style={{display:'block'}}>Начнём</span>
+                <em className="accent-italic" style={{display:'block', color:'var(--yellow)', fontWeight: 500}}>с мессенджера?</em>
               </h2>
               <p style={{opacity: 0.7, fontSize: 17, marginTop: 20, maxWidth: 440}}>
                 Пришлите дату и формат — в течение часа вернёмся с расчётом и вариантами меню.
@@ -923,10 +923,7 @@ const FinalCTA = () => {
                   Telegram <Icon.Arrow/>
                 </button>
                 <button className="btn" style={{background:'rgba(255,255,255,0.1)', color:'var(--cream-50)', border:'1px solid rgba(255,255,255,0.2)'}}>
-                  WhatsApp
-                </button>
-                <button className="btn" style={{background:'rgba(255,255,255,0.1)', color:'var(--cream-50)', border:'1px solid rgba(255,255,255,0.2)'}}>
-                  <Icon.Phone size={16}/> +7 843 ...
+                  <Icon.Phone size={16}/> +7 (993) 418-53-43
                 </button>
               </div>
             </div>
