@@ -304,12 +304,12 @@ const QuizCalc = () => {
       q: 'Какое у вас мероприятие?',
       k: 'event',
       opts: [
-        { v: 'bday', label: 'День рождения' },
-        { v: 'wedding', label: 'Свадьба' },
-        { v: 'banket', label: 'Банкет' },
-        { v: 'corporate', label: 'Корпоратив' },
-        { v: 'party', label: 'Вечеринка' },
-        { v: 'other', label: 'Другое' },
+        { v: 'bday', label: 'День рождения', icon: 'Cake' },
+        { v: 'wedding', label: 'Свадьба', icon: 'HeartHandshake' },
+        { v: 'banket', label: 'Банкет', icon: 'UtensilsCrossed' },
+        { v: 'corporate', label: 'Корпоратив', icon: 'Briefcase' },
+        { v: 'party', label: 'Вечеринка', icon: 'PartyPopper' },
+        { v: 'other', label: 'Другое', icon: 'Sparkles' },
       ],
     },
     {
@@ -413,7 +413,10 @@ const QuizCalc = () => {
                               transition: 'all .2s',
                             }}
                           >
-                            <div style={{fontWeight: 600, fontSize: 15}}>{o.label}</div>
+                            <div style={{display:'flex', alignItems:'center', gap: 10, fontWeight: 600, fontSize: 15}}>
+                              {o.icon && <LucideIcon name={o.icon} color="var(--tomato)" size={18} strokeWidth={2}/>}
+                              <span>{o.label}</span>
+                            </div>
                           </button>
                         );
                       })}
@@ -660,9 +663,13 @@ const MenuCard = ({ item, delay }) => {
         background: 'var(--cream-100)',
         borderRadius: 24,
         overflow:'hidden',
-        transition: 'transform .2s',
+        transition: 'transform .2s ease, box-shadow .2s ease',
         transform: hover ? 'translateY(-3px)' : 'none',
+        boxShadow: hover
+          ? '0 14px 26px -14px rgba(28,20,15,0.22), 0 6px 14px -8px rgba(28,20,15,0.14)'
+          : undefined,
         animation: `fadeUp .5s ${delay}ms both`,
+        cursor: 'pointer',
       }}
     >
       <div style={{height: 180, position:'relative'}}>
@@ -911,12 +918,12 @@ const FinalCTA = () => {
                 <span className="chip-dot" style={{background:'var(--coral)'}}></span>
                 Свяжитесь с нами
               </span>
-              <h2 className="display" style={{fontSize:'clamp(28px, 6vw, 80px)', fontWeight: 800, marginTop: 24, letterSpacing:'-0.04em', lineHeight: 0.95}}>
+              <h2 className="display" style={{fontSize:'clamp(40px, 11vw, 80px)', fontWeight: 800, marginTop: 24, letterSpacing:'-0.04em', lineHeight: 0.95}}>
                 <span style={{display:'block'}}>Остались</span>
                 <em className="accent-italic" style={{display:'block', color:'var(--yellow)', fontWeight: 500}}>вопросы?</em>
               </h2>
               <p style={{opacity: 0.7, fontSize: 17, marginTop: 20, maxWidth: 440}}>
-                Свяжитесь с нами удобным способом — ответим в течение часа.
+                Свяжитесь с нами удобным способом или оставьте заявку — ответим в течение часа.
               </p>
               <div style={{display:'flex', gap: 10, marginTop: 28, flexWrap:'wrap'}}>
                 <button className="btn btn-primary">
