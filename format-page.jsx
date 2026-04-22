@@ -18,7 +18,7 @@ const FormatPage = () => {
     return (
       <div style={{padding: 80, textAlign: 'center'}}>
         <h1>Формат не найден</h1>
-        <p><a href="/">Вернуться на главную</a></p>
+        <p><a href={ASSET("/")}>Вернуться на главную</a></p>
       </div>
     );
   }
@@ -138,11 +138,11 @@ const FormatHero = ({ data }) => {
               fontSize: 13, fontWeight: 600,
               boxShadow: '0 1px 0 rgba(255,255,255,0.65) inset, 0 8px 22px -8px rgba(28,20,15,0.18)',
             }}>
-              <img src="/images/halal.png" alt="Halal" width="18" height="18" style={{display:'block', objectFit:'contain'}}/>
+              <img src={ASSET("/images/halal.png")} alt="Halal" width="18" height="18" style={{display:'block', objectFit:'contain'}}/>
               Халяль по запросу
             </div>
 
-            <a href="/formats/gastroboxes.html" className="hero-glass-plate" style={{
+            <a href={ASSET("/formats/gastroboxes.html")} className="hero-glass-plate" style={{
               position:'absolute', left: 'calc(clamp(24px, 3.4vw, 48px) - 24px)', right: 'calc(clamp(24px, 3.4vw, 48px) - 24px)', bottom: 'calc(clamp(24px, 3.4vw, 48px) - 24px)',
               display:'flex', alignItems:'center', justifyContent:'space-between', gap: 12,
               padding: '13px 10px 13px 20px',

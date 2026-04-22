@@ -1,5 +1,11 @@
 // Shared primitives + icon set
 
+// ASSET: префикс путей относительно текущего HTML.
+// Главная HTML задаёт window.BASE = './'; форматные = '../'.
+// Вызов ASSET('/images/foo.jpg') вернёт './images/foo.jpg' или '../images/foo.jpg'.
+const ASSET = (p) => (window.BASE || './') + String(p).replace(/^\/+/, '');
+window.ASSET = ASSET;
+
 const Placeholder = ({ label, variant = 'cream', style, className = '', children }) => (
   <div className={`ph ${variant} ${className}`} style={style}>
     {children}

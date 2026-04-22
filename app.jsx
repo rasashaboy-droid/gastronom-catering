@@ -11,14 +11,14 @@ const Nav = ({ isFormatPage = false } = {}) => {
   const close = () => setMenuOpen(false);
 
   // На форматных страницах секции "Форматы" и "Расчёт" тоже есть — ссылки локальные
-  const logoHref = isFormatPage ? '/' : '#';
+  const logoHref = isFormatPage ? ASSET('/') : '#';
 
   return (
     <>
       <nav className="nav">
         <div className="nav-inner glass">
           <a href={logoHref} className="logo">
-            <img src="/images/logo.png" alt="Gastronom Catering" className="logo-img"/>
+            <img src={ASSET("/images/logo.png")} alt="Gastronom Catering" className="logo-img"/>
             <span className="logo-text">
               <span className="logo-text-main">GASTRONOM</span>
               <span className="logo-text-sub">CATERING</span>

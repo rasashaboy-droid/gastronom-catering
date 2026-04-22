@@ -91,15 +91,15 @@ const StatsBand = () => {
 const Formats = ({ label = '01 · Форматы' } = {}) => {
   // 10 formats. Each has a pill color and a paired image placeholder.
   const formats = [
-    { title: 'Гастробоксы',          sub: 'от 600 ₽/чел',   color: 'var(--peach)',      icon: 'Package',         iconColor: 'var(--tomato)',  img: 'боксы с подачей',          imgVariant: 'peach', photo: '/images/optimized/s1-1200.jpg', href: '/formats/gastroboxes.html' },
-    { title: 'Фуршет',               sub: 'от 900 ₽/чел',   color: 'var(--cream-100)',  icon: 'Martini',         iconColor: 'var(--coral)',   img: 'канапе и фуршетные столы', imgVariant: 'peach', photo: '/images/optimized/s2-1200.jpg', href: '/formats/furshet.html' },
-    { title: 'Банкет',               sub: 'от 2 400 ₽/чел', color: 'var(--cream-200)',  icon: 'UtensilsCrossed', iconColor: 'var(--tomato)',  img: 'сервированный банкетный зал', imgVariant: 'cream', photo: '/images/optimized/s3-1200.jpg', href: '/formats/banket.html' },
-    { title: 'Детский праздник',     sub: 'от 700 ₽/чел',   color: 'var(--peach)',      icon: 'PartyPopper',     iconColor: 'var(--raspberry)',  img: 'детские десерты',          imgVariant: 'cream', photo: '/images/optimized/s4-1200.jpg', href: '/formats/detskiy-prazdnik.html' },
-    { title: 'Свадьба',              sub: 'под ключ',       color: 'var(--peach)',      icon: 'HeartHandshake',  iconColor: 'var(--raspberry)',  img: 'свадебная подача',         imgVariant: 'peach', photo: '/images/optimized/s5-1200.jpg', href: '/formats/svadba.html' },
-    { title: 'Корпоратив',           sub: 'от 1 200 ₽/чел', color: 'var(--cream-300)',  icon: 'Briefcase',       iconColor: 'var(--tomato)',     img: 'офисный кейтеринг',        imgVariant: 'peach', photo: '/images/optimized/s6-1200.jpg', href: '/formats/korporativ.html' },
-    { title: 'Выпускной',            sub: 'от 1 500 ₽/чел', color: 'var(--cream-100)',  icon: 'GraduationCap',   iconColor: 'var(--coral)',   img: 'выпускной вечер',          imgVariant: 'cream', photo: '/images/optimized/s7-1200.jpg', href: '/formats/vypusknoy.html' },
-    { title: 'День рождения',        sub: 'от 800 ₽/чел',   color: 'var(--cream-200)',  icon: 'Cake',            iconColor: 'var(--coral)', img: 'стол ко дню рождения',     imgVariant: 'cream', photo: '/images/optimized/s8-1200.jpg', href: '/formats/den-rozhdeniya.html' },
-    { title: 'Девичник / Мальчишник',sub: 'от 1 000 ₽/чел', color: 'var(--cream-200)',  icon: 'Wine',            iconColor: 'var(--coral)',   img: 'бокалы и закуски',         imgVariant: 'peach', photo: '/images/optimized/s9-1200.jpg', href: '/formats/devichnik-malchishnik.html' },
+    { title: 'Гастробоксы',          sub: 'от 600 ₽/чел',   color: 'var(--peach)',      icon: 'Package',         iconColor: 'var(--tomato)',  img: 'боксы с подачей',          imgVariant: 'peach', photo: ASSET('/images/optimized/s1-1200.jpg'), href: ASSET('/formats/gastroboxes.html') },
+    { title: 'Фуршет',               sub: 'от 900 ₽/чел',   color: 'var(--cream-100)',  icon: 'Martini',         iconColor: 'var(--coral)',   img: 'канапе и фуршетные столы', imgVariant: 'peach', photo: ASSET('/images/optimized/s2-1200.jpg'), href: ASSET('/formats/furshet.html') },
+    { title: 'Банкет',               sub: 'от 2 400 ₽/чел', color: 'var(--cream-200)',  icon: 'UtensilsCrossed', iconColor: 'var(--tomato)',  img: 'сервированный банкетный зал', imgVariant: 'cream', photo: ASSET('/images/optimized/s3-1200.jpg'), href: ASSET('/formats/banket.html') },
+    { title: 'Детский праздник',     sub: 'от 700 ₽/чел',   color: 'var(--peach)',      icon: 'PartyPopper',     iconColor: 'var(--raspberry)',  img: 'детские десерты',          imgVariant: 'cream', photo: ASSET('/images/optimized/s4-1200.jpg'), href: ASSET('/formats/detskiy-prazdnik.html') },
+    { title: 'Свадьба',              sub: 'под ключ',       color: 'var(--peach)',      icon: 'HeartHandshake',  iconColor: 'var(--raspberry)',  img: 'свадебная подача',         imgVariant: 'peach', photo: ASSET('/images/optimized/s5-1200.jpg'), href: ASSET('/formats/svadba.html') },
+    { title: 'Корпоратив',           sub: 'от 1 200 ₽/чел', color: 'var(--cream-300)',  icon: 'Briefcase',       iconColor: 'var(--tomato)',     img: 'офисный кейтеринг',        imgVariant: 'peach', photo: ASSET('/images/optimized/s6-1200.jpg'), href: ASSET('/formats/korporativ.html') },
+    { title: 'Выпускной',            sub: 'от 1 500 ₽/чел', color: 'var(--cream-100)',  icon: 'GraduationCap',   iconColor: 'var(--coral)',   img: 'выпускной вечер',          imgVariant: 'cream', photo: ASSET('/images/optimized/s7-1200.jpg'), href: ASSET('/formats/vypusknoy.html') },
+    { title: 'День рождения',        sub: 'от 800 ₽/чел',   color: 'var(--cream-200)',  icon: 'Cake',            iconColor: 'var(--coral)', img: 'стол ко дню рождения',     imgVariant: 'cream', photo: ASSET('/images/optimized/s8-1200.jpg'), href: ASSET('/formats/den-rozhdeniya.html') },
+    { title: 'Девичник / Мальчишник',sub: 'от 1 000 ₽/чел', color: 'var(--cream-200)',  icon: 'Wine',            iconColor: 'var(--coral)',   img: 'бокалы и закуски',         imgVariant: 'peach', photo: ASSET('/images/optimized/s9-1200.jpg'), href: ASSET('/formats/devichnik-malchishnik.html') },
   ];
 
   const [active, setActive] = React.useState(0);
@@ -597,40 +597,40 @@ const MenuHighlights = ({ label = '03 · Меню' } = {}) => {
   ];
   const items = {
     canape: [
-      { name: 'Канапе «Моцарелла и черри»', price: 110, weight: '30 г', desc: 'Моцарелла, томаты, соус песто.', photo: '/images/Канапе черри моцарелла.jpeg' },
-      { name: 'Канапе «Старорусское»', price: 90, weight: '30 г', desc: 'Филе сельди с луком на бородинском хлебе.', photo: '/images/Канапе старорусское.jpeg' },
-      { name: 'Канапе «Тигровая креветка с черри»', price: 135, weight: '30 г', desc: 'Тигровая креветка, томаты черри, соус «азиатский».', photo: '/images/Канапе тигровая креветка с черри.jpeg' },
-      { name: 'Канапе «Тигровая креветка в панировке»', price: 135, weight: '40 г', desc: 'Тигровая креветка в панировке, соус спайс.', photo: '/images/Канапе тигровая креветка в панировке.jpeg' },
-      { name: 'Канапе «Ростбиф с горчичным соусом»', price: 150, weight: '30 г', desc: 'Ростбиф медиум, медово-горчичный соус, корнишон.', photo: '/images/Канапе с ростбифом.jpeg' },
-      { name: 'Канапе «Казылык с вяленым томатом»', price: 155, weight: '30 г', desc: 'Казылык, вяленый томат.', photo: '/images/Канапе с казылыком.jpeg' },
-      { name: 'Канапе «Красная икра на сендвичном хлебе»', price: 170, weight: '40 г', desc: 'Хлеб сендвичный, красная икра, масло сливочное.', photo: '/images/Канапе с красной икрой.png' },
-      { name: 'Канапе «Фрукты в шоколаде»', price: 155, weight: '50 г', desc: 'Клубника, мандарин, банан, шоколад.', photo: '/images/Канапе фрукты в шоколаде.png' },
-      { name: 'Канапе «Сыр и виноград»', price: 75, weight: '30 г', desc: 'Виноград, сыр, грецкий орех.', photo: '/images/Канапе сыр виноград.png' },
+      { name: 'Канапе «Моцарелла и черри»', price: 110, weight: '30 г', desc: 'Моцарелла, томаты, соус песто.', photo: ASSET('/images/Канапе черри моцарелла.jpeg') },
+      { name: 'Канапе «Старорусское»', price: 90, weight: '30 г', desc: 'Филе сельди с луком на бородинском хлебе.', photo: ASSET('/images/Канапе старорусское.jpeg') },
+      { name: 'Канапе «Тигровая креветка с черри»', price: 135, weight: '30 г', desc: 'Тигровая креветка, томаты черри, соус «азиатский».', photo: ASSET('/images/Канапе тигровая креветка с черри.jpeg') },
+      { name: 'Канапе «Тигровая креветка в панировке»', price: 135, weight: '40 г', desc: 'Тигровая креветка в панировке, соус спайс.', photo: ASSET('/images/Канапе тигровая креветка в панировке.jpeg') },
+      { name: 'Канапе «Ростбиф с горчичным соусом»', price: 150, weight: '30 г', desc: 'Ростбиф медиум, медово-горчичный соус, корнишон.', photo: ASSET('/images/Канапе с ростбифом.jpeg') },
+      { name: 'Канапе «Казылык с вяленым томатом»', price: 155, weight: '30 г', desc: 'Казылык, вяленый томат.', photo: ASSET('/images/Канапе с казылыком.jpeg') },
+      { name: 'Канапе «Красная икра на сендвичном хлебе»', price: 170, weight: '40 г', desc: 'Хлеб сендвичный, красная икра, масло сливочное.', photo: ASSET('/images/Канапе с красной икрой.png') },
+      { name: 'Канапе «Фрукты в шоколаде»', price: 155, weight: '50 г', desc: 'Клубника, мандарин, банан, шоколад.', photo: ASSET('/images/Канапе фрукты в шоколаде.png') },
+      { name: 'Канапе «Сыр и виноград»', price: 75, weight: '30 г', desc: 'Виноград, сыр, грецкий орех.', photo: ASSET('/images/Канапе сыр виноград.png') },
     ],
     bruschetta: [
-      { name: 'Брускетта с черри, песто, моцарелла', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, соус песто, сыр моцарелла.', photo: '/images/Брускетта черри песто моцарелла.jpeg' },
-      { name: 'Брускетта с подкопченной индейкой', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, лист салата.', photo: '/images/Брускетта с подкопченной индейкой.jpeg' },
-      { name: 'Брускетта с ростбифом и горчичным соусом', price: 170, weight: '40 г', desc: 'Чиабатта, ростбиф медиум, томаты черри, соус из зернистой горчицы.', photo: '/images/Брускетта с ростбифом.jpeg' },
-      { name: 'Брускетта с лососем слабосолёным', price: 180, weight: '40 г', desc: 'Чиабатта, лосось слабосолёный, сливочный сыр, авокадо.', photo: '/images/Брускетта с лососем слабосоленым.jpeg' },
-      { name: 'Брускетта с тар-таром из лосося', price: 180, weight: '50 г', desc: 'Чиабатта, лосось с/с, огурцы свежие, сыр сливочный, яйцо перепелиное, имитация чёрной икры.', photo: '/images/Брускетта с тар-таром из слабосоленого лосося.jpeg' },
-      { name: 'Брускетта с тигровой креветкой и салатом чука', price: 170, weight: '40 г', desc: 'Чиабатта, тигровая креветка, салат чука, соус азиатский, кунжут.', photo: '/images/Брускетта с тигровой креветкой и салатом чука.jpeg' },
-      { name: 'Брускетта с сыром дор блю и грушей', price: 180, weight: '40 г', desc: 'Чиабатта, сыр дор блю, груши, мёд, орехи.', photo: '/images/Брускетта с сыром дор блю и с грушей.jpeg' },
-      { name: 'Брускетта овощи гриль с мягким сыром', price: 170, weight: '40 г', desc: 'Чиабатта, мягкий сыр, печёные овощи, зелень.', photo: '/images/Брускетта овощи гриль.jpeg' },
+      { name: 'Брускетта с черри, песто, моцарелла', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, соус песто, сыр моцарелла.', photo: ASSET('/images/Брускетта черри песто моцарелла.jpeg') },
+      { name: 'Брускетта с подкопченной индейкой', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, лист салата.', photo: ASSET('/images/Брускетта с подкопченной индейкой.jpeg') },
+      { name: 'Брускетта с ростбифом и горчичным соусом', price: 170, weight: '40 г', desc: 'Чиабатта, ростбиф медиум, томаты черри, соус из зернистой горчицы.', photo: ASSET('/images/Брускетта с ростбифом.jpeg') },
+      { name: 'Брускетта с лососем слабосолёным', price: 180, weight: '40 г', desc: 'Чиабатта, лосось слабосолёный, сливочный сыр, авокадо.', photo: ASSET('/images/Брускетта с лососем слабосоленым.jpeg') },
+      { name: 'Брускетта с тар-таром из лосося', price: 180, weight: '50 г', desc: 'Чиабатта, лосось с/с, огурцы свежие, сыр сливочный, яйцо перепелиное, имитация чёрной икры.', photo: ASSET('/images/Брускетта с тар-таром из слабосоленого лосося.jpeg') },
+      { name: 'Брускетта с тигровой креветкой и салатом чука', price: 170, weight: '40 г', desc: 'Чиабатта, тигровая креветка, салат чука, соус азиатский, кунжут.', photo: ASSET('/images/Брускетта с тигровой креветкой и салатом чука.jpeg') },
+      { name: 'Брускетта с сыром дор блю и грушей', price: 180, weight: '40 г', desc: 'Чиабатта, сыр дор блю, груши, мёд, орехи.', photo: ASSET('/images/Брускетта с сыром дор блю и с грушей.jpeg') },
+      { name: 'Брускетта овощи гриль с мягким сыром', price: 170, weight: '40 г', desc: 'Чиабатта, мягкий сыр, печёные овощи, зелень.', photo: ASSET('/images/Брускетта овощи гриль.jpeg') },
     ],
     cold: [
-      { name: 'Мясное ассорти', price: 1050, weight: '375 г', desc: 'Говядина европейская, сырокопчёные деликатесы, буженина из индейки, казылык.', photo: '/images/Мясное ассорти.png' },
-      { name: 'Мясное ассорти «Татарстан»', price: 1300, weight: '300 г', desc: 'Язык говяжий, филе утиной грудки сыровяленое, казылык.', photo: '/images/Ассорти татарстан.png' },
-      { name: 'Мясное ассорти «Фермерский»', price: 1500, weight: '340 г', desc: 'Язык говяжий, куриный рулет, ростбиф, казы.', photo: '/images/Ассорти фермерский.png' },
-      { name: 'Сырное плато', price: 820, weight: '260 г', desc: '3–4 вида сыра, орехи, мёд.', photo: '/images/Сырное плато.png' },
-      { name: 'Рыбное плато', price: 950, weight: '220 г', desc: 'Сёмга слабосолёная, масляная х/к, кальмар г/к, морепродукты.', photo: '/images/Рыбное плато.png' },
-      { name: 'Средиземноморская закуска', price: 1400, weight: '310 г', desc: 'Сёмга с/с, тунец с/с, креветки тигровые, лайм, маслины, зелень.', photo: '/images/Средиземноморская закуска.png' },
-      { name: 'Овощное ассорти', price: 650, weight: '510 г', desc: 'Огурцы, томаты, перец, редис, морковь, зелень.', photo: '/images/Овощное ассорти.png' },
-      { name: 'Ассорти из солений', price: 550, weight: '460 г', desc: 'Огурцы малосольные, томаты черри, капуста квашеная, морковь по-корейски.', photo: '/images/Асорти из солений.png' },
-      { name: 'Фруктовое ассорти', price: 1850, weight: '1500 г', desc: 'Сезонные фрукты.', photo: '/images/Плато фруктовый микс.jpeg' },
-      { name: 'Закуска «Старорусская»', price: 520, weight: '360 г', desc: 'Филе сельди, запечённый картофель бэби, лук маринованный.', photo: '/images/Закуска старорусская .png' },
-      { name: 'Капрезе', price: 1150, weight: '400 г', desc: 'Сыр моцарелла, томаты, соус песто.', photo: '/images/Капрезе.png' },
-      { name: '«Татарское трио» на 8–10 человек', price: 3300, weight: '2150 г', desc: 'Отварное мясо конины, курицы, говядины; картофель отварной; пассированный лук и морковь на сливочном масле.', photo: '/images/Татарское трио.png' },
-      { name: 'Ассорти фермера в стол на 10–12 человек', price: 6300, weight: '2000 г', desc: 'Шашлычки из говядины, куриного филе, свиной шеи; люля-кебаб из баранины; картофель запечённый, овощи гриль, соус томатный.', photo: '/images/Ассорти фермера в стол.png' },
+      { name: 'Мясное ассорти', price: 1050, weight: '375 г', desc: 'Говядина европейская, сырокопчёные деликатесы, буженина из индейки, казылык.', photo: ASSET('/images/Мясное ассорти.png') },
+      { name: 'Мясное ассорти «Татарстан»', price: 1300, weight: '300 г', desc: 'Язык говяжий, филе утиной грудки сыровяленое, казылык.', photo: ASSET('/images/Ассорти татарстан.png') },
+      { name: 'Мясное ассорти «Фермерский»', price: 1500, weight: '340 г', desc: 'Язык говяжий, куриный рулет, ростбиф, казы.', photo: ASSET('/images/Ассорти фермерский.png') },
+      { name: 'Сырное плато', price: 820, weight: '260 г', desc: '3–4 вида сыра, орехи, мёд.', photo: ASSET('/images/Сырное плато.png') },
+      { name: 'Рыбное плато', price: 950, weight: '220 г', desc: 'Сёмга слабосолёная, масляная х/к, кальмар г/к, морепродукты.', photo: ASSET('/images/Рыбное плато.png') },
+      { name: 'Средиземноморская закуска', price: 1400, weight: '310 г', desc: 'Сёмга с/с, тунец с/с, креветки тигровые, лайм, маслины, зелень.', photo: ASSET('/images/Средиземноморская закуска.png') },
+      { name: 'Овощное ассорти', price: 650, weight: '510 г', desc: 'Огурцы, томаты, перец, редис, морковь, зелень.', photo: ASSET('/images/Овощное ассорти.png') },
+      { name: 'Ассорти из солений', price: 550, weight: '460 г', desc: 'Огурцы малосольные, томаты черри, капуста квашеная, морковь по-корейски.', photo: ASSET('/images/Асорти из солений.png') },
+      { name: 'Фруктовое ассорти', price: 1850, weight: '1500 г', desc: 'Сезонные фрукты.', photo: ASSET('/images/Плато фруктовый микс.jpeg') },
+      { name: 'Закуска «Старорусская»', price: 520, weight: '360 г', desc: 'Филе сельди, запечённый картофель бэби, лук маринованный.', photo: ASSET('/images/Закуска старорусская .png') },
+      { name: 'Капрезе', price: 1150, weight: '400 г', desc: 'Сыр моцарелла, томаты, соус песто.', photo: ASSET('/images/Капрезе.png') },
+      { name: '«Татарское трио» на 8–10 человек', price: 3300, weight: '2150 г', desc: 'Отварное мясо конины, курицы, говядины; картофель отварной; пассированный лук и морковь на сливочном масле.', photo: ASSET('/images/Татарское трио.png') },
+      { name: 'Ассорти фермера в стол на 10–12 человек', price: 6300, weight: '2000 г', desc: 'Шашлычки из говядины, куриного филе, свиной шеи; люля-кебаб из баранины; картофель запечённый, овощи гриль, соус томатный.', photo: ASSET('/images/Ассорти фермера в стол.png') },
     ],
     hot: [
       { name: 'Томлёная телятина', price: 560, weight: '180 г', desc: 'Телячья щека 8 часов в красном вине, пюре из корня сельдерея, демиглас, жареный лук-шалот.' },
@@ -1267,7 +1267,7 @@ const Footer = () => (
   <footer style={{padding: '40px 0 30px', borderTop:'1px solid var(--ink-08)', marginTop: 40}}>
     <div className="wrap" style={{display:'flex', justifyContent:'space-between', gap: 20, flexWrap:'wrap', alignItems:'center'}}>
       <div style={{display:'flex', alignItems:'center', gap: 10}}>
-        <img src="/images/logo.png" alt="Gastronom Catering" style={{height: 36, width:'auto', display:'block'}}/>
+        <img src={ASSET("/images/logo.png")} alt="Gastronom Catering" style={{height: 36, width:'auto', display:'block'}}/>
         <span className="logo-text" style={{fontFamily:'Unbounded, sans-serif'}}>
           <span className="logo-text-main">GASTRONOM</span>
           <span className="logo-text-sub">CATERING</span>
@@ -1295,7 +1295,7 @@ const Advantages = ({ label = '02 · Почему мы' } = {}) => {
       text: 'Меню и подачу продумывает шеф-повар с многолетним опытом.',
       bg: '#ed1d51', fg: 'white',
       img: 'фото: блюдо от шеф-повара',
-      photo: '/images/1.jpg',
+      photo: ASSET('/images/1.jpg'),
       imgVariant: 'peach',
       decor: 'rings',
     },
@@ -1305,7 +1305,7 @@ const Advantages = ({ label = '02 · Почему мы' } = {}) => {
       text: 'Готовые варианты оформления, проверенные на многочисленных мероприятиях.',
       bg: '#ffe270', fg: 'var(--ink)',
       img: 'фото: сервировка фуршета',
-      photo: '/images/2.jpg',
+      photo: ASSET('/images/2.jpg'),
       imgVariant: 'cream',
       decor: 'grid',
     },
@@ -1322,7 +1322,7 @@ const Advantages = ({ label = '02 · Почему мы' } = {}) => {
       text: 'Проверенная система работы — без сбоев и накладок в день мероприятия.',
       bg: '#ffbfa3', fg: 'var(--ink)',
       img: 'фото: команда на выезде',
-      photo: '/images/3.jpg',
+      photo: ASSET('/images/3.jpg'),
       imgVariant: 'peach',
       decor: 'waves',
     },

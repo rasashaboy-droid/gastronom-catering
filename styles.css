@@ -858,13 +858,25 @@
     .hero-split { grid-template-columns: 1fr !important; }
     .hero-split > div { min-height: auto !important; }
     .hero-photo { min-height: 0 !important; aspect-ratio: 4 / 3; width: 100%; height: auto; }
-    .hero-photo > img { position: static !important; height: auto !important; }
+    .hero-photo > img {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
   }
   @media (max-width: 560px) {
     /* Equal-height text card & photo: same min-height, no aspect-ratio */
     .hero-split > div:first-child { min-height: 420px !important; }
     .hero-photo { aspect-ratio: 1 / 1 !important; min-height: 0 !important; }
-    .hero-photo > img { position: static !important; height: auto !important; }
+    .hero-photo > img {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
 
     /* Hero CTA stack on mobile: primary full-width, ghost as plain centered text */
     .hero-cta { flex-direction: column !important; align-items: stretch !important; gap: 10px !important; }
