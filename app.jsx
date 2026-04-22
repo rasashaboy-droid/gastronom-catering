@@ -74,6 +74,7 @@ const Nav = () => {
 const App = () => {
   const hash = useHashRoute();
   const isCart = hash === '#/cart';
+  const [quoteOpen, setQuoteOpen] = React.useState(false);
 
   React.useEffect(() => {
     if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
@@ -83,6 +84,11 @@ const App = () => {
       return () => { document.body.style.overflow = prev; };
     }
   }, [isCart]);
+
+  React.useEffect(() => {
+    window.openQuoteModal = () => setQuoteOpen(true);
+    return () => { delete window.openQuoteModal; };
+  }, []);
 
   return (
     <div data-screen-label={isCart ? 'Cart' : 'Landing'}>
@@ -109,6 +115,7 @@ const App = () => {
       </div>
 
       <FloatingCartButton/>
+      {quoteOpen && <QuoteModal onClose={() => setQuoteOpen(false)}/>}
     </div>
   );
 };

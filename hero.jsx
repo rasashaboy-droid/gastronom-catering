@@ -66,7 +66,7 @@ const HeroSplit = () => {
           От доставки боксов до банкета под ключ — <span style={{color:'#f32353', fontWeight: 600}}>рассчитаем стоимость</span> под любое мероприятие.
         </p>
         <div className="hero-cta" style={{display:'flex', gap: 14, flexWrap:'wrap', alignItems:'center'}}>
-          <a href="#calc" className="btn btn-primary hero-cta__primary">Рассчитать стоимость</a>
+          <button type="button" onClick={() => window.openQuoteModal && window.openQuoteModal()} className="btn btn-primary hero-cta__primary">Рассчитать стоимость</button>
           <a href="#menu" className="btn btn-glass hero-cta__ghost" style={{background: '#F9F5EB'}}>Смотреть меню <Icon.Arrow/></a>
         </div>
       </div>

@@ -794,6 +794,104 @@ const MenuDrawer = ({ item, onClose }) => {
   );
 };
 
+const QuoteModal = ({ onClose }) => {
+  const [closing, setClosing] = React.useState(false);
+  const [name, setName] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [consent, setConsent] = React.useState(false);
+
+  const requestClose = React.useCallback(() => setClosing(true), []);
+
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') requestClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [requestClose]);
+
+  const handleAnimEnd = (e) => {
+    if (closing && e.target === e.currentTarget) onClose();
+  };
+
+  const canSubmit = name.trim().length > 0 && phone.trim().length > 0 && consent;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!canSubmit) return;
+    requestClose();
+  };
+
+  return (
+    <>
+      <div
+        className={'menu-drawer-backdrop' + (closing ? ' closing' : '')}
+        onClick={requestClose}
+      />
+      <form
+        className={'quote-modal' + (closing ? ' closing' : '')}
+        role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle"
+        onAnimationEnd={handleAnimEnd}
+        onSubmit={handleSubmit}
+      >
+        <div className="quote-modal__head">
+          <div>
+            <h3 id="quoteModalTitle" className="display" style={{fontFamily:'Unbounded, sans-serif', fontSize:'clamp(22px, 2.4vw, 26px)', fontWeight: 700, lineHeight: 1.15, margin: 0, letterSpacing:'-0.02em'}}>
+              Рассчитать <em className="accent-italic">стоимость</em>
+            </h3>
+            <p style={{marginTop: 10, fontSize: 14, lineHeight: 1.45, color:'var(--ink-60)'}}>
+              Оставьте контакты — перезвоним в течение 15 минут и подготовим расчёт под ваш формат.
+            </p>
+          </div>
+          <button type="button" className="quote-modal__close" onClick={requestClose} aria-label="Закрыть">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+              <path d="M3 3L13 13M13 3L3 13"/>
+            </svg>
+          </button>
+        </div>
+        <div className="quote-modal__body">
+          <label>
+            <span className="quote-field__label">Ваше имя</span>
+            <input
+              className="quote-input"
+              type="text" autoComplete="name"
+              value={name} onChange={(e) => setName(e.target.value)}
+              placeholder="Как к вам обращаться"
+              required
+            />
+          </label>
+          <label>
+            <span className="quote-field__label">Номер телефона</span>
+            <input
+              className="quote-input"
+              type="tel" autoComplete="tel"
+              value={phone} onChange={(e) => setPhone(e.target.value)}
+              placeholder="+7 (___) ___-__-__"
+              required
+            />
+          </label>
+          <label className="quote-consent">
+            <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}/>
+            <span className="quote-consent__box">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2.5 6.2L5 8.6L9.8 3.6"/>
+              </svg>
+            </span>
+            <span>Я согласен на обработку персональных данных</span>
+          </label>
+          <button
+            type="submit"
+            className="btn btn-primary quote-submit"
+            disabled={!canSubmit}
+          >
+            Отправить <Icon.Arrow/>
+          </button>
+        </div>
+      </form>
+    </>
+  );
+};
+
+Object.assign(window, { QuoteModal });
+
 const MenuAllCard = ({ delay }) => {
   return (
     <a
