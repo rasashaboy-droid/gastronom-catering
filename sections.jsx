@@ -91,15 +91,15 @@ const StatsBand = () => {
 const Formats = () => {
   // 10 formats. Each has a pill color and a paired image placeholder.
   const formats = [
-    { title: 'Гастробоксы',          sub: 'от 600 ₽/чел',   color: 'var(--peach)',      icon: 'Package',         iconColor: 'var(--tomato)',  img: 'боксы с подачей',          imgVariant: 'peach', photo: 'images/optimized/s1-1200.jpg' },
-    { title: 'Фуршет',               sub: 'от 900 ₽/чел',   color: 'var(--cream-100)',  icon: 'Martini',         iconColor: 'var(--coral)',   img: 'канапе и фуршетные столы', imgVariant: 'peach', photo: 'images/optimized/s2-1200.jpg' },
-    { title: 'Банкет',               sub: 'от 2 400 ₽/чел', color: 'var(--cream-200)',  icon: 'UtensilsCrossed', iconColor: 'var(--tomato)',  img: 'сервированный банкетный зал', imgVariant: 'cream', photo: 'images/optimized/s3-1200.jpg' },
-    { title: 'Детский праздник',     sub: 'от 700 ₽/чел',   color: 'var(--peach)',      icon: 'PartyPopper',     iconColor: 'var(--raspberry)',  img: 'детские десерты',          imgVariant: 'cream', photo: 'images/optimized/s4-1200.jpg' },
-    { title: 'Свадьба',              sub: 'под ключ',       color: 'var(--peach)',      icon: 'HeartHandshake',  iconColor: 'var(--raspberry)',  img: 'свадебная подача',         imgVariant: 'peach', photo: 'images/optimized/s5-1200.jpg' },
-    { title: 'Корпоратив',           sub: 'от 1 200 ₽/чел', color: 'var(--cream-300)',  icon: 'Briefcase',       iconColor: 'var(--tomato)',     img: 'офисный кейтеринг',        imgVariant: 'peach', photo: 'images/optimized/s6-1200.jpg' },
-    { title: 'Выпускной',            sub: 'от 1 500 ₽/чел', color: 'var(--cream-100)',  icon: 'GraduationCap',   iconColor: 'var(--coral)',   img: 'выпускной вечер',          imgVariant: 'cream', photo: 'images/optimized/s7-1200.jpg' },
-    { title: 'День рождения',        sub: 'от 800 ₽/чел',   color: 'var(--cream-200)',  icon: 'Cake',            iconColor: 'var(--coral)', img: 'стол ко дню рождения',     imgVariant: 'cream', photo: 'images/optimized/s8-1200.jpg' },
-    { title: 'Девичник / Мальчишник',sub: 'от 1 000 ₽/чел', color: 'var(--cream-200)',  icon: 'Wine',            iconColor: 'var(--coral)',   img: 'бокалы и закуски',         imgVariant: 'peach', photo: 'images/optimized/s9-1200.jpg' },
+    { title: 'Гастробоксы',          sub: 'от 600 ₽/чел',   color: 'var(--peach)',      icon: 'Package',         iconColor: 'var(--tomato)',  img: 'боксы с подачей',          imgVariant: 'peach', photo: 'images/optimized/s1-1200.jpg', href: '/formats/gastroboxes' },
+    { title: 'Фуршет',               sub: 'от 900 ₽/чел',   color: 'var(--cream-100)',  icon: 'Martini',         iconColor: 'var(--coral)',   img: 'канапе и фуршетные столы', imgVariant: 'peach', photo: 'images/optimized/s2-1200.jpg', href: '/formats/furshet' },
+    { title: 'Банкет',               sub: 'от 2 400 ₽/чел', color: 'var(--cream-200)',  icon: 'UtensilsCrossed', iconColor: 'var(--tomato)',  img: 'сервированный банкетный зал', imgVariant: 'cream', photo: 'images/optimized/s3-1200.jpg', href: '/formats/banket' },
+    { title: 'Детский праздник',     sub: 'от 700 ₽/чел',   color: 'var(--peach)',      icon: 'PartyPopper',     iconColor: 'var(--raspberry)',  img: 'детские десерты',          imgVariant: 'cream', photo: 'images/optimized/s4-1200.jpg', href: '/formats/detskiy-prazdnik' },
+    { title: 'Свадьба',              sub: 'под ключ',       color: 'var(--peach)',      icon: 'HeartHandshake',  iconColor: 'var(--raspberry)',  img: 'свадебная подача',         imgVariant: 'peach', photo: 'images/optimized/s5-1200.jpg', href: '/formats/svadba' },
+    { title: 'Корпоратив',           sub: 'от 1 200 ₽/чел', color: 'var(--cream-300)',  icon: 'Briefcase',       iconColor: 'var(--tomato)',     img: 'офисный кейтеринг',        imgVariant: 'peach', photo: 'images/optimized/s6-1200.jpg', href: '/formats/korporativ' },
+    { title: 'Выпускной',            sub: 'от 1 500 ₽/чел', color: 'var(--cream-100)',  icon: 'GraduationCap',   iconColor: 'var(--coral)',   img: 'выпускной вечер',          imgVariant: 'cream', photo: 'images/optimized/s7-1200.jpg', href: '/formats/vypusknoy' },
+    { title: 'День рождения',        sub: 'от 800 ₽/чел',   color: 'var(--cream-200)',  icon: 'Cake',            iconColor: 'var(--coral)', img: 'стол ко дню рождения',     imgVariant: 'cream', photo: 'images/optimized/s8-1200.jpg', href: '/formats/den-rozhdeniya' },
+    { title: 'Девичник / Мальчишник',sub: 'от 1 000 ₽/чел', color: 'var(--cream-200)',  icon: 'Wine',            iconColor: 'var(--coral)',   img: 'бокалы и закуски',         imgVariant: 'peach', photo: 'images/optimized/s9-1200.jpg', href: '/formats/devichnik-malchishnik' },
   ];
 
   const [active, setActive] = React.useState(0);
@@ -179,12 +179,21 @@ const Formats = () => {
             background: 'var(--cream-100)',
           }}>
             {formats.map((f, i) => (
-              <div key={f.title} style={{
-                position:'absolute', inset: 0,
-                opacity: active === i ? 1 : 0,
-                transform: active === i ? 'scale(1)' : 'scale(1.04)',
-                transition: 'opacity .45s ease, transform .8s ease',
-              }}>
+              <a
+                key={f.title}
+                href={f.href}
+                className="formats-slide"
+                aria-label={`Подробнее: ${f.title}`}
+                style={{
+                  position:'absolute', inset: 0,
+                  display:'block',
+                  opacity: active === i ? 1 : 0,
+                  transform: active === i ? 'scale(1)' : 'scale(1.04)',
+                  transition: 'opacity .45s ease, transform .8s ease',
+                  pointerEvents: active === i ? 'auto' : 'none',
+                  overflow: 'hidden',
+                }}
+              >
                 {f.photo ? (
                   <img src={f.photo} alt={f.title} style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
                 ) : (
@@ -198,14 +207,15 @@ const Formats = () => {
                   position:'absolute', inset: 0,
                   background: 'linear-gradient(180deg, transparent 40%, rgba(28,20,15,0.55))',
                 }}/>
-              </div>
+              </a>
             ))}
 
-            {/* active caption overlay (bottom-left) */}
+            {/* active caption overlay (bottom-left) — декоративный, клики проходят к ссылке */}
             <div style={{
               position:'absolute', left: 22, bottom: 22, right: 22,
               display:'flex', alignItems:'flex-end', justifyContent:'space-between', gap: 16,
               color:'white', zIndex: 1,
+              pointerEvents: 'none',
             }}>
               <div>
                 {formats[active].tag && (
@@ -545,7 +555,7 @@ const LeadFormPane = ({ phone, setPhone, agree, setAgree, onSubmit }) => {
       <label style={{display:'flex', alignItems:'flex-start', gap: 10, marginTop: 14, fontSize: 12, lineHeight: 1.45, color:'var(--ink-60)', cursor:'pointer'}}>
         <input type="checkbox" checked={agree} onChange={e => setAgree(e.target.checked)}
           style={{marginTop: 2, accentColor:'var(--tomato)', flexShrink: 0, width: 16, height: 16}}/>
-        <span>Я согласен на обработку персональных данных согласно политике конфиденциальности</span>
+        <span>Я согласен на обработку персональных данных согласно <a href="#" className="policy-link" onClick={(e) => e.stopPropagation()}>политике конфиденциальности</a></span>
       </label>
     </div>
   );
@@ -835,10 +845,10 @@ const QuoteModal = ({ onClose }) => {
         <div className="quote-modal__head">
           <div>
             <h3 id="quoteModalTitle" className="display" style={{fontFamily:'Unbounded, sans-serif', fontSize:'clamp(22px, 2.4vw, 26px)', fontWeight: 700, lineHeight: 1.15, margin: 0, letterSpacing:'-0.02em'}}>
-              Рассчитать <em className="accent-italic">стоимость</em>
+              Получите расчет <em className="accent-italic">стоимости</em>
             </h3>
             <p style={{marginTop: 10, fontSize: 14, lineHeight: 1.45, color:'var(--ink-60)'}}>
-              Оставьте контакты — перезвоним в течение 15 минут и подготовим расчёт под ваш формат.
+              Оставьте свои контакты — свяжемся с Вами и сориентируем по стоимости
             </p>
           </div>
           <button type="button" className="quote-modal__close" onClick={requestClose} aria-label="Закрыть">
@@ -849,12 +859,12 @@ const QuoteModal = ({ onClose }) => {
         </div>
         <div className="quote-modal__body">
           <label>
-            <span className="quote-field__label">Ваше имя</span>
+            <span className="quote-field__label">Имя</span>
             <input
               className="quote-input"
               type="text" autoComplete="name"
               value={name} onChange={(e) => setName(e.target.value)}
-              placeholder="Как к вам обращаться"
+              placeholder="Как к вам обращаться?"
               required
             />
           </label>
@@ -875,14 +885,14 @@ const QuoteModal = ({ onClose }) => {
                 <path d="M2.5 6.2L5 8.6L9.8 3.6"/>
               </svg>
             </span>
-            <span>Я согласен на обработку персональных данных</span>
+            <span>Я согласен на обработку персональных данных согласно <a href="#" className="policy-link" onClick={(e) => e.stopPropagation()}>политике конфиденциальности</a></span>
           </label>
           <button
             type="submit"
             className="btn btn-primary quote-submit"
             disabled={!canSubmit}
           >
-            Отправить <Icon.Arrow/>
+            Получить расчет <Icon.Arrow/>
           </button>
         </div>
       </form>
