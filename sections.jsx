@@ -427,7 +427,7 @@ const QuizCalc = () => {
                   {cur.slider && (
                     <div style={{marginTop: 8}}>
                       <div className="display" style={{fontSize: 72, fontWeight: 700, color:'var(--tomato)', lineHeight: 1, letterSpacing:'-0.03em', display:'flex', alignItems:'baseline', flexWrap:'wrap'}}>
-                        <label style={{
+                        <label className="calc-people-label" style={{
                           display:'inline-flex', alignItems:'center',
                           background:'var(--cream-50)',
                           border:'1px solid var(--ink-08)',
@@ -448,6 +448,7 @@ const QuizCalc = () => {
                               textAlign: 'center',
                             }}
                           />
+                          <span className="calc-caret" aria-hidden="true"/>
                         </label>
                         <span style={{fontSize: 24, color:'var(--ink-60)', fontWeight: 500, marginLeft: 12}}>гостей</span>
                       </div>
@@ -1250,7 +1251,7 @@ const Advantages = () => {
         <div className="adv-bento" style={{
           display:'grid',
           gridTemplateColumns:'repeat(12, 1fr)',
-          gridAutoRows: '140px',
+          gridAutoRows: '128px',
           gap: 14,
         }}>
           {/* Top row: 3 image cards, portrait / square proportions */}

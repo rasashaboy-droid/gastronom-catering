@@ -303,6 +303,19 @@
       -6px 6px 24px -10px rgba(28,20,15,0.07),
       0 10px 30px -15px rgba(28,20,15,0.08) !important;
   }
+  .calc-caret {
+    display: inline-block;
+    width: 3px;
+    height: 60px;
+    background: var(--tomato);
+    margin-left: 6px;
+    border-radius: 2px;
+    vertical-align: middle;
+    animation: blinkCaret 1s step-end infinite;
+  }
+  @keyframes blinkCaret { 50% { opacity: 0; } }
+  .calc-people-label:focus-within .calc-caret { display: none; }
+
   .menu-card {
     box-shadow: none !important;
     transition: box-shadow .25s ease, transform .25s ease !important;
