@@ -498,7 +498,7 @@ const LeadFormPane = ({ phone, setPhone, agree, setAgree, onSubmit }) => {
   const valid = phone.replace(/\D/g, '').length >= 10 && agree;
   return (
     <div style={{display:'flex', flexDirection:'column', height:'100%'}}>
-      <h3 className="display" style={{fontSize: 26, fontWeight: 600, letterSpacing:'-0.02em', lineHeight: 1.15}}>
+      <h3 className="display" style={{fontSize: 25, fontWeight: 600, letterSpacing:'-0.02em', lineHeight: 1.15}}>
         Получите расчёт стоимости по вашему мероприятию
       </h3>
       <p style={{color:'var(--ink-60)', fontSize: 14, lineHeight: 1.5, marginTop: 12, marginBottom: 20}}>
@@ -1074,7 +1074,7 @@ const FinalCTA = () => {
               background: 'rgba(255,255,255,0.06)',
             }}>
               <div className="mono" style={{fontSize: 'clamp(9.5px, 2.8vw, 12px)', opacity: 0.6, marginBottom: 16, letterSpacing:'0.08em', textTransform:'uppercase', whiteSpace:'nowrap'}}>
-                Обычно отвечаем в течение часа
+                Введите ваши данные
               </div>
               <input placeholder="Ваше имя" style={ctaInput}/>
               <input placeholder="Номер телефона" style={ctaInput}/>
@@ -1191,7 +1191,7 @@ const Advantages = () => {
             </h2>
           </div>
           <p style={{maxWidth: 340, color:'var(--ink-60)', fontSize: 15}}>
-            5 причин, по которым к нам возвращаются и рекомендуют друзьям и коллегам.
+            То, за что нас рекомендуют другим и возвращаются снова.
           </p>
         </div>
 
