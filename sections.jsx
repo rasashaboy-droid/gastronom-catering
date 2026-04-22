@@ -426,19 +426,30 @@ const QuizCalc = () => {
 
                   {cur.slider && (
                     <div style={{marginTop: 8}}>
-                      <div className="display" style={{fontSize: 72, fontWeight: 700, color:'var(--tomato)', lineHeight: 1, letterSpacing:'-0.03em'}}>
-                        <input type="text" inputMode="numeric" pattern="[0-9]*"
-                          value={answers.people}
-                          onChange={e => { const v = e.target.value.replace(/\D/g, ''); setAns('people', Math.max(2, Math.min(1000, +v || 2))); }}
-                          style={{
-                            fontFamily: 'Unbounded, sans-serif',
-                            fontSize: 72, fontWeight: 700, color:'var(--tomato)', lineHeight: 1, letterSpacing:'-0.03em',
-                            width: `${String(answers.people).length}ch`,
-                            padding: 0, margin: 0, border: 'none', outline: 'none', background: 'transparent',
-                            verticalAlign: 'baseline',
-                          }}
-                        />
-                        <span style={{fontSize: 24, color:'var(--ink-60)', fontWeight: 500, marginLeft: 8}}>гостей</span>
+                      <div className="display" style={{fontSize: 72, fontWeight: 700, color:'var(--tomato)', lineHeight: 1, letterSpacing:'-0.03em', display:'flex', alignItems:'baseline', flexWrap:'wrap'}}>
+                        <label style={{
+                          display:'inline-flex', alignItems:'center',
+                          background:'var(--cream-50)',
+                          border:'1px solid var(--ink-08)',
+                          borderRadius: 18,
+                          padding: '6px 18px',
+                          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 8px -4px rgba(28,20,15,0.08)',
+                          cursor: 'text',
+                        }}>
+                          <input type="text" inputMode="numeric" pattern="[0-9]*"
+                            value={answers.people}
+                            onChange={e => { const v = e.target.value.replace(/\D/g, ''); setAns('people', Math.max(2, Math.min(1000, +v || 2))); }}
+                            style={{
+                              fontFamily: 'Unbounded, sans-serif',
+                              fontSize: 72, fontWeight: 700, color:'var(--tomato)', lineHeight: 1, letterSpacing:'-0.03em',
+                              width: `${String(answers.people).length}ch`,
+                              padding: 0, margin: 0, border: 'none', outline: 'none', background: 'transparent',
+                              verticalAlign: 'baseline',
+                              textAlign: 'center',
+                            }}
+                          />
+                        </label>
+                        <span style={{fontSize: 24, color:'var(--ink-60)', fontWeight: 500, marginLeft: 12}}>гостей</span>
                       </div>
                       <input type="range"
                         min={cur.slider.min} max={cur.slider.max} step={cur.slider.step}
@@ -689,6 +700,7 @@ const MenuHighlights = () => {
           {list.map((it, i) => (
             <MenuCard key={cat + i} item={it} delay={i * 60} onClick={() => setSelected(it)}/>
           ))}
+          <MenuAllCard delay={list.length * 60}/>
         </div>
       </div>
       {selected && <MenuDrawer item={selected} onClose={() => setSelected(null)}/>}
@@ -778,6 +790,46 @@ const MenuDrawer = ({ item, onClose }) => {
         </div>
       </aside>
     </>
+  );
+};
+
+const MenuAllCard = ({ delay }) => {
+  return (
+    <a
+      href="#cta"
+      className="menu-card--all"
+      style={{
+        background: 'var(--cream-100)',
+        borderRadius: 24,
+        overflow: 'hidden',
+        animation: `fadeUp .5s ${delay}ms both`,
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center',
+        textAlign: 'center',
+        textDecoration: 'none',
+        color: 'var(--ink)',
+        padding: 24,
+        minHeight: 280,
+        gap: 16,
+        cursor: 'pointer',
+        transition: 'transform .2s ease, box-shadow .2s ease',
+      }}
+    >
+      <div style={{
+        width: 56, height: 56, borderRadius: '50%',
+        background: 'var(--cream-50)', border: '1px solid var(--ink-08)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        color: 'var(--tomato)',
+      }}>
+        <Icon.Arrow size={22}/>
+      </div>
+      <div className="display" style={{fontFamily: 'Unbounded, sans-serif', fontSize: 18, fontWeight: 600, lineHeight: 1.2, letterSpacing: '-0.01em'}}>
+        Смотреть всё меню
+      </div>
+      <div style={{fontSize: 13, color: 'var(--ink-60)'}}>
+        120+ позиций по всем категориям
+      </div>
+    </a>
   );
 };
 
@@ -1059,7 +1111,7 @@ const FinalCTA = () => {
               <p style={{opacity: 0.7, fontSize: 17, marginTop: 20, maxWidth: 440}}>
                 Свяжитесь с нами удобным способом или оставьте заявку — ответим в течение часа.
               </p>
-              <div style={{display:'flex', gap: 10, marginTop: 28, flexWrap:'wrap'}}>
+              <div className="cta-contact-row" style={{display:'flex', gap: 10, marginTop: 28, flexWrap:'wrap'}}>
                 <button className="btn btn-primary">
                   Telegram <Icon.Arrow/>
                 </button>

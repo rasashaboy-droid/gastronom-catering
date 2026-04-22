@@ -324,6 +324,10 @@
     .menu-grid .menu-card__body > div:first-child { flex-direction: column !important; align-items: flex-start !important; gap: 4px !important; }
     .menu-grid .menu-card__body > div:first-child > div:first-child { font-size: 13px !important; }
     .menu-grid .menu-card__body > div:first-child > div:last-child { font-size: 13px !important; }
+    .menu-grid .menu-card--all { min-height: 0 !important; padding: 18px !important; gap: 10px !important; }
+    .menu-grid .menu-card--all > div:first-child { width: 44px !important; height: 44px !important; }
+    .menu-grid .menu-card--all .display { font-size: 14px !important; }
+    .menu-grid .menu-card--all > div:last-child { font-size: 11px !important; }
     .menu-grid .qty-wrap--sm { height: 40px !important; }
     .menu-grid .qty-wrap--sm .qty-face--add { font-size: 13px !important; }
     .menu-grid .qty-wrap--sm .qty-btn { width: 28px !important; height: 28px !important; font-size: 15px !important; }
@@ -878,6 +882,8 @@
   /* Final CTA */
   @media (max-width: 860px) {
     .cta-split { grid-template-columns: 1fr !important; gap: 28px !important; }
+    .cta-contact-row { justify-content: center !important; }
+    .cta-contact-row > .btn { min-width: 240px !important; justify-content: center !important; }
   }
 
   .stack-v { display: flex; flex-direction: column; }
