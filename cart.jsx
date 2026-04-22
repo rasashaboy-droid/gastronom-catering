@@ -2,8 +2,7 @@
 window.PageState = window.PageState || { scrollY: 0, menuCategory: 'canape' };
 
 // ============ OPTIMIZED IMAGE HELPER ============
-// Takes "images/foo.jpeg" → { src: "images/optimized/foo-600.jpg",
-//                             srcSet: "...-600.jpg 600w, ...-1200.jpg 1200w" }
+// Takes "images/foo.jpeg" → { src: "...-600.jpg", srcSet: "...-600.jpg 600w, ...-1200.jpg 1200w" }
 const getOptimizedPhoto = (p) => {
   if (!p) return null;
   const m = p.match(/^(.+)\/([^/]+)\.([^.]+)$/);
@@ -17,14 +16,9 @@ const getOptimizedPhoto = (p) => {
 };
 window.getOptimizedPhoto = getOptimizedPhoto;
 
-// Drop-in <img> replacement: optimized srcset + lazy + graceful fallback to original on 404.
 const OptImg = ({ photo, alt, sizes, style, className }) => {
-  const [errored, setErrored] = React.useState(false);
   const opt = getOptimizedPhoto(photo);
-  if (!photo) return null;
-  if (!opt || errored) {
-    return <img src={photo} alt={alt || ''} loading="lazy" decoding="async" style={style} className={className}/>;
-  }
+  if (!photo || !opt) return null;
   return (
     <img
       src={opt.src}
@@ -35,7 +29,6 @@ const OptImg = ({ photo, alt, sizes, style, className }) => {
       decoding="async"
       style={style}
       className={className}
-      onError={() => setErrored(true)}
     />
   );
 };

@@ -47,7 +47,11 @@
       "Bash(sips -s format webp)",
       "Bash(sips --formats)",
       "Bash(ffmpeg -muxers)",
-      "Bash(brew --version)"
+      "Bash(brew --version)",
+      "Bash(grep -E \"^s[0-9]+\\\\.jpg$\")",
+      "Bash(grep -v '^optimized$')",
+      "Bash(grep -vE '^\\(hero\\\\.jpeg|logo\\\\.png|halal\\\\.png\\)$')",
+      "Bash(grep -v '^\\\\.$\\\\|^\\\\.\\\\.$\\\\|^optimized$')"
     ]
   }
 }

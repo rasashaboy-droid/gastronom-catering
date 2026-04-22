@@ -91,15 +91,15 @@ const StatsBand = () => {
 const Formats = () => {
   // 10 formats. Each has a pill color and a paired image placeholder.
   const formats = [
-    { title: 'Гастробоксы',          sub: 'от 600 ₽/чел',   color: 'var(--peach)',      icon: 'Package',         iconColor: 'var(--tomato)',  img: 'боксы с подачей',          imgVariant: 'peach', photo: 'images/s1.jpg' },
-    { title: 'Фуршет',               sub: 'от 900 ₽/чел',   color: 'var(--cream-100)',  icon: 'Martini',         iconColor: 'var(--coral)',   img: 'канапе и фуршетные столы', imgVariant: 'peach' },
-    { title: 'Банкет',               sub: 'от 2 400 ₽/чел', color: 'var(--cream-200)',  icon: 'UtensilsCrossed', iconColor: 'var(--tomato)',  img: 'сервированный банкетный зал', imgVariant: 'cream' },
-    { title: 'Детский праздник',     sub: 'от 700 ₽/чел',   color: 'var(--peach)',      icon: 'PartyPopper',     iconColor: 'var(--raspberry)',  img: 'детские десерты',          imgVariant: 'cream' },
-    { title: 'Свадьба',              sub: 'под ключ',       color: 'var(--peach)',      icon: 'HeartHandshake',  iconColor: 'var(--raspberry)',  img: 'свадебная подача',         imgVariant: 'peach' },
-    { title: 'Корпоратив',           sub: 'от 1 200 ₽/чел', color: 'var(--cream-300)',  icon: 'Briefcase',       iconColor: 'var(--tomato)',     img: 'офисный кейтеринг',        imgVariant: 'peach' },
-    { title: 'Выпускной',            sub: 'от 1 500 ₽/чел', color: 'var(--cream-100)',  icon: 'GraduationCap',   iconColor: 'var(--coral)',   img: 'выпускной вечер',          imgVariant: 'cream' },
-    { title: 'День рождения',        sub: 'от 800 ₽/чел',   color: 'var(--cream-200)',  icon: 'Cake',            iconColor: 'var(--coral)', img: 'стол ко дню рождения',     imgVariant: 'cream' },
-    { title: 'Девичник / Мальчишник',sub: 'от 1 000 ₽/чел', color: 'var(--cream-200)',  icon: 'Wine',            iconColor: 'var(--coral)',   img: 'бокалы и закуски',         imgVariant: 'peach' },
+    { title: 'Гастробоксы',          sub: 'от 600 ₽/чел',   color: 'var(--peach)',      icon: 'Package',         iconColor: 'var(--tomato)',  img: 'боксы с подачей',          imgVariant: 'peach', photo: 'images/optimized/s1-1200.jpg' },
+    { title: 'Фуршет',               sub: 'от 900 ₽/чел',   color: 'var(--cream-100)',  icon: 'Martini',         iconColor: 'var(--coral)',   img: 'канапе и фуршетные столы', imgVariant: 'peach', photo: 'images/optimized/s2-1200.jpg' },
+    { title: 'Банкет',               sub: 'от 2 400 ₽/чел', color: 'var(--cream-200)',  icon: 'UtensilsCrossed', iconColor: 'var(--tomato)',  img: 'сервированный банкетный зал', imgVariant: 'cream', photo: 'images/optimized/s3-1200.jpg' },
+    { title: 'Детский праздник',     sub: 'от 700 ₽/чел',   color: 'var(--peach)',      icon: 'PartyPopper',     iconColor: 'var(--raspberry)',  img: 'детские десерты',          imgVariant: 'cream', photo: 'images/optimized/s4-1200.jpg' },
+    { title: 'Свадьба',              sub: 'под ключ',       color: 'var(--peach)',      icon: 'HeartHandshake',  iconColor: 'var(--raspberry)',  img: 'свадебная подача',         imgVariant: 'peach', photo: 'images/optimized/s5-1200.jpg' },
+    { title: 'Корпоратив',           sub: 'от 1 200 ₽/чел', color: 'var(--cream-300)',  icon: 'Briefcase',       iconColor: 'var(--tomato)',     img: 'офисный кейтеринг',        imgVariant: 'peach', photo: 'images/optimized/s6-1200.jpg' },
+    { title: 'Выпускной',            sub: 'от 1 500 ₽/чел', color: 'var(--cream-100)',  icon: 'GraduationCap',   iconColor: 'var(--coral)',   img: 'выпускной вечер',          imgVariant: 'cream', photo: 'images/optimized/s7-1200.jpg' },
+    { title: 'День рождения',        sub: 'от 800 ₽/чел',   color: 'var(--cream-200)',  icon: 'Cake',            iconColor: 'var(--coral)', img: 'стол ко дню рождения',     imgVariant: 'cream', photo: 'images/optimized/s8-1200.jpg' },
+    { title: 'Девичник / Мальчишник',sub: 'от 1 000 ₽/чел', color: 'var(--cream-200)',  icon: 'Wine',            iconColor: 'var(--coral)',   img: 'бокалы и закуски',         imgVariant: 'peach', photo: 'images/optimized/s9-1200.jpg' },
   ];
 
   const [active, setActive] = React.useState(0);
@@ -887,10 +887,10 @@ const MenuCard = ({ item, delay, onClick }) => {
 // ---------- PROCESS / HOW IT WORKS ----------
 const Process = () => {
   const steps = [
-    { n: '01', title: 'Бриф', time: '10 мин', desc: 'Формат, гости, дата, бюджет. В мессенджере или голосом.' },
-    { n: '02', title: 'Меню + расчёт', time: '2 часа', desc: 'Пришлём 2–3 варианта с ценами. Правим, пока не подойдёт.' },
-    { n: '03', title: 'Дегустация', time: 'опц.', desc: 'На встречу в шоурум или привезём боксом — попробовать заранее.' },
-    { n: '04', title: 'Событие', time: 'в день', desc: 'Привозим за 2 часа. Расставляем. Убираем. Вы — гость на своём празднике.' },
+    { n: '01', title: 'Заявка', time: '10 мин', desc: 'Бронируем дату и время, фиксируем количество гостей, пожелания и концепцию мероприятия.' },
+    { n: '02', title: 'Меню и формат', time: '2 часа', desc: 'Совместно обговариваем меню, бюджет, площадку и прочие детали мероприятия. При желании организуем дегустацию.' },
+    { n: '03', title: 'Согласование', time: 'за 1–2 дн', desc: 'Утверждаем итоговое меню, нюансы обслуживания и организацию. При необходимости вносим корректировки в расписание и количество гостей.' },
+    { n: '04', title: 'Событие', time: 'в день', desc: 'Привезём, расставим и обслужим всё на площадке. После мероприятия — уберём, если это входит в формат.' },
   ];
   return (
     <section style={{padding: '80px 0'}}>
@@ -919,9 +919,8 @@ const Process = () => {
                 {s.n}
               </div>
               <div>
-                <div style={{display:'flex', justifyContent:'space-between', alignItems:'baseline', marginBottom: 8, gap: 8}}>
-                  <div className="display" style={{fontSize: 28, fontWeight: 600}}>{s.title}</div>
-                  <div className="mono" style={{fontSize: 12, opacity: 0.5, whiteSpace:'nowrap'}}>~ {s.time}</div>
+                <div style={{marginBottom: 8}}>
+                  <div className="display" style={{fontSize: 27, fontWeight: 600}}>{s.title}</div>
                 </div>
                 <div style={{fontSize: 14, opacity: 0.7, lineHeight: 1.5}}>{s.desc}</div>
               </div>

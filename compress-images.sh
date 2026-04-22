@@ -1,24 +1,29 @@
 #!/usr/bin/env bash
-# Resize + compress images into images/optimized/<name>-{600,1200}.jpg
-# Uses sips (built into macOS) - no external deps.
-# Upgrade path: install webp (brew install webp) and switch OUT_EXT to webp + use cwebp.
+# Resize + compress MENU photos into images/optimized/<name>-{600,1200}.jpg
+# Scope: only files you pass explicitly as arguments. No "all images" default —
+# hero/logo/halal/formats/advantages photos are NOT meant to go through this.
+# Uses sips (built into macOS) — no external deps.
 #
-# Usage: ./compress-images.sh          # all images in images/
-#        ./compress-images.sh path.jpg # single file
+# Usage: ./compress-images.sh images/Канапе\ с\ казылыком.jpeg
+#        ./compress-images.sh images/Канапе*.jpeg  images/Брускетта*.jpeg
 
 set -euo pipefail
 
-SRC_DIR="images"
+if [[ $# -eq 0 ]]; then
+  echo "Usage: $0 <menu-image-path> [more paths...]" >&2
+  echo "Pass specific menu photos only. Wildcards OK." >&2
+  exit 1
+fi
+
 OUT_DIR="images/optimized"
 WIDTHS=(600 1200)
-QUALITY=72          # JPEG 1–100; 72–80 is the sweet spot
+QUALITY=72
 OUT_EXT="jpg"
 
 mkdir -p "$OUT_DIR"
 
-process() {
-  local src="$1"
-  local base name w out tmp
+for src in "$@"; do
+  [[ -f "$src" ]] || { echo "skip (not a file): $src" >&2; continue; }
   base=$(basename "$src")
   name="${base%.*}"
   for w in "${WIDTHS[@]}"; do
@@ -27,7 +32,6 @@ process() {
       echo "skip  $out"
       continue
     fi
-    # sips --resampleWidth preserves aspect ratio
     sips \
       --resampleWidth "$w" \
       -s format jpeg \
@@ -35,16 +39,4 @@ process() {
       "$src" --out "$out" >/dev/null
     printf "done  %s (%s)\n" "$out" "$(du -h "$out" | cut -f1)"
   done
-}
-
-if [[ $# -gt 0 ]]; then
-  process "$1"
-else
-  while IFS= read -r -d '' src; do
-    process "$src"
-  done < <(find "$SRC_DIR" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.heic' \) -print0)
-fi
-
-echo ""
-echo "Total:"
-du -sh "$SRC_DIR" "$OUT_DIR" 2>/dev/null | awk '{printf "  %-40s %s\n", $2, $1}'
+done
