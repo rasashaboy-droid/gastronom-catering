@@ -78,7 +78,7 @@ const HeroSplit = () => {
         position:'relative',
         minHeight: 550,
       }}>
-        <img src="images/hero.jpeg" alt="Фуршетный стол с канапе" style={{position:'absolute', inset: 0, width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
+        <img src="/images/hero.jpeg" alt="Фуршетный стол с канапе" style={{position:'absolute', inset: 0, width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
         <div style={{
           position:'absolute', top: 'clamp(16px, 1.6vw, 22px)', left: 'clamp(16px, 1.6vw, 22px)',
           display:'inline-flex', alignItems:'center', gap: 8,
@@ -91,12 +91,12 @@ const HeroSplit = () => {
           fontSize: 13, fontWeight: 600,
           boxShadow: '0 1px 0 rgba(255,255,255,0.65) inset, 0 8px 22px -8px rgba(28,20,15,0.18)',
         }}>
-          <img src="images/halal.png" alt="Halal" width="18" height="18" style={{display:'block', objectFit:'contain'}}/>
+          <img src="/images/halal.png" alt="Halal" width="18" height="18" style={{display:'block', objectFit:'contain'}}/>
           Халяль по запросу
         </div>
 
         {/* Bottom glass plate with label + CTA */}
-        <a href="#formats" style={{
+        <a href="/formats/gastroboxes.html" className="hero-glass-plate" style={{
           position:'absolute', left: 'calc(clamp(24px, 3.4vw, 48px) - 24px)', right: 'calc(clamp(24px, 3.4vw, 48px) - 24px)', bottom: 'calc(clamp(24px, 3.4vw, 48px) - 24px)',
           display:'flex', alignItems:'center', justifyContent:'space-between', gap: 12,
           padding: '13px 10px 13px 20px',

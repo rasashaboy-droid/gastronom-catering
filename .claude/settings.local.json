@@ -51,7 +51,9 @@
       "Bash(grep -E \"^s[0-9]+\\\\.jpg$\")",
       "Bash(grep -v '^optimized$')",
       "Bash(grep -vE '^\\(hero\\\\.jpeg|logo\\\\.png|halal\\\\.png\\)$')",
-      "Bash(grep -v '^\\\\.$\\\\|^\\\\.\\\\.$\\\\|^optimized$')"
+      "Bash(grep -v '^\\\\.$\\\\|^\\\\.\\\\.$\\\\|^optimized$')",
+      "Bash(python3 -c ' *)",
+      "Bash(python3)"
     ]
   }
 }

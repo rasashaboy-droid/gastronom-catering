@@ -1,6 +1,6 @@
 // Main app — nav + sections
 
-const Nav = () => {
+const Nav = ({ isFormatPage = false } = {}) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -10,12 +10,15 @@ const Nav = () => {
 
   const close = () => setMenuOpen(false);
 
+  // На форматных страницах секции "Форматы" и "Расчёт" тоже есть — ссылки локальные
+  const logoHref = isFormatPage ? '/' : '#';
+
   return (
     <>
       <nav className="nav">
         <div className="nav-inner glass">
-          <a href="#" className="logo">
-            <img src="images/logo.png" alt="Gastronom Catering" className="logo-img"/>
+          <a href={logoHref} className="logo">
+            <img src="/images/logo.png" alt="Gastronom Catering" className="logo-img"/>
             <span className="logo-text">
               <span className="logo-text-main">GASTRONOM</span>
               <span className="logo-text-sub">CATERING</span>
@@ -120,5 +123,11 @@ const App = () => {
   );
 };
 
+const Root = () => {
+  // Форматная страница устанавливает window.__FORMAT__ = '<slug>' до загрузки jsx
+  if (window.__FORMAT__) return <FormatPage/>;
+  return <App/>;
+};
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App/>);
+root.render(<Root/>);
