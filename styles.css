@@ -229,6 +229,25 @@
     box-shadow: 0 10px 24px -8px rgba(233,30,76,0.55), inset 0 1px 0 rgba(255,255,255,0.3);
   }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -8px rgba(233,30,76,0.7), inset 0 1px 0 rgba(255,255,255,0.3); }
+  .btn-primary:disabled,
+  .btn-primary[disabled] {
+    background: var(--ink-15) !important;
+    color: var(--ink-60) !important;
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+  }
+
+  .cart-checkout-col {
+    flex: 1 1 auto;
+    min-width: 220px;
+  }
+  .cart-checkout-btn {
+    width: 100%;
+    padding: 14px 28px !important;
+    font-size: 15px !important;
+    justify-content: center;
+  }
   .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink-15); }
   .btn-ghost:hover { background: var(--ink); color: var(--cream-50); border-color: var(--ink); }
   .btn-light { background: var(--cream-50); color: var(--ink); box-shadow: 0 8px 20px -6px rgba(28,20,15,0.15); }

@@ -4,10 +4,17 @@ const FormatPage = () => {
   const slug = window.__FORMAT__;
   const data = FORMATS_DATA.find(f => f.slug === slug);
   const [quoteOpen, setQuoteOpen] = React.useState(false);
+  const hash = useHashRoute();
+  const isCart = hash === '#/cart';
 
   React.useEffect(() => {
     if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
-  }, []);
+    if (isCart) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = prev; };
+    }
+  }, [isCart]);
 
   React.useEffect(() => {
     window.openQuoteModal = () => setQuoteOpen(true);
@@ -24,7 +31,7 @@ const FormatPage = () => {
   }
 
   return (
-    <div data-screen-label={`Format: ${data.name}`}>
+    <div data-screen-label={isCart ? 'Cart' : `Format: ${data.name}`}>
       <style>{`
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(12px); }
@@ -34,15 +41,33 @@ const FormatPage = () => {
       <Nav isFormatPage={true}/>
       <FormatHero data={data}/>
       <StatsBand/>
-      <Advantages label="01 · Почему мы"/>
-      <Process label="02 · Как это работает"/>
-      <ConsultCard/>
-      <MenuHighlights label="03 · Меню"/>
-      <FAQ label="04 · Вопросы"/>
-      <QuizCalc/>
-      <Formats label="05 · Форматы"/>
+      {slug === 'gastroboxes' ? (
+        <>
+          <MenuHighlights label="01 · Меню"/>
+          <Advantages label="02 · Почему мы"/>
+          <Process label="03 · Как это работает"/>
+          <ConsultCard/>
+          <FAQ label="04 · Вопросы"/>
+          <QuizCalc/>
+          <Formats label="05 · Форматы"/>
+        </>
+      ) : (
+        <>
+          <Advantages label="01 · Почему мы"/>
+          <Process label="02 · Как это работает"/>
+          <ConsultCard/>
+          <MenuHighlights label="03 · Меню"/>
+          <FAQ label="04 · Вопросы"/>
+          <QuizCalc/>
+          <Formats label="05 · Форматы"/>
+        </>
+      )}
       <FinalCTA/>
       <Footer/>
+
+      <div className={'cart-overlay' + (isCart ? ' cart-overlay--visible' : '')} aria-hidden={!isCart}>
+        <CartPage/>
+      </div>
 
       <FloatingCartButton/>
       {quoteOpen && <QuoteModal onClose={() => setQuoteOpen(false)}/>}

@@ -102,7 +102,10 @@ const Formats = ({ label = '01 · Форматы' } = {}) => {
     { title: 'Девичник / Мальчишник',sub: 'от 1 000 ₽/чел', color: 'var(--cream-200)',  icon: 'Wine',            iconColor: 'var(--coral)',   img: 'бокалы и закуски',         imgVariant: 'peach', photo: ASSET('/images/optimized/s9-1200.jpg'), href: ASSET('/formats/devichnik-malchishnik.html') },
   ];
 
-  const [active, setActive] = React.useState(0);
+  // active = индекс с подсветкой пилюли и показом фото (null — ничего не подсвечено)
+  // shownIdx = индекс фото, которое сейчас видно (фото остаётся показанным даже если пилюля больше не подсвечена)
+  const [active, setActive] = React.useState(null);
+  const shownIdx = active != null ? active : 0;
 
   return (
     <section style={{padding: '60px 0 30px'}} id="formats">
@@ -182,10 +185,10 @@ const Formats = ({ label = '01 · Форматы' } = {}) => {
                 style={{
                   position:'absolute', inset: 0,
                   display:'block',
-                  opacity: active === i ? 1 : 0,
-                  transform: active === i ? 'scale(1)' : 'scale(1.04)',
+                  opacity: shownIdx === i ? 1 : 0,
+                  transform: shownIdx === i ? 'scale(1)' : 'scale(1.04)',
                   transition: 'opacity .45s ease, transform .8s ease',
-                  pointerEvents: active === i ? 'auto' : 'none',
+                  pointerEvents: shownIdx === i ? 'auto' : 'none',
                   overflow: 'hidden',
                 }}
               >
@@ -213,18 +216,18 @@ const Formats = ({ label = '01 · Форматы' } = {}) => {
               pointerEvents: 'none',
             }}>
               <div>
-                {formats[active].tag && (
+                {formats[shownIdx].tag && (
                   <span className="chip" style={{
                     background: 'rgba(255,249,241,0.95)', color: 'var(--ink)',
                     fontSize: 10, padding: '5px 9px', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600,
                     marginBottom: 10,
                   }}>
                     <span className="chip-dot" style={{background:'var(--tomato)'}}></span>
-                    {formats[active].tag}
+                    {formats[shownIdx].tag}
                   </span>
                 )}
                 <div className="display" style={{fontFamily:'Unbounded, sans-serif', fontSize: 'clamp(26px, 2.6vw, 36px)', fontWeight: 600, letterSpacing:'-0.02em', lineHeight: 1.05, marginTop: 8}}>
-                  {formats[active].title}
+                  {formats[shownIdx].title}
                 </div>
               </div>
               <div style={{
@@ -597,25 +600,25 @@ const MenuHighlights = ({ label = '03 · Меню' } = {}) => {
   ];
   const items = {
     canape: [
-      { name: 'Канапе «Моцарелла и черри»', price: 110, weight: '30 г', desc: 'Моцарелла, томаты, соус песто.', photo: ASSET('/images/Канапе черри моцарелла.jpeg') },
-      { name: 'Канапе «Старорусское»', price: 90, weight: '30 г', desc: 'Филе сельди с луком на бородинском хлебе.', photo: ASSET('/images/Канапе старорусское.jpeg') },
-      { name: 'Канапе «Тигровая креветка с черри»', price: 135, weight: '30 г', desc: 'Тигровая креветка, томаты черри, соус «азиатский».', photo: ASSET('/images/Канапе тигровая креветка с черри.jpeg') },
-      { name: 'Канапе «Тигровая креветка в панировке»', price: 135, weight: '40 г', desc: 'Тигровая креветка в панировке, соус спайс.', photo: ASSET('/images/Канапе тигровая креветка в панировке.jpeg') },
-      { name: 'Канапе «Ростбиф с горчичным соусом»', price: 150, weight: '30 г', desc: 'Ростбиф медиум, медово-горчичный соус, корнишон.', photo: ASSET('/images/Канапе с ростбифом.jpeg') },
-      { name: 'Канапе «Казылык с вяленым томатом»', price: 155, weight: '30 г', desc: 'Казылык, вяленый томат.', photo: ASSET('/images/Канапе с казылыком.jpeg') },
-      { name: 'Канапе «Красная икра на сендвичном хлебе»', price: 170, weight: '40 г', desc: 'Хлеб сендвичный, красная икра, масло сливочное.', photo: ASSET('/images/Канапе с красной икрой.png') },
-      { name: 'Канапе «Фрукты в шоколаде»', price: 155, weight: '50 г', desc: 'Клубника, мандарин, банан, шоколад.', photo: ASSET('/images/Канапе фрукты в шоколаде.png') },
-      { name: 'Канапе «Сыр и виноград»', price: 75, weight: '30 г', desc: 'Виноград, сыр, грецкий орех.', photo: ASSET('/images/Канапе сыр виноград.png') },
+      { name: 'Канапе «Моцарелла и черри»', price: 110, weight: '30 г', desc: 'Моцарелла, томаты, соус песто.', photo: ASSET('/images/Канапе черри моцарелла.jpeg'), step: 10 },
+      { name: 'Канапе «Старорусское»', price: 90, weight: '30 г', desc: 'Филе сельди с луком на бородинском хлебе.', photo: ASSET('/images/Канапе старорусское.jpeg'), step: 10 },
+      { name: 'Канапе «Тигровая креветка с черри»', price: 135, weight: '30 г', desc: 'Тигровая креветка, томаты черри, соус «азиатский».', photo: ASSET('/images/Канапе тигровая креветка с черри.jpeg'), step: 10 },
+      { name: 'Канапе «Тигровая креветка в панировке»', price: 135, weight: '40 г', desc: 'Тигровая креветка в панировке, соус спайс.', photo: ASSET('/images/Канапе тигровая креветка в панировке.jpeg'), step: 10 },
+      { name: 'Канапе «Ростбиф с горчичным соусом»', price: 150, weight: '30 г', desc: 'Ростбиф медиум, медово-горчичный соус, корнишон.', photo: ASSET('/images/Канапе с ростбифом.jpeg'), step: 10 },
+      { name: 'Канапе «Казылык с вяленым томатом»', price: 155, weight: '30 г', desc: 'Казылык, вяленый томат.', photo: ASSET('/images/Канапе с казылыком.jpeg'), step: 10 },
+      { name: 'Канапе «Красная икра на сендвичном хлебе»', price: 170, weight: '40 г', desc: 'Хлеб сендвичный, красная икра, масло сливочное.', photo: ASSET('/images/Канапе с красной икрой.png'), step: 10 },
+      { name: 'Канапе «Фрукты в шоколаде»', price: 155, weight: '50 г', desc: 'Клубника, мандарин, банан, шоколад.', photo: ASSET('/images/Канапе фрукты в шоколаде.png'), step: 10 },
+      { name: 'Канапе «Сыр и виноград»', price: 75, weight: '30 г', desc: 'Виноград, сыр, грецкий орех.', photo: ASSET('/images/Канапе сыр виноград.png'), step: 10 },
     ],
     bruschetta: [
-      { name: 'Брускетта с черри, песто, моцарелла', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, соус песто, сыр моцарелла.', photo: ASSET('/images/Брускетта черри песто моцарелла.jpeg') },
-      { name: 'Брускетта с подкопченной индейкой', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, лист салата.', photo: ASSET('/images/Брускетта с подкопченной индейкой.jpeg') },
-      { name: 'Брускетта с ростбифом и горчичным соусом', price: 170, weight: '40 г', desc: 'Чиабатта, ростбиф медиум, томаты черри, соус из зернистой горчицы.', photo: ASSET('/images/Брускетта с ростбифом.jpeg') },
-      { name: 'Брускетта с лососем слабосолёным', price: 180, weight: '40 г', desc: 'Чиабатта, лосось слабосолёный, сливочный сыр, авокадо.', photo: ASSET('/images/Брускетта с лососем слабосоленым.jpeg') },
-      { name: 'Брускетта с тар-таром из лосося', price: 180, weight: '50 г', desc: 'Чиабатта, лосось с/с, огурцы свежие, сыр сливочный, яйцо перепелиное, имитация чёрной икры.', photo: ASSET('/images/Брускетта с тар-таром из слабосоленого лосося.jpeg') },
-      { name: 'Брускетта с тигровой креветкой и салатом чука', price: 170, weight: '40 г', desc: 'Чиабатта, тигровая креветка, салат чука, соус азиатский, кунжут.', photo: ASSET('/images/Брускетта с тигровой креветкой и салатом чука.jpeg') },
-      { name: 'Брускетта с сыром дор блю и грушей', price: 180, weight: '40 г', desc: 'Чиабатта, сыр дор блю, груши, мёд, орехи.', photo: ASSET('/images/Брускетта с сыром дор блю и с грушей.jpeg') },
-      { name: 'Брускетта овощи гриль с мягким сыром', price: 170, weight: '40 г', desc: 'Чиабатта, мягкий сыр, печёные овощи, зелень.', photo: ASSET('/images/Брускетта овощи гриль.jpeg') },
+      { name: 'Брускетта с черри, песто, моцарелла', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, соус песто, сыр моцарелла.', photo: ASSET('/images/Брускетта черри песто моцарелла.jpeg'), step: 5 },
+      { name: 'Брускетта с подкопченной индейкой', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, лист салата.', photo: ASSET('/images/Брускетта с подкопченной индейкой.jpeg'), step: 5 },
+      { name: 'Брускетта с ростбифом и горчичным соусом', price: 170, weight: '40 г', desc: 'Чиабатта, ростбиф медиум, томаты черри, соус из зернистой горчицы.', photo: ASSET('/images/Брускетта с ростбифом.jpeg'), step: 5 },
+      { name: 'Брускетта с лососем слабосолёным', price: 180, weight: '40 г', desc: 'Чиабатта, лосось слабосолёный, сливочный сыр, авокадо.', photo: ASSET('/images/Брускетта с лососем слабосоленым.jpeg'), step: 5 },
+      { name: 'Брускетта с тар-таром из лосося', price: 180, weight: '50 г', desc: 'Чиабатта, лосось с/с, огурцы свежие, сыр сливочный, яйцо перепелиное, имитация чёрной икры.', photo: ASSET('/images/Брускетта с тар-таром из слабосоленого лосося.jpeg'), step: 5 },
+      { name: 'Брускетта с тигровой креветкой и салатом чука', price: 170, weight: '40 г', desc: 'Чиабатта, тигровая креветка, салат чука, соус азиатский, кунжут.', photo: ASSET('/images/Брускетта с тигровой креветкой и салатом чука.jpeg'), step: 5 },
+      { name: 'Брускетта с сыром дор блю и грушей', price: 180, weight: '40 г', desc: 'Чиабатта, сыр дор блю, груши, мёд, орехи.', photo: ASSET('/images/Брускетта с сыром дор блю и с грушей.jpeg'), step: 5 },
+      { name: 'Брускетта овощи гриль с мягким сыром', price: 170, weight: '40 г', desc: 'Чиабатта, мягкий сыр, печёные овощи, зелень.', photo: ASSET('/images/Брускетта овощи гриль.jpeg'), step: 5 },
     ],
     cold: [
       { name: 'Мясное ассорти', price: 1050, weight: '375 г', desc: 'Говядина европейская, сырокопчёные деликатесы, буженина из индейки, казылык.', photo: ASSET('/images/Мясное ассорти.png') },
@@ -788,6 +791,15 @@ const MenuDrawer = ({ item, onClose }) => {
               background: 'var(--cream-100)', fontSize: 12, color: 'var(--ink-60)',
             }}>
               {item.weight}
+            </div>
+          )}
+          {item.step > 1 && (
+            <div style={{
+              marginTop: 14,
+              fontSize: 13,
+              color: 'var(--ink-60)',
+            }}>
+              Минимальный заказ от {item.step} шт.
             </div>
           )}
         </div>
@@ -1142,7 +1154,7 @@ const FAQ = ({ label = '05 · Вопросы' } = {}) => {
               Не нашли ответ? Напишите в мессенджер — отвечаем за 15 минут.
             </p>
             <a href="#cta" className="btn btn-ghost" style={{marginTop: 24}}>
-              <Icon.Phone size={16}/> Написать менеджеру
+              <LucideIcon name="Send" size={16} strokeWidth={2}/> Написать менеджеру
             </a>
           </div>
 

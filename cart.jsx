@@ -193,9 +193,19 @@ const CartPage = () => {
                   {total.toLocaleString('ru-RU')} ₽
                 </div>
               </div>
-              <button className="btn btn-primary" style={{padding:'14px 28px', fontSize: 15}}>
-                Оформить заказ
-              </button>
+              <div className="cart-checkout-col" style={{display:'flex', flexDirection:'column', alignItems:'stretch', gap: 8}}>
+                <button
+                  className="btn btn-primary cart-checkout-btn"
+                  disabled={total < 5000}
+                >
+                  Оформить заказ
+                </button>
+                {total < 5000 && (
+                  <div style={{fontSize: 13, color:'var(--tomato)', fontWeight: 500, textAlign:'center'}}>
+                    Минимальный заказ от 5000 ₽
+                  </div>
+                )}
+              </div>
             </div>
           </>
         )}
@@ -249,10 +259,11 @@ const QtyStepper = ({ item, size = 'md' }) => {
   const cart = useCart();
   const qty = cart.get(item.name);
   const active = qty > 0;
+  const step = item.step || 1;
   const addLabel = 'В корзину';
 
-  const onAdd = (e) => { e.stopPropagation(); cart.add(item, 1); };
-  const onSub = (e) => { e.stopPropagation(); cart.add(item, -1); };
+  const onAdd = (e) => { e.stopPropagation(); cart.add(item, step); };
+  const onSub = (e) => { e.stopPropagation(); cart.add(item, -step); };
 
   return (
     <div
