@@ -7,7 +7,12 @@ const FORMATS_DATA = [
     name: 'Гастробоксы',
     nameAcc: 'гастробоксы',          // "Кейтеринг на ___ в Казани"
     nameForYour: 'ваших гастробоксов', // "...для ___..."
-    heroTitle: (<>Гастробоксы<br/><em className="accent-italic">с доставкой</em><br/>в Казани</>),
+    heroTitle: (<>Кейтеринг в боксах<br/><em className="accent-italic">с доставкой</em> в Казани</>),
+    heroSubtitle: 'Выберите готовые боксы или соберите свой набор — доставим к нужному времени в аккуратной упаковке',
+    primaryCtaText: 'Заказать',
+    ghostCtaText: 'Выбрать боксы',
+    glassPlateKicker: 'Выбрать из меню',
+    glassPlateTitle: 'Готовые наборы и боксы',
     photo: ASSET('/images/gastrobox.jpg'),
     metaTitle: 'Кейтеринг гастробоксами в Казани — Gastronom Catering',
     metaDescription: 'Гастробоксы с доставкой в Казани. Подберем меню, подачу и формат обслуживания под ваше мероприятие.',

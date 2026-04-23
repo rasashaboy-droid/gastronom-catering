@@ -104,11 +104,11 @@ const FormatHero = ({ data }) => {
               maxWidth: 480,
               lineHeight: 1.5,
             }}>
-              Расскажите о вашем событии — подберем меню, подачу и формат обслуживания для {data.nameForYour} с учетом деталей мероприятия и Ваших пожеланий.
+              {data.heroSubtitle || `Расскажите о вашем событии — подберем меню, подачу и формат обслуживания для ${data.nameForYour} с учетом деталей мероприятия и Ваших пожеланий.`}
             </p>
             <div className="hero-cta" style={{display:'flex', gap: 14, flexWrap:'wrap', alignItems:'center'}}>
-              <button type="button" onClick={() => window.openQuoteModal && window.openQuoteModal()} className="btn btn-primary hero-cta__primary">Подобрать меню</button>
-              <a href="#menu" className="btn btn-glass hero-cta__ghost" style={{background: '#F9F5EB'}}>Меню <Icon.Arrow/></a>
+              <button type="button" onClick={() => window.openQuoteModal && window.openQuoteModal()} className="btn btn-primary hero-cta__primary">{data.primaryCtaText || 'Подобрать меню'}</button>
+              <a href="#menu" className="btn btn-glass hero-cta__ghost" style={{background: '#F9F5EB'}}>{data.ghostCtaText || 'Меню'} <Icon.Arrow/></a>
             </div>
           </div>
 
@@ -156,8 +156,8 @@ const FormatHero = ({ data }) => {
               boxShadow: '0 1px 0 rgba(255,255,255,0.7) inset, 0 8px 22px -8px rgba(28,20,15,0.18)',
             }}>
               <div style={{minWidth: 0}}>
-                <div className="mono" style={{fontSize: 11, textTransform:'uppercase', letterSpacing:'0.12em', color:'var(--ink-60)', lineHeight: 1}}>Популярно</div>
-                <div style={{fontSize: 15, fontWeight: 600, marginTop: 4, lineHeight: 1.2, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis'}}>Гастробоксы с доставкой</div>
+                <div className="mono" style={{fontSize: 11, textTransform:'uppercase', letterSpacing:'0.12em', color:'var(--ink-60)', lineHeight: 1}}>{data.glassPlateKicker || 'Популярно'}</div>
+                <div style={{fontSize: 15, fontWeight: 600, marginTop: 4, lineHeight: 1.2, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis'}}>{data.glassPlateTitle || 'Гастробоксы с доставкой'}</div>
               </div>
               <span style={{
                 flexShrink: 0,
