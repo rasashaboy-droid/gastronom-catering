@@ -70,7 +70,7 @@ const FormatPage = () => {
       </div>
 
       <FloatingCartButton/>
-      {quoteOpen && <QuoteModal onClose={() => setQuoteOpen(false)}/>}
+      {quoteOpen && <QuoteModal variant={slug === 'gastroboxes' ? 'gastroboxes' : 'menu'} onClose={() => setQuoteOpen(false)}/>}
     </div>
   );
 };

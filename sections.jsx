@@ -811,11 +811,25 @@ const MenuDrawer = ({ item, onClose }) => {
   );
 };
 
-const QuoteModal = ({ onClose }) => {
+const QuoteModal = ({ onClose, variant = 'price' }) => {
   const [closing, setClosing] = React.useState(false);
   const [name, setName] = React.useState('');
   const [phone, setPhone] = React.useState('');
   const [consent, setConsent] = React.useState(false);
+
+  const preset = variant === 'gastroboxes' ? {
+    title: (<>Закажите гастробоксы на Ваше <em className="accent-italic">мероприятие</em></>),
+    subtitle: 'Оставьте ваши контакты — сориентируем по меню или поможем составить индивидуальный набор',
+    submit: 'Отправить',
+  } : variant === 'menu' ? {
+    title: (<>Получите индивидуальное <em className="accent-italic">меню</em></>),
+    subtitle: 'Оставьте свои контакты — подберем меню и сориентируем по стоимости.',
+    submit: 'Получить меню',
+  } : {
+    title: (<>Получите расчет <em className="accent-italic">стоимости</em></>),
+    subtitle: 'Оставьте свои контакты — свяжемся с Вами и сориентируем по стоимости',
+    submit: 'Получить расчет',
+  };
 
   const requestClose = React.useCallback(() => setClosing(true), []);
 
@@ -852,10 +866,10 @@ const QuoteModal = ({ onClose }) => {
         <div className="quote-modal__head">
           <div>
             <h3 id="quoteModalTitle" className="display" style={{fontFamily:'Unbounded, sans-serif', fontSize:'clamp(22px, 2.4vw, 26px)', fontWeight: 700, lineHeight: 1.15, margin: 0, letterSpacing:'-0.02em'}}>
-              Получите расчет <em className="accent-italic">стоимости</em>
+              {preset.title}
             </h3>
             <p style={{marginTop: 10, fontSize: 14, lineHeight: 1.45, color:'var(--ink-60)'}}>
-              Оставьте свои контакты — свяжемся с Вами и сориентируем по стоимости
+              {preset.subtitle}
             </p>
           </div>
           <button type="button" className="quote-modal__close" onClick={requestClose} aria-label="Закрыть">
@@ -899,7 +913,7 @@ const QuoteModal = ({ onClose }) => {
             className="btn btn-primary quote-submit"
             disabled={!canSubmit}
           >
-            Получить расчет <Icon.Arrow/>
+            {preset.submit} <Icon.Arrow/>
           </button>
         </div>
       </form>
