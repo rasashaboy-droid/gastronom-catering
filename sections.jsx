@@ -592,7 +592,7 @@ const LeadFormPane = ({ phone, setPhone, agree, setAgree, onSubmit, status = 'id
       <label style={{display:'flex', alignItems:'flex-start', gap: 10, marginTop: 14, fontSize: 12, lineHeight: 1.45, color:'var(--ink-60)', cursor:'pointer'}}>
         <input type="checkbox" checked={agree} onChange={e => setAgree(e.target.checked)}
           style={{marginTop: 2, accentColor:'var(--tomato)', flexShrink: 0, width: 16, height: 16}}/>
-        <span>Я согласен на обработку персональных данных согласно <a href="#" className="policy-link" onClick={(e) => e.stopPropagation()}>политике конфиденциальности</a></span>
+        <span>Я согласен на <a href={ASSET('/personal-data.html')} target="_blank" rel="noopener" className="policy-link" onClick={(e) => e.stopPropagation()}>обработку персональных данных</a> согласно <a href={ASSET('/privacy-policy.html')} target="_blank" rel="noopener" className="policy-link" onClick={(e) => e.stopPropagation()}>политике конфиденциальности</a></span>
       </label>
     </div>
   );
@@ -988,7 +988,7 @@ const QuoteModal = ({ onClose, variant = 'price' }) => {
                     <path d="M2.5 6.2L5 8.6L9.8 3.6"/>
                   </svg>
                 </span>
-                <span>Я согласен на обработку персональных данных согласно <a href="#" className="policy-link" onClick={(e) => e.stopPropagation()}>политике конфиденциальности</a></span>
+                <span>Я согласен на <a href={ASSET('/personal-data.html')} target="_blank" rel="noopener" className="policy-link" onClick={(e) => e.stopPropagation()}>обработку персональных данных</a> согласно <a href={ASSET('/privacy-policy.html')} target="_blank" rel="noopener" className="policy-link" onClick={(e) => e.stopPropagation()}>политике конфиденциальности</a></span>
               </label>
               {status === 'error' && (
                 <div style={{fontSize: 13, color: 'var(--tomato)', marginTop: -4}}>
@@ -1414,7 +1414,7 @@ const FinalCTA = () => {
                   <label style={{display:'flex', alignItems:'flex-start', gap: 10, marginTop: 14, fontSize: 12, lineHeight: 1.45, opacity: 0.7, cursor:'pointer'}}>
                     <input type="checkbox" checked={agree} onChange={e => setAgree(e.target.checked)}
                       style={{marginTop: 2, accentColor:'var(--tomato)', flexShrink: 0, width: 16, height: 16}}/>
-                    <span>Я согласен на обработку персональных данных согласно политике конфиденциальности</span>
+                    <span>Я согласен на <a href={ASSET('/personal-data.html')} target="_blank" rel="noopener" className="policy-link" onClick={(e) => e.stopPropagation()}>обработку персональных данных</a> согласно <a href={ASSET('/privacy-policy.html')} target="_blank" rel="noopener" className="policy-link" onClick={(e) => e.stopPropagation()}>политике конфиденциальности</a></span>
                   </label>
                 </>
               )}

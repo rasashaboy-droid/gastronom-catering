@@ -204,9 +204,10 @@ const FormatHero = ({ data }) => {
 // Небольшая карточка под Process: "Остались вопросы?"
 const ConsultCard = () => {
   const [phone, setPhone] = React.useState('');
+  const [consent, setConsent] = React.useState(false);
   const [status, setStatus] = React.useState('idle'); // idle | sending | sent | error
   const [errorMsg, setErrorMsg] = React.useState('');
-  const canSubmit = phone.replace(/\D/g, '').length >= 10 && status !== 'sending';
+  const canSubmit = phone.replace(/\D/g, '').length >= 10 && consent && status !== 'sending';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -265,6 +266,15 @@ const ConsultCard = () => {
               >
                 {status === 'sending' ? 'Отправляем…' : 'Получить консультацию'} {status !== 'sending' && <Icon.Arrow/>}
               </button>
+              <label className="quote-consent">
+                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}/>
+                <span className="quote-consent__box">
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2.5 6.2L5 8.6L9.8 3.6"/>
+                  </svg>
+                </span>
+                <span>Я согласен на <a href={ASSET('/personal-data.html')} target="_blank" rel="noopener" className="policy-link" onClick={(e) => e.stopPropagation()}>обработку персональных данных</a> согласно <a href={ASSET('/privacy-policy.html')} target="_blank" rel="noopener" className="policy-link" onClick={(e) => e.stopPropagation()}>политике конфиденциальности</a></span>
+              </label>
               {status === 'error' && (
                 <div style={{fontSize: 13, color: 'var(--tomato)', gridColumn: '1 / -1'}}>
                   {errorMsg}
