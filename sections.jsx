@@ -307,6 +307,8 @@ const QuizCalc = () => {
   const [phone, setPhone] = React.useState('');
   const [agree, setAgree] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
+  const [sendStatus, setSendStatus] = React.useState('idle'); // idle | sending | error
+  const [sendError, setSendError] = React.useState('');
 
   const steps = [
     {
@@ -503,7 +505,38 @@ const QuizCalc = () => {
                 <LeadFormPane
                   phone={phone} setPhone={setPhone}
                   agree={agree} setAgree={setAgree}
-                  onSubmit={() => { if (phone && agree) setSubmitted(true); }}
+                  status={sendStatus}
+                  errorMsg={sendError}
+                  onSubmit={async () => {
+                    if (!phone || !agree || sendStatus === 'sending') return;
+                    setSendStatus('sending');
+                    setSendError('');
+                    // Переводим значения квиза в человекочитаемые лейблы
+                    const budgetMap = {
+                      '600-1000': '600 – 1 000 ₽',
+                      '1000-1300': '1 000 – 1 300 ₽',
+                      '1300-1500': '1 300 – 1 500 ₽',
+                      'custom': 'Свой вариант',
+                    };
+                    try {
+                      await window.sendLead({
+                        source: 'quiz',
+                        phone: phone.trim(),
+                        quiz: {
+                          event: answers.event || '',
+                          people: answers.people,
+                          budget: budgetMap[answers.budget] || answers.budget || '',
+                        },
+                        format: window.currentFormatName() || '',
+                      });
+                      setSubmitted(true);
+                      setSendStatus('idle');
+                    } catch (err) {
+                      console.error('quiz sendLead failed:', err);
+                      setSendStatus('error');
+                      setSendError('Не удалось отправить. Попробуйте ещё раз или позвоните нам.');
+                    }
+                  }}
                 />
               )}
             </div>
@@ -514,8 +547,8 @@ const QuizCalc = () => {
   );
 };
 
-const LeadFormPane = ({ phone, setPhone, agree, setAgree, onSubmit }) => {
-  const valid = phone.replace(/\D/g, '').length >= 10 && agree;
+const LeadFormPane = ({ phone, setPhone, agree, setAgree, onSubmit, status = 'idle', errorMsg = '' }) => {
+  const valid = phone.replace(/\D/g, '').length >= 10 && agree && status !== 'sending';
   return (
     <div style={{display:'flex', flexDirection:'column', height:'100%'}}>
       <h3 className="display" style={{fontSize: 25, fontWeight: 600, letterSpacing:'-0.02em', lineHeight: 1.15}}>
@@ -541,13 +574,19 @@ const LeadFormPane = ({ phone, setPhone, agree, setAgree, onSubmit }) => {
         }}
       />
 
+      {status === 'error' && (
+        <div style={{fontSize: 13, color: 'var(--tomato)', marginBottom: 10}}>
+          {errorMsg || 'Не удалось отправить. Попробуйте ещё раз.'}
+        </div>
+      )}
+
       <button
         onClick={onSubmit}
         disabled={!valid}
         className="btn btn-primary"
         style={{ justifyContent:'center', opacity: valid ? 1 : 0.5, cursor: valid ? 'pointer' : 'default' }}
       >
-        Получить предложение <Icon.Arrow/>
+        {status === 'sending' ? 'Отправляем…' : 'Получить предложение'} {status !== 'sending' && <Icon.Arrow/>}
       </button>
 
       <label style={{display:'flex', alignItems:'flex-start', gap: 10, marginTop: 14, fontSize: 12, lineHeight: 1.45, color:'var(--ink-60)', cursor:'pointer'}}>
@@ -816,6 +855,9 @@ const QuoteModal = ({ onClose, variant = 'price' }) => {
   const [name, setName] = React.useState('');
   const [phone, setPhone] = React.useState('');
   const [consent, setConsent] = React.useState(false);
+  const [hp, setHp] = React.useState(''); // honeypot
+  const [status, setStatus] = React.useState('idle'); // idle | sending | sent | error
+  const [errorMsg, setErrorMsg] = React.useState('');
 
   const preset = variant === 'gastroboxes' ? {
     title: (<>Закажите гастробоксы на Ваше <em className="accent-italic">мероприятие</em></>),
@@ -839,16 +881,38 @@ const QuoteModal = ({ onClose, variant = 'price' }) => {
     return () => window.removeEventListener('keydown', onKey);
   }, [requestClose]);
 
+  // Автозакрытие после успеха
+  React.useEffect(() => {
+    if (status !== 'sent') return;
+    const t = setTimeout(() => requestClose(), 2500);
+    return () => clearTimeout(t);
+  }, [status, requestClose]);
+
   const handleAnimEnd = (e) => {
     if (closing && e.target === e.currentTarget) onClose();
   };
 
-  const canSubmit = name.trim().length > 0 && phone.trim().length > 0 && consent;
+  const canSubmit = name.trim().length > 0 && phone.trim().length > 0 && consent && status !== 'sending';
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!canSubmit) return;
-    requestClose();
+    setStatus('sending');
+    setErrorMsg('');
+    try {
+      await window.sendLead({
+        source: `quote-modal-${variant}`,
+        name: name.trim(),
+        phone: phone.trim(),
+        hp_field: hp,
+        format: window.currentFormatName() || '',
+      });
+      setStatus('sent');
+    } catch (err) {
+      console.error('sendLead failed:', err);
+      setStatus('error');
+      setErrorMsg('Не удалось отправить. Попробуйте ещё раз или позвоните нам.');
+    }
   };
 
   return (
@@ -879,42 +943,67 @@ const QuoteModal = ({ onClose, variant = 'price' }) => {
           </button>
         </div>
         <div className="quote-modal__body">
-          <label>
-            <span className="quote-field__label">Имя</span>
-            <input
-              className="quote-input"
-              type="text" autoComplete="name"
-              value={name} onChange={(e) => setName(e.target.value)}
-              placeholder="Как к вам обращаться?"
-              required
-            />
-          </label>
-          <label>
-            <span className="quote-field__label">Номер телефона</span>
-            <input
-              className="quote-input"
-              type="tel" autoComplete="tel"
-              value={phone} onChange={(e) => setPhone(e.target.value)}
-              placeholder="+7 (___) ___-__-__"
-              required
-            />
-          </label>
-          <label className="quote-consent">
-            <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}/>
-            <span className="quote-consent__box">
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M2.5 6.2L5 8.6L9.8 3.6"/>
-              </svg>
-            </span>
-            <span>Я согласен на обработку персональных данных согласно <a href="#" className="policy-link" onClick={(e) => e.stopPropagation()}>политике конфиденциальности</a></span>
-          </label>
-          <button
-            type="submit"
-            className="btn btn-primary quote-submit"
-            disabled={!canSubmit}
-          >
-            {preset.submit} <Icon.Arrow/>
-          </button>
+          {status === 'sent' ? (
+            <div style={{padding: '20px 0', textAlign:'center'}}>
+              <div className="display" style={{fontFamily:'Unbounded, sans-serif', fontSize: 22, fontWeight: 600, letterSpacing:'-0.02em', marginBottom: 10}}>
+                Спасибо! <em className="accent-italic">Заявка принята</em>
+              </div>
+              <div style={{color:'var(--ink-60)', fontSize: 14, lineHeight: 1.5}}>
+                Свяжемся с вами в течение часа.
+              </div>
+            </div>
+          ) : (
+            <>
+              <label>
+                <span className="quote-field__label">Имя</span>
+                <input
+                  className="quote-input"
+                  type="text" autoComplete="name"
+                  value={name} onChange={(e) => setName(e.target.value)}
+                  placeholder="Как к вам обращаться?"
+                  required
+                />
+              </label>
+              <label>
+                <span className="quote-field__label">Номер телефона</span>
+                <input
+                  className="quote-input"
+                  type="tel" autoComplete="tel"
+                  value={phone} onChange={(e) => setPhone(e.target.value)}
+                  placeholder="+7 (___) ___-__-__"
+                  required
+                />
+              </label>
+              {/* Honeypot — скрыто от людей, боты заполнят → бэкенд молча отбросит */}
+              <input
+                type="text" name="hp_field" tabIndex="-1" autoComplete="off"
+                value={hp} onChange={(e) => setHp(e.target.value)}
+                aria-hidden="true"
+                style={{position:'absolute', left:'-9999px', width: 1, height: 1, opacity: 0}}
+              />
+              <label className="quote-consent">
+                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}/>
+                <span className="quote-consent__box">
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2.5 6.2L5 8.6L9.8 3.6"/>
+                  </svg>
+                </span>
+                <span>Я согласен на обработку персональных данных согласно <a href="#" className="policy-link" onClick={(e) => e.stopPropagation()}>политике конфиденциальности</a></span>
+              </label>
+              {status === 'error' && (
+                <div style={{fontSize: 13, color: 'var(--tomato)', marginTop: -4}}>
+                  {errorMsg}
+                </div>
+              )}
+              <button
+                type="submit"
+                className="btn btn-primary quote-submit"
+                disabled={!canSubmit}
+              >
+                {status === 'sending' ? 'Отправляем…' : preset.submit} {status !== 'sending' && <Icon.Arrow/>}
+              </button>
+            </>
+          )}
         </div>
       </form>
     </>
@@ -1212,6 +1301,41 @@ const FAQ = ({ label = '05 · Вопросы' } = {}) => {
 
 // ---------- FINAL CTA ----------
 const FinalCTA = () => {
+  const [name, setName] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [agree, setAgree] = React.useState(false);
+  const [hp, setHp] = React.useState('');
+  const [status, setStatus] = React.useState('idle'); // idle | sending | sent | error
+  const [errorMsg, setErrorMsg] = React.useState('');
+
+  const canSubmit = name.trim().length > 0
+    && phone.replace(/\D/g, '').length >= 10
+    && agree
+    && status !== 'sending';
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!canSubmit) return;
+    setStatus('sending');
+    setErrorMsg('');
+    try {
+      await window.sendLead({
+        source: 'final-cta',
+        name: name.trim(),
+        phone: phone.trim(),
+        hp_field: hp,
+        format: window.currentFormatName() || '',
+      });
+      setStatus('sent');
+      setName('');
+      setPhone('');
+    } catch (err) {
+      console.error('final-cta sendLead failed:', err);
+      setStatus('error');
+      setErrorMsg('Не удалось отправить. Попробуйте ещё раз или позвоните нам.');
+    }
+  };
+
   return (
     <section id="cta" style={{padding: '60px 0 40px'}}>
       <div className="wrap">
@@ -1241,32 +1365,60 @@ const FinalCTA = () => {
                 Свяжитесь с нами удобным способом или оставьте заявку — ответим в течение часа.
               </p>
               <div className="cta-contact-row" style={{display:'flex', gap: 10, marginTop: 28, flexWrap:'wrap'}}>
-                <button className="btn btn-primary">
+                <button className="btn btn-primary" type="button">
                   Telegram <Icon.Arrow/>
                 </button>
-                <button className="btn" style={{background:'rgba(255,255,255,0.1)', color:'var(--cream-50)', border:'1px solid rgba(255,255,255,0.2)'}}>
+                <button className="btn" type="button" style={{background:'rgba(255,255,255,0.1)', color:'var(--cream-50)', border:'1px solid rgba(255,255,255,0.2)'}}>
                   <Icon.Phone size={16}/> +7 (993) 418-53-43
                 </button>
               </div>
             </div>
 
-            <div className="glass-dark" style={{
+            <form className="glass-dark" onSubmit={handleSubmit} style={{
               borderRadius: 28, padding: 28,
               background: 'rgba(255,255,255,0.06)',
             }}>
-              <div className="mono" style={{fontSize: 'clamp(9.5px, 2.8vw, 12px)', opacity: 0.6, marginBottom: 16, letterSpacing:'0.08em', textTransform:'uppercase', whiteSpace:'nowrap'}}>
-                Введите ваши данные
-              </div>
-              <input placeholder="Ваше имя" style={ctaInput}/>
-              <input placeholder="Номер телефона" style={ctaInput}/>
-              <button className="btn btn-primary" style={{width:'100%', justifyContent:'center', marginTop: 8}}>
-                Отправить <Icon.Arrow/>
-              </button>
-              <label style={{display:'flex', alignItems:'flex-start', gap: 10, marginTop: 14, fontSize: 12, lineHeight: 1.45, opacity: 0.7, cursor:'pointer'}}>
-                <input type="checkbox" style={{marginTop: 2, accentColor:'var(--tomato)', flexShrink: 0, width: 16, height: 16}}/>
-                <span>Я согласен на обработку персональных данных согласно политике конфиденциальности</span>
-              </label>
-            </div>
+              {status === 'sent' ? (
+                <div style={{padding: '14px 0'}}>
+                  <div className="display" style={{fontFamily:'Unbounded, sans-serif', fontSize: 24, fontWeight: 600, letterSpacing:'-0.02em', marginBottom: 10}}>
+                    Спасибо! <em className="accent-italic" style={{color:'var(--yellow)'}}>Заявка принята</em>
+                  </div>
+                  <div style={{opacity: 0.75, fontSize: 14, lineHeight: 1.5}}>
+                    Мы свяжемся с вами в течение часа.
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="mono" style={{fontSize: 'clamp(9.5px, 2.8vw, 12px)', opacity: 0.6, marginBottom: 16, letterSpacing:'0.08em', textTransform:'uppercase', whiteSpace:'nowrap'}}>
+                    Введите ваши данные
+                  </div>
+                  <input placeholder="Ваше имя" style={ctaInput}
+                    value={name} onChange={e => setName(e.target.value)} autoComplete="name"/>
+                  <input placeholder="Номер телефона" style={ctaInput}
+                    type="tel" value={phone} onChange={e => setPhone(e.target.value)} autoComplete="tel"/>
+                  {/* Honeypot */}
+                  <input type="text" name="hp_field" tabIndex="-1" autoComplete="off"
+                    value={hp} onChange={e => setHp(e.target.value)}
+                    aria-hidden="true"
+                    style={{position:'absolute', left:'-9999px', width: 1, height: 1, opacity: 0}}/>
+                  {status === 'error' && (
+                    <div style={{fontSize: 13, color: 'var(--coral)', marginBottom: 10}}>
+                      {errorMsg}
+                    </div>
+                  )}
+                  <button type="submit" className="btn btn-primary"
+                    disabled={!canSubmit}
+                    style={{width:'100%', justifyContent:'center', marginTop: 8, opacity: canSubmit ? 1 : 0.5}}>
+                    {status === 'sending' ? 'Отправляем…' : 'Отправить'} {status !== 'sending' && <Icon.Arrow/>}
+                  </button>
+                  <label style={{display:'flex', alignItems:'flex-start', gap: 10, marginTop: 14, fontSize: 12, lineHeight: 1.45, opacity: 0.7, cursor:'pointer'}}>
+                    <input type="checkbox" checked={agree} onChange={e => setAgree(e.target.checked)}
+                      style={{marginTop: 2, accentColor:'var(--tomato)', flexShrink: 0, width: 16, height: 16}}/>
+                    <span>Я согласен на обработку персональных данных согласно политике конфиденциальности</span>
+                  </label>
+                </>
+              )}
+            </form>
           </div>
         </div>
       </div>

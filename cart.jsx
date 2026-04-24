@@ -92,6 +92,42 @@ const useHashRoute = () => {
   return hash;
 };
 
+// ============ FLOATING CONTACT BUTTONS (Telegram + Phone) ============
+const FloatingContactBar = () => {
+  const hash = useHashRoute();
+  const hidden = hash === '#/cart';
+  const hiddenCls = hidden ? ' contact-fab--hidden' : '';
+  return (
+    <>
+      <a
+        href="tel:+79934185343"
+        className={'contact-fab contact-fab--phone' + hiddenCls}
+        aria-hidden={hidden}
+        tabIndex={hidden ? -1 : 0}
+        aria-label="Позвонить"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M22 16.9v3a2 2 0 0 1-2.2 2 20 20 0 0 1-8.6-3 20 20 0 0 1-6-6 20 20 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.4 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c1 .3 1.9.5 2.9.6A2 2 0 0 1 22 17z"/>
+        </svg>
+      </a>
+      <a
+        href="https://t.me/gastronom_catering"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={'contact-fab contact-fab--telegram' + hiddenCls}
+        aria-hidden={hidden}
+        tabIndex={hidden ? -1 : 0}
+        aria-label="Написать в Telegram"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{transform: 'translate(-1.5px, 1.5px)'}}>
+          <path d="m22 2-7 20-4-9-9-4 20-7z"/>
+          <path d="M22 2 11 13"/>
+        </svg>
+      </a>
+    </>
+  );
+};
+
 // ============ FLOATING CART BUTTON ============
 const FloatingCartButton = () => {
   const cart = useCart();
@@ -299,4 +335,4 @@ const QtyStepper = ({ item, size = 'md' }) => {
   );
 };
 
-Object.assign(window, { useCart, useHashRoute, FloatingCartButton, CartPage, QtyStepper });
+Object.assign(window, { useCart, useHashRoute, FloatingCartButton, FloatingContactBar, CartPage, QtyStepper });

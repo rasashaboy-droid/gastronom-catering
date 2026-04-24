@@ -54,7 +54,8 @@
       "Bash(grep -v '^\\\\.$\\\\|^\\\\.\\\\.$\\\\|^optimized$')",
       "Bash(python3 -c ' *)",
       "Bash(python3)",
-      "Bash(grep -iE '^\\(gastrobox|svadba|detskiy|devichnik|birthday\\)\\\\.jpg$')"
+      "Bash(grep -iE '^\\(gastrobox|svadba|detskiy|devichnik|birthday\\)\\\\.jpg$')",
+      "Bash(node -e ' *)"
     ]
   }
 }

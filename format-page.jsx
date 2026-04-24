@@ -69,6 +69,7 @@ const FormatPage = () => {
         <CartPage/>
       </div>
 
+      <FloatingContactBar/>
       <FloatingCartButton/>
       {quoteOpen && <QuoteModal variant={slug === 'gastroboxes' ? 'gastroboxes' : 'menu'} onClose={() => setQuoteOpen(false)}/>}
     </div>
@@ -203,12 +204,28 @@ const FormatHero = ({ data }) => {
 // Небольшая карточка под Process: "Остались вопросы?"
 const ConsultCard = () => {
   const [phone, setPhone] = React.useState('');
-  const canSubmit = phone.replace(/\D/g, '').length >= 10;
+  const [status, setStatus] = React.useState('idle'); // idle | sending | sent | error
+  const [errorMsg, setErrorMsg] = React.useState('');
+  const canSubmit = phone.replace(/\D/g, '').length >= 10 && status !== 'sending';
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!canSubmit) return;
-    // позже: отправка
+    setStatus('sending');
+    setErrorMsg('');
+    try {
+      await window.sendLead({
+        source: 'consult',
+        phone: phone.trim(),
+        format: window.currentFormatName() || '',
+      });
+      setStatus('sent');
+      setPhone('');
+    } catch (err) {
+      console.error('consult sendLead failed:', err);
+      setStatus('error');
+      setErrorMsg('Не удалось отправить. Попробуйте ещё раз или позвоните нам.');
+    }
   };
 
   return (
@@ -217,31 +234,44 @@ const ConsultCard = () => {
         <form className="consult-card" onSubmit={handleSubmit}>
           <div className="consult-card__text">
             <h3 className="display" style={{fontFamily:'Unbounded, sans-serif', fontSize:'clamp(22px, 2.2vw, 28px)', fontWeight: 700, letterSpacing:'-0.02em', lineHeight: 1.15, margin: 0}}>
-              Остались <em className="accent-italic">вопросы?</em>
+              {status === 'sent' ? (
+                <>Спасибо! <em className="accent-italic">Заявка принята</em></>
+              ) : (
+                <>Остались <em className="accent-italic">вопросы?</em></>
+              )}
             </h3>
             <p style={{marginTop: 10, fontSize: 14, lineHeight: 1.5, color:'var(--ink-60)', maxWidth: 440}}>
-              Оставьте номер телефона — обсудим ваши пожелания, ответим на вопросы и сориентируем по стоимости.
+              {status === 'sent'
+                ? 'Мы свяжемся с вами в течение часа.'
+                : 'Оставьте номер телефона — обсудим ваши пожелания, ответим на вопросы и сориентируем по стоимости.'}
             </p>
           </div>
-          <div className="consult-card__form">
-            <label className="consult-field">
-              <span className="quote-field__label">Ваш номер телефона</span>
-              <input
-                type="tel" autoComplete="tel"
-                className="quote-input"
-                value={phone} onChange={(e) => setPhone(e.target.value)}
-                placeholder="+7 (___) ___-__-__"
-                required
-              />
-            </label>
-            <button
-              type="submit"
-              className="btn btn-primary consult-submit"
-              disabled={!canSubmit}
-            >
-              Получить консультацию <Icon.Arrow/>
-            </button>
-          </div>
+          {status !== 'sent' && (
+            <div className="consult-card__form">
+              <label className="consult-field">
+                <span className="quote-field__label">Ваш номер телефона</span>
+                <input
+                  type="tel" autoComplete="tel"
+                  className="quote-input"
+                  value={phone} onChange={(e) => setPhone(e.target.value)}
+                  placeholder="+7 (___) ___-__-__"
+                  required
+                />
+              </label>
+              <button
+                type="submit"
+                className="btn btn-primary consult-submit"
+                disabled={!canSubmit}
+              >
+                {status === 'sending' ? 'Отправляем…' : 'Получить консультацию'} {status !== 'sending' && <Icon.Arrow/>}
+              </button>
+              {status === 'error' && (
+                <div style={{fontSize: 13, color: 'var(--tomato)', gridColumn: '1 / -1'}}>
+                  {errorMsg}
+                </div>
+              )}
+            </div>
+          )}
         </form>
       </div>
     </section>

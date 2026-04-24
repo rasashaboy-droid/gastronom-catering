@@ -612,6 +612,46 @@
     .cart-fab { width: 54px; height: 54px; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); }
   }
 
+  /* Floating contact FABs: Telegram + Phone (stacked above cart) */
+  .contact-fab {
+    position: fixed;
+    right: 24px;
+    width: 60px; height: 60px;
+    border-radius: 999px;
+    background: var(--cream-50);
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    box-shadow:
+      0 10px 24px -8px rgba(26,10,15,0.22),
+      0 4px 10px -4px rgba(26,10,15,0.12);
+    z-index: 80;
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease, opacity .28s ease;
+  }
+  .contact-fab:hover {
+    transform: translateY(-2px) scale(1.04);
+    background: var(--cream-100);
+  }
+  .contact-fab:active { transform: translateY(0) scale(0.98); }
+  .contact-fab--hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8) translateY(12px);
+  }
+  .contact-fab--telegram {
+    color: #4A90C2;
+    bottom: calc(24px + 72px + env(safe-area-inset-bottom));
+  }
+  .contact-fab--phone {
+    color: #5A8F5E;
+    bottom: calc(24px + 144px + env(safe-area-inset-bottom));
+  }
+  @media (max-width: 560px) {
+    .contact-fab { width: 54px; height: 54px; right: 16px; }
+    .contact-fab--telegram { bottom: calc(16px + 66px + env(safe-area-inset-bottom)); }
+    .contact-fab--phone { bottom: calc(16px + 132px + env(safe-area-inset-bottom)); }
+  }
+
   /* ---------- MENU DRAWER ---------- */
   .menu-drawer-backdrop {
     position: fixed; inset: 0;

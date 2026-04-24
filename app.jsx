@@ -117,6 +117,7 @@ const App = () => {
         <CartPage/>
       </div>
 
+      <FloatingContactBar/>
       <FloatingCartButton/>
       {quoteOpen && <QuoteModal onClose={() => setQuoteOpen(false)}/>}
     </div>

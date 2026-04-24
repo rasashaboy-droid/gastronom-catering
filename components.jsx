@@ -6,6 +6,42 @@
 const ASSET = (p) => (window.BASE || './') + String(p).replace(/^\/+/, '');
 window.ASSET = ASSET;
 
+// Endpoint для заявок — Yandex Cloud Function, которая шлёт сообщение в Telegram.
+// Функция сама валидирует, rate-limit'ит и молча игнорит honeypot.
+const LEADS_ENDPOINT = 'https://functions.yandexcloud.net/d4e5pvtmn1e24dm1k2bk';
+
+// Название текущей форматной страницы (пример: 'gastroboxes' → 'Гастробоксы').
+// Используется в заявках, чтобы в Telegram приходило человекочитаемое имя формата.
+window.currentFormatName = () => {
+  const slug = window.__FORMAT__;
+  if (!slug) return '';
+  const data = window.FORMATS_DATA;
+  if (!Array.isArray(data)) return slug;
+  const f = data.find(x => x.slug === slug);
+  return (f && f.name) || slug;
+};
+
+// Универсальный хелпер для всех форм. payload минимум { source, phone }.
+// Автоматически добавит page/referer. Бросит исключение при !ok — формы сами отобразят ошибку.
+window.sendLead = async (payload) => {
+  const body = {
+    ...payload,
+    page: (window.location.pathname || '/') + (window.location.hash || ''),
+    referer: document.referrer || '',
+  };
+  const res = await fetch(LEADS_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    let msg = '';
+    try { msg = await res.text(); } catch (_) {}
+    throw new Error(`Leads API ${res.status}: ${msg}`);
+  }
+  return res.json();
+};
+
 const Placeholder = ({ label, variant = 'cream', style, className = '', children }) => (
   <div className={`ph ${variant} ${className}`} style={style}>
     {children}
