@@ -412,7 +412,7 @@ const CartPage = () => {
                   <Icon.Check size={36}/>
                 </div>
                 <h1 className="display" style={{fontSize:'clamp(30px, 3.6vw, 48px)', fontWeight: 700, letterSpacing:'-0.02em', lineHeight: 1.1, marginBottom: 16}}>
-                  Спасибо! <em className="accent-italic">Мы уже получили</em> вашу заявку.
+                  Спасибо! Мы <em className="accent-italic">уже получили</em> вашу заявку.
                 </h1>
                 <p style={{color:'var(--ink-60)', fontSize: 16, lineHeight: 1.55, marginBottom: 32, maxWidth: 520}}>
                   Мы свяжемся с вами в ближайшее время, уточним детали и подготовим подходящее решение по меню и формату подачи.

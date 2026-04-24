@@ -55,7 +55,8 @@
       "Bash(python3 -c ' *)",
       "Bash(python3)",
       "Bash(grep -iE '^\\(gastrobox|svadba|detskiy|devichnik|birthday\\)\\\\.jpg$')",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(node -e \"require\\('./index.js'\\); console.log\\('OK: module loads'\\);\")"
     ]
   }
 }
