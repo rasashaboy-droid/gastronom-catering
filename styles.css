@@ -252,6 +252,15 @@
     flex: 1 1 auto;
     min-width: 220px;
   }
+  /* Sticky bar снизу drawer'а — кнопка "Оформить заказ" всегда на виду */
+  .cart-checkout-bar {
+    position: sticky;
+    bottom: 16px;
+    z-index: 5;
+    box-shadow:
+      0 16px 36px -14px rgba(28, 20, 15, 0.22),
+      0 2px 0 rgba(255, 255, 255, 0.6) inset;
+  }
   .cart-checkout-btn {
     width: 100%;
     padding: 14px 28px !important;
@@ -549,7 +558,9 @@
   }
 
   /* ---------- CART STEPPER (3 steps: cart → form → sent) ---------- */
-  .cart-stepper { width: 100%; overflow: hidden; }
+  /* overflow: clip (а не hidden) — чтобы .cart-overlay остался скролл-контейнером
+     для position: sticky внутри пана (кнопка "Оформить заказ"). */
+  .cart-stepper { width: 100%; overflow: clip; }
   .cart-stepper__track {
     display: grid;
     grid-template-columns: repeat(3, 100%);

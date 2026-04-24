@@ -291,7 +291,7 @@ const CartPage = () => {
                     ))}
                   </div>
 
-                  <div style={{
+                  <div className="cart-checkout-bar" style={{
                     background:'var(--cream-100)', borderRadius: 24, padding: '22px 24px',
                     display:'flex', justifyContent:'space-between', alignItems:'center', gap: 16, flexWrap:'wrap',
                   }}>
