@@ -1406,9 +1406,9 @@ const FinalCTA = () => {
                       {errorMsg}
                     </div>
                   )}
-                  <button type="submit" className="btn btn-primary"
+                  <button type="submit" className="btn btn-primary final-cta-submit"
                     disabled={!canSubmit}
-                    style={{width:'100%', justifyContent:'center', marginTop: 8, opacity: canSubmit ? 1 : 0.5}}>
+                    style={{width:'100%', justifyContent:'center', marginTop: 8}}>
                     {status === 'sending' ? 'Отправляем…' : 'Отправить'} {status !== 'sending' && <Icon.Arrow/>}
                   </button>
                   <label style={{display:'flex', alignItems:'flex-start', gap: 10, marginTop: 14, fontSize: 12, lineHeight: 1.45, opacity: 0.7, cursor:'pointer'}}>

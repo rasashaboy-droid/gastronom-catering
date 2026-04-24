@@ -237,6 +237,16 @@
     cursor: not-allowed !important;
     transform: none !important;
   }
+  /* FinalCTA сидит на тёмном блоке — tint через --ink-15 на --ink = невидимо.
+     Переопределяем disabled-стиль так, чтобы кнопка читалась на тёмном фоне. */
+  .final-cta-submit:disabled,
+  .final-cta-submit[disabled] {
+    background: rgba(233, 30, 76, 0.45) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+  }
 
   .cart-checkout-col {
     flex: 1 1 auto;
