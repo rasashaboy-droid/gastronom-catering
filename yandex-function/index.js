@@ -38,7 +38,14 @@ const labelForSource = (source) => ({
   'quiz':                   'Квиз-калькулятор',
   'consult':                'Остались вопросы? (карточка)',
   'final-cta':              'Финальная форма (низ страницы)',
+  'cart':                   'Оформление заказа (корзина)',
 }[source] || source || 'Заявка с сайта');
+
+const formatRub = (n) => {
+  const num = Number(n);
+  if (!Number.isFinite(num)) return '—';
+  return num.toLocaleString('ru-RU') + ' ₽';
+};
 
 const budgetLabel = (b) => ({
   low: '600–1 200 ₽',
@@ -70,6 +77,27 @@ const formatMessage = (data) => {
   if (q.budget) lines.push(`💰 <b>Бюджет на персону:</b> ${budgetLabel(q.budget)}`);
 
   if (data.format) lines.push(`📦 <b>Формат:</b> ${cleanStr(data.format, 50)}`);
+
+  // Позиции корзины
+  const c = data.cart || {};
+  if (Array.isArray(c.items) && c.items.length > 0) {
+    lines.push('');
+    lines.push(`🛒 <b>Позиции в корзине:</b>`);
+    c.items.slice(0, 50).forEach((it) => {
+      const nm = cleanStr(it && it.name, 120);
+      const qty = Number(it && it.qty) || 0;
+      const price = Number(it && it.price) || 0;
+      const sum = qty * price;
+      if (nm && qty > 0) {
+        lines.push(`• ${nm} — ${qty} × ${formatRub(price)} = <b>${formatRub(sum)}</b>`);
+      }
+    });
+    if (c.items.length > 50) {
+      lines.push(`…и ещё ${c.items.length - 50}`);
+    }
+    if (c.count) lines.push(`<b>Всего позиций:</b> ${Number(c.count) || 0}`);
+    if (c.total != null) lines.push(`<b>Итого:</b> ${formatRub(c.total)}`);
+  }
 
   lines.push('');
   if (data.page)    lines.push(`🔗 <i>${cleanStr(data.page, 300)}</i>`);
