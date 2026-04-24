@@ -494,7 +494,7 @@ const QuizCalc = () => {
                       className="btn btn-primary"
                       style={{ opacity: canProceed ? 1 : 0.5, cursor: canProceed ? 'pointer' : 'default' }}
                     >
-                      {step === steps.length - 1 ? 'Далее' : 'Далее'}
+                      Далее
                       <Icon.Arrow/>
                     </button>
                   </div>
@@ -615,14 +615,6 @@ const ThankYouPane = () => (
     </p>
   </div>
 );
-
-const SummaryItem = ({ label, value }) => (
-  <div style={{padding: '12px 14px', background:'white', borderRadius: 14, border: '1px solid var(--ink-08)'}}>
-    <div style={{fontSize: 11, color:'var(--ink-60)', textTransform:'uppercase', letterSpacing:'0.1em', fontFamily:'JetBrains Mono, monospace'}}>{label}</div>
-    <div style={{fontSize: 15, fontWeight: 600, marginTop: 2}}>{value}</div>
-  </div>
-);
-
 
 // ---------- MENU HIGHLIGHTS ----------
 const MenuHighlights = ({ label = '03 · Меню' } = {}) => {

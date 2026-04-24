@@ -988,12 +988,6 @@
   }
   .chip .chip-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--raspberry); }
 
-  @keyframes float-y {
-    0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); }
-  }
-  @keyframes marquee {
-    from { transform: translateX(0); } to { transform: translateX(-50%); }
-  }
   .blob { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.6; pointer-events: none; }
 
   /* ---------- RESPONSIVE SECTION RULES ---------- */
@@ -1209,8 +1203,6 @@
     .cta-contact-row { justify-content: center !important; }
     .cta-contact-row > .btn { min-width: 240px !important; justify-content: center !important; }
   }
-
-  .stack-v { display: flex; flex-direction: column; }
 
   /* Mobile: reduce section vertical padding */
   @media (max-width: 720px) {

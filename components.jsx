@@ -70,11 +70,6 @@ const Icon = {
       <path d="M5 12h14M13 6l6 6-6 6" />
     </svg>
   ),
-  ArrowDown: ({ size = 18 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 5v14M6 13l6 6 6-6" />
-    </svg>
-  ),
   Plus: ({ size = 18 }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
       <path d="M12 5v14M5 12h14" />
@@ -83,37 +78,6 @@ const Icon = {
   Spark: ({ size = 16 }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2l1.8 6.4L20 10l-6.2 1.6L12 18l-1.8-6.4L4 10l6.2-1.6L12 2z" />
-    </svg>
-  ),
-  Dot: ({ size = 8, color = 'currentColor' }) => (
-    <span style={{display:'inline-block', width:size, height:size, borderRadius:'50%', background: color}}/>
-  ),
-  Utensils: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M7 2v8M5 2h4M7 10v12M17 2c-1.5 3 0 6 0 10v10M17 2v10" />
-    </svg>
-  ),
-  Clock: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2" />
-    </svg>
-  ),
-  Truck: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 7h11v10H3zM14 11h4l3 3v3h-7" />
-      <circle cx="7" cy="18" r="2" />
-      <circle cx="17" cy="18" r="2" />
-    </svg>
-  ),
-  Leaf: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 4c0 10-6 16-14 16 0-10 6-16 14-16zM4 20c4-4 8-6 14-8" />
-    </svg>
-  ),
-  Heart: ({ size = 20 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 20s-7-4.3-7-10a4 4 0 0 1 7-2.7A4 4 0 0 1 19 10c0 5.7-7 10-7 10z" />
     </svg>
   ),
   Phone: ({ size = 18 }) => (
@@ -172,34 +136,6 @@ const Blob = ({ style, color = 'var(--peach)', size = 220 }) => (
   }} />
 );
 
-// Marquee of text
-const Marquee = ({ items, speed = 40, color = 'var(--ink)' }) => {
-  const loop = [...items, ...items, ...items];
-  return (
-    <div style={{
-      overflow: 'hidden', position: 'relative', width: '100%',
-      maskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)'
-    }}>
-      <div style={{
-        display: 'inline-flex', gap: 40, whiteSpace: 'nowrap',
-        animation: `marquee ${speed}s linear infinite`,
-        fontFamily: 'Unbounded, sans-serif',
-        fontWeight: 700,
-        fontSize: 'clamp(32px, 6vw, 72px)',
-        color,
-        letterSpacing: '-0.02em',
-      }}>
-        {loop.map((item, i) => (
-          <span key={i} style={{display:'inline-flex', alignItems:'center', gap: 40}}>
-            {item}
-            <span style={{display:'inline-block', width:14, height:14, borderRadius:'50%', background:'var(--tomato)', verticalAlign:'middle'}}/>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-};
-
 // Count-up number hook
 const useCountUp = (end, duration = 1200, start = 0) => {
   const [val, setVal] = React.useState(start);
@@ -230,5 +166,5 @@ const useCountUp = (end, duration = 1200, start = 0) => {
 };
 
 Object.assign(window, {
-  Placeholder, Chip, SecLabel, Icon, LucideIcon, Blob, Marquee, useCountUp,
+  Placeholder, Chip, SecLabel, Icon, LucideIcon, Blob, useCountUp,
 });

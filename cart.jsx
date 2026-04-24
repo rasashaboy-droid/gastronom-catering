@@ -51,11 +51,6 @@ window.OptImg = OptImg;
 
   window.Cart = {
     get(name) { return items[name] ? items[name].qty : 0; },
-    set(name, qty) {
-      if (qty <= 0) { delete items[name]; }
-      else if (items[name]) { items[name].qty = qty; }
-      emit();
-    },
     add(item, delta = 1) {
       const cur = items[item.name] ? items[item.name].qty : 0;
       const next = Math.max(0, cur + delta);
