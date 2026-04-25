@@ -56,7 +56,11 @@
       "Bash(python3)",
       "Bash(grep -iE '^\\(gastrobox|svadba|detskiy|devichnik|birthday\\)\\\\.jpg$')",
       "Bash(node -e ' *)",
-      "Bash(node -e \"require\\('./index.js'\\); console.log\\('OK: module loads'\\);\")"
+      "Bash(node -e \"require\\('./index.js'\\); console.log\\('OK: module loads'\\);\")",
+      "Bash(./compress-images.sh \"images/Мини салат Греческий.jpeg\" \"images/Мини салат с тунцом.jpeg\" \"images/Мини салат цезарь с креветками.jpeg\" \"images/Мини салат цезарь.jpeg\" \"images/Мини теплый салат с говядиной.jpeg\" \"images/Овощные палочки с соусом тартар.jpeg\" \"images/Сезонные фрукты и ягоды.jpeg\")",
+      "Bash(./compress-images.sh \"images/Мини салат с ростбифом из телятины.jpeg\")",
+      "Bash(./compress-images.sh \"images/Мини теплый салат с говядиной.jpeg\")",
+      "Bash(./compress-images.sh \"images/Мини шашлычки из курицы.jpeg\" \"images/Мини шашлычки из говядины.jpeg\" \"images/Мини шашлычки из семги.jpeg\" \"images/Мини шашлычки из тигровых креветок.jpeg\" \"images/Новозеландские мидии.jpeg\" \"images/Гранд микс.jpeg\" \"images/Жареный сыр адыгейский.jpeg\")"
     ]
   }
 }
