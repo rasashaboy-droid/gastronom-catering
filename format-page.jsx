@@ -59,6 +59,7 @@ const FormatPage = () => {
           <MenuHighlights label="03 · Меню"/>
           <FAQ label="04 · Вопросы"/>
           <QuizCalc/>
+          <ReadyBundles/>
           <Formats label="05 · Форматы"/>
         </>
       )}

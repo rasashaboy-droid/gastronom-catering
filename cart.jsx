@@ -1,5 +1,5 @@
 // ============ EPHEMERAL PAGE STATE (for restoring scroll/category on nav) ============
-window.PageState = window.PageState || { scrollY: 0, menuCategory: 'canape' };
+window.PageState = window.PageState || { scrollY: 0, menuCategory: 'bruschetta' };
 
 // ============ OPTIMIZED IMAGE HELPER ============
 // Takes "images/foo.jpeg" → { src: "...-600.jpg", srcSet: "...-600.jpg 600w, ...-1200.jpg 1200w" }

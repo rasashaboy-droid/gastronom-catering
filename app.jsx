@@ -107,6 +107,7 @@ const App = () => {
       <Formats/>
       <Advantages/>
       <QuizCalc/>
+      <ReadyBundles/>
       <MenuHighlights/>
       <Process/>
       <FAQ/>

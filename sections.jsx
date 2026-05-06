@@ -616,18 +616,371 @@ const ThankYouPane = () => (
   </div>
 );
 
+// ---------- READY BUNDLES ----------
+const ReadyBundles = () => {
+  const bundles = [
+    {
+      name: 'Набор «Базовый»',
+      pricePerPerson: 1140, minPersons: 10, totalWeight: '4 100 г',
+      photo: ASSET('/images/подборка 1.jpg'),
+      items: [
+        'Брускетта с подкопченной индейкой — 10 шт.',
+        'Брускетта с черри, песто, моцарелла — 10 шт.',
+        'Канапе «Сыр и виноград» — 10 шт.',
+        'Овощные палочки — 10 порций',
+        'Мини-салат «Цезарь» с курицей — 10 шт.',
+        'Тирамису в стаканчике — 10 шт.',
+        'Морс ягодный — 3 л',
+      ],
+    },
+    {
+      name: '«Татарский характер»',
+      pricePerPerson: 1760, minPersons: 10, totalWeight: '10 500 г',
+      photo: ASSET('/images/подборка 2.jpg'),
+      items: [
+        '«Татарское трио» на 8–10 человек — 1 шт.',
+        'Мясное ассорти «Татарстан» — 1 шт.',
+        'Канапе «Казылык с вяленым томатом» — 10 шт.',
+        'Канапе «Старорусское» — 10 шт.',
+        'Бульон с эчпочмаком — 10 порций',
+        'Азу по-татарски — 10 порций',
+        '«Наполеон» в стаканчике — 10 шт.',
+        'Чай в ассортименте — 5 л',
+      ],
+    },
+    {
+      name: 'Кофе-брейк «Сладкая пауза»',
+      pricePerPerson: 1164, minPersons: 10, totalWeight: '3 000 г',
+      items: [
+        'Брускетта с сыром дор блю и грушей — 10 шт.',
+        'Канапе «Сыр и виноград» — 10 шт.',
+        'Канапе «Фрукты в шоколаде» — 10 шт.',
+        'Мини-эклеры «Ассорти» — 1 плато',
+        'Профитроли в шоколаде — 1 плато',
+        'Тирамису в стаканчике — 10 шт.',
+        'Чай в ассортименте — 5 л',
+        'Лимонад домашний — 3 л',
+      ],
+    },
+    {
+      name: 'Деловой стандарт «Переговоры»',
+      pricePerPerson: 1856, minPersons: 10, totalWeight: '6 135 г',
+      items: [
+        'Брускетта с ростбифом и горчичным соусом — 10 шт.',
+        'Брускетта с лососем слабосолёным — 10 шт.',
+        'Канапе «Моцарелла и черри» — 10 шт.',
+        'Сырное плато — 1 шт.',
+        'Мясное ассорти — 1 шт.',
+        'Мини-салат с ростбифом из телятины — 10 шт.',
+        'Куриное филе с картофелем бэби и домашним сырным соусом — 10 порций',
+        'Лимонад домашний — 4 л',
+        'Мини-эклеры «Ассорти» — 1 плато',
+      ],
+    },
+    {
+      name: 'Средиземноморский light',
+      pricePerPerson: 1960, minPersons: 10, totalWeight: '6 610 г',
+      items: [
+        'Брускетта с черри, песто, моцарелла — 10 шт.',
+        'Брускетта овощи гриль с мягким сыром — 10 шт.',
+        'Брускетта с сыром дор блю и грушей — 10 шт.',
+        'Канапе «Моцарелла и черри» — 10 шт.',
+        'Канапе «Сыр и виноград» — 10 шт.',
+        'Капрезе — 1 шт.',
+        'Средиземноморская закуска — 1 шт.',
+        'Мини-салат «Греческий» — 10 шт.',
+        'Сезонные фрукты и ягоды в стаканчиках — 10 шт.',
+        'Панна-котта ягодная — 10 шт.',
+        'Лимонад домашний — 4 л',
+      ],
+    },
+    {
+      name: 'Загородный гриль «Тимбилдинг»',
+      pricePerPerson: 2440, minPersons: 10, totalWeight: '9 370 г',
+      items: [
+        'Ассорти фермера в стол на 10–12 человек — 1 шт.',
+        'Овощное ассорти — 1 шт.',
+        'Ассорти из солений — 1 шт.',
+        'Мини-шашлычки из курицы — 20 шт.',
+        'Мини-шашлычки из говядины — 10 шт.',
+        'Жареный сыр на мангале — 10 порций',
+        'Плов из телятины — 10 порций',
+        'Морс ягодный — 5 л',
+        'Профитроли в шоколаде — 1 плато',
+      ],
+    },
+    {
+      name: 'Рыбный премиум «Морской раут»',
+      pricePerPerson: 4125, minPersons: 10, totalWeight: '11 340 г',
+      items: [
+        'Брускетта с тар-таром из лосося — 10 шт.',
+        'Брускетта с тигровой креветкой и салатом чука — 10 шт.',
+        'Канапе «Красная икра на сендвичном хлебе» — 10 шт.',
+        'Канапе «Тигровая креветка с черри» — 10 шт.',
+        'Рыбное плато — 2 шт.',
+        'Мини-салат «Цезарь» с тигровыми креветками — 10 шт.',
+        'Тайский острый суп «Том-ям» — 10 порций',
+        'Мидии, запечённые под сыром — 10 порций',
+        'Филе семги со сливочным соусом — 10 порций',
+        'Сок апельсиновый свежевыжатый — 3 л',
+        'Мохито безалкогольное — 3 л',
+        'Трайфл «Вишня-шоколад» — 10 шт.',
+      ],
+    },
+    {
+      name: 'VIP-сет «Большой приём»',
+      pricePerPerson: 4809, minPersons: 10, totalWeight: '10 680 г',
+      items: [
+        'Ассорти фермера в стол на 10–12 человек — 1 шт.',
+        'Сырное плато — 2 шт.',
+        'Рыбное плато — 3 шт.',
+        'Брускетта с лососем слабосолёным — 10 шт.',
+        'Брускетта с сыром дор блю и грушей — 10 шт.',
+        'Канапе «Красная икра на сендвичном хлебе» — 10 шт.',
+        'Канапе «Ростбиф с горчичным соусом» — 10 шт.',
+        'Мини-шашлычки из сёмги — 10 шт.',
+        'Мини-шашлычки из говядины — 10 шт.',
+        'Филе семги со сливочным соусом — 10 порций',
+        'Панна-котта ягодная — 10 шт.',
+        '«Наполеон» в стаканчике — 10 шт.',
+        'Сок апельсиновый свежевыжатый — 4 л',
+        'Мохито безалкогольное — 4 л',
+      ],
+    },
+  ];
+
+  const [idx, setIdx] = React.useState(0);
+  const [auto, setAuto] = React.useState(true);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [lightboxOpen, setLightboxOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!auto) return;
+    const t = setInterval(() => setIdx(i => (i + 1) % bundles.length), 10000);
+    return () => clearInterval(t);
+  }, [auto, bundles.length]);
+
+  const stopAuto = () => { if (auto) setAuto(false); };
+  const prev = () => { stopAuto(); setIdx(i => (i - 1 + bundles.length) % bundles.length); };
+  const next = () => { stopAuto(); setIdx(i => (i + 1) % bundles.length); };
+
+  const bundle = bundles[idx];
+
+  const handleAddToCart = () => {
+    stopAuto();
+    const item = {
+      name: bundle.name,
+      price: bundle.pricePerPerson * bundle.minPersons,
+      weight: `от ${bundle.minPersons} персон · ${bundle.totalWeight}`,
+      desc: bundle.items.join('; '),
+    };
+    if (window.cart && window.cart.add) window.cart.add(item, 1);
+  };
+
+  const openDrawer = () => { stopAuto(); setDrawerOpen(true); };
+  const openLightbox = () => { stopAuto(); setLightboxOpen(true); };
+
+  return (
+    <section style={{padding: '40px 0'}}>
+      <div className="wrap">
+        <h2 className="display" style={{fontSize:'clamp(32px, 4vw, 56px)', fontWeight: 600, marginBottom: 28, letterSpacing: '-0.02em'}}>
+          Готовые <em className="accent-italic">подборки</em>
+        </h2>
+        <div className="bundle-card">
+          <div className="bundle-card__media">
+            <div className="bundle-slider" onClick={openLightbox} role="button" tabIndex={0} aria-label="Увеличить фото" style={{cursor: 'zoom-in'}}>
+              {bundles.map((s, i) => (
+                <div
+                  key={i}
+                  className="bundle-slide"
+                  style={{
+                    opacity: i === idx ? 1 : 0,
+                    transform: i === idx ? 'scale(1)' : 'scale(1.04)',
+                  }}
+                  aria-hidden={i !== idx}
+                >
+                  {s.photo ? (
+                    <img src={s.photo} alt={s.name} style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
+                  ) : (
+                    <Placeholder label={s.name} variant={i % 2 === 0 ? 'peach' : 'cream'} style={{width:'100%', height:'100%'}}/>
+                  )}
+                </div>
+              ))}
+            </div>
+            <button type="button" onClick={(e) => { e.stopPropagation(); prev(); }} aria-label="Предыдущая подборка" className="bundle-slider__btn bundle-slider__btn--prev">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13L5 8l5-5"/></svg>
+            </button>
+            <button type="button" onClick={(e) => { e.stopPropagation(); next(); }} aria-label="Следующая подборка" className="bundle-slider__btn bundle-slider__btn--next">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 3l5 5-5 5"/></svg>
+            </button>
+            <div className="bundle-slider__dots" aria-hidden="true">
+              {bundles.map((_, i) => (
+                <span key={i} className={'bundle-slider__dot' + (i === idx ? ' is-active' : '')}/>
+              ))}
+            </div>
+          </div>
+          <div className="bundle-card__body" key={idx} style={{animation: 'fadeUp .5s both'}}>
+            <h3 className="display" style={{fontSize:'clamp(24px, 2.6vw, 34px)', fontWeight: 700, lineHeight: 1.15, margin: 0, letterSpacing: '-0.02em'}}>
+              {bundle.name}
+            </h3>
+            <div className="bundle-card__price">
+              <div>
+                <div className="mono" style={{fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--ink-60)'}}>
+                  Цена
+                </div>
+                <div style={{fontSize: 'clamp(26px, 3vw, 36px)', fontWeight: 700, color: 'var(--tomato)', lineHeight: 1.1, marginTop: 4, fontFamily: 'Unbounded, sans-serif'}}>
+                  {bundle.pricePerPerson.toLocaleString('ru')} ₽ <span style={{fontSize: 14, fontWeight: 500, color: 'var(--ink-60)', fontFamily: 'inherit'}}>/ персона</span>
+                </div>
+              </div>
+              <div>
+                <div className="mono" style={{fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--ink-60)'}}>
+                  Общий вес
+                </div>
+                <div style={{fontSize: 'clamp(13px, 1.5vw, 18px)', fontWeight: 700, color: 'var(--ink-60)', lineHeight: 1.1, fontFamily: 'Unbounded, sans-serif', whiteSpace: 'nowrap'}}>
+                  {bundle.totalWeight}
+                </div>
+              </div>
+            </div>
+            <div className="bundle-card__min">
+              Минимальный заказ — от {bundle.minPersons} персон
+            </div>
+            <div className="bundle-card__cta">
+              <button type="button" onClick={handleAddToCart} className="btn btn-primary">
+                Добавить в корзину <Icon.Arrow/>
+              </button>
+              <button type="button" onClick={openDrawer} className="btn btn-glass" style={{background: '#F9F5EB'}}>
+                Подробнее
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {drawerOpen && <BundleDrawer bundle={bundle} onAddToCart={handleAddToCart} onClose={() => setDrawerOpen(false)}/>}
+      {lightboxOpen && <BundleLightbox bundle={bundle} onClose={() => setLightboxOpen(false)}/>}
+    </section>
+  );
+};
+
+const BundleLightbox = ({ bundle, onClose }) => {
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
+
+  return (
+    <div className="bundle-lightbox" onClick={onClose} role="dialog" aria-modal="true" aria-label={bundle.name}>
+      <button type="button" onClick={onClose} aria-label="Закрыть" className="bundle-lightbox__close">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <path d="M3 3L13 13M13 3L3 13"/>
+        </svg>
+      </button>
+      {bundle.photo ? (
+        <img src={bundle.photo} alt={bundle.name} className="bundle-lightbox__img" onClick={onClose}/>
+      ) : (
+        <div className="bundle-lightbox__frame" onClick={onClose}>
+          <Placeholder label={bundle.name} variant="peach" style={{width:'100%', height:'100%'}}/>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const BundleDrawer = ({ bundle, onClose, onAddToCart }) => {
+  const [closing, setClosing] = React.useState(false);
+  const requestClose = React.useCallback(() => setClosing(true), []);
+
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') requestClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [requestClose]);
+
+  React.useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, []);
+
+  const handleAnimEnd = (e) => {
+    if (closing && e.target === e.currentTarget) onClose();
+  };
+
+  return (
+    <>
+      <div className={'menu-drawer-backdrop' + (closing ? ' closing' : '')} onClick={requestClose}/>
+      <aside
+        className={'menu-drawer' + (closing ? ' closing' : '')}
+        role="dialog" aria-modal="true" aria-label={bundle.name}
+        onAnimationEnd={handleAnimEnd}
+      >
+        <div className="menu-drawer__head">
+          <h3 className="display" style={{fontSize: 'clamp(22px, 2.4vw, 28px)', fontWeight: 700, lineHeight: 1.2, margin: 0}}>
+            {bundle.name}
+          </h3>
+          <button className="menu-drawer__close" onClick={requestClose} aria-label="Закрыть">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+              <path d="M3 3L13 13M13 3L3 13"/>
+            </svg>
+          </button>
+        </div>
+        <div className="menu-drawer__body">
+          <div style={{position:'relative', borderRadius: 20, overflow:'hidden', aspectRatio: '4 / 3', marginBottom: 20}}>
+            {bundle.photo ? (
+              <img src={bundle.photo} alt={bundle.name} style={{width:'100%', height:'100%', objectFit:'cover', position:'absolute', inset: 0, display: 'block'}}/>
+            ) : (
+              <Placeholder label={bundle.name} variant="peach" style={{width:'100%', height:'100%', position:'absolute', inset: 0}}/>
+            )}
+          </div>
+          <div style={{display:'flex', gap: 10, flexWrap:'wrap', marginBottom: 18}}>
+            <div style={{padding: '8px 14px', borderRadius: 999, background: 'var(--cream-100)', fontSize: 13, fontWeight: 600, color: 'var(--tomato)'}}>
+              {bundle.pricePerPerson.toLocaleString('ru')} ₽ / персона
+            </div>
+            <div style={{padding: '8px 14px', borderRadius: 999, background: 'var(--cream-100)', fontSize: 13, color: 'var(--ink-60)'}}>
+              Общий вес: {bundle.totalWeight}
+            </div>
+            <div style={{padding: '8px 14px', borderRadius: 999, background: 'var(--cream-100)', fontSize: 13, color: 'var(--ink-60)'}}>
+              От {bundle.minPersons} персон
+            </div>
+          </div>
+          <div className="mono" style={{fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--ink-60)', marginBottom: 12}}>
+            Состав подборки
+          </div>
+          <ul style={{listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10}}>
+            {bundle.items.map((it, i) => (
+              <li key={i} style={{padding: '12px 16px', background: 'var(--cream-100)', borderRadius: 14, fontSize: 14, lineHeight: 1.4}}>
+                {it}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="menu-drawer__foot">
+          <button type="button" onClick={() => { onAddToCart && onAddToCart(); requestClose(); }} className="btn btn-primary" style={{width: '100%', justifyContent: 'center'}}>
+            Добавить в корзину <Icon.Arrow/>
+          </button>
+        </div>
+      </aside>
+    </>
+  );
+};
+
 // ---------- MENU HIGHLIGHTS ----------
 const MenuHighlights = ({ label = '03 · Меню' } = {}) => {
-  const [cat, setCat] = React.useState(() => (window.PageState && window.PageState.menuCategory) || 'canape');
+  const [cat, setCat] = React.useState(() => (window.PageState && window.PageState.menuCategory) || 'bruschetta');
   React.useEffect(() => { window.PageState.menuCategory = cat; }, [cat]);
   const cats = [
-    { v: 'canape', label: 'Канапе' },
     { v: 'bruschetta', label: 'Брускетты' },
-    { v: 'mini-salad', label: 'Мини-салаты' },
+    { v: 'canape', label: 'Канапе' },
     { v: 'cold', label: 'Холодные закуски' },
     { v: 'hot-snack', label: 'Горячие закуски' },
     { v: 'hot', label: 'Горячее' },
-    { v: 'salad', label: 'Салаты' },
+    { v: 'mini-salad', label: 'Мини-салаты' },
+    { v: 'soup', label: 'Супы' },
     { v: 'dessert', label: 'Десерты' },
     { v: 'drinks', label: 'Напитки' },
   ];
@@ -644,13 +997,13 @@ const MenuHighlights = ({ label = '03 · Меню' } = {}) => {
       { name: 'Канапе «Сыр и виноград»', price: 75, weight: '30 г', desc: 'Виноград, сыр, грецкий орех.', photo: ASSET('/images/Канапе сыр виноград.png'), step: 10 },
     ],
     bruschetta: [
-      { name: 'Брускетта с черри, песто, моцарелла', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, соус песто, сыр моцарелла.', photo: ASSET('/images/Брускетта черри песто моцарелла.jpeg'), step: 5 },
-      { name: 'Брускетта с подкопченной индейкой', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, лист салата.', photo: ASSET('/images/Брускетта с подкопченной индейкой.jpeg'), step: 5 },
       { name: 'Брускетта с ростбифом и горчичным соусом', price: 170, weight: '40 г', desc: 'Чиабатта, ростбиф медиум, томаты черри, соус из зернистой горчицы.', photo: ASSET('/images/Брускетта с ростбифом.jpeg'), step: 5 },
       { name: 'Брускетта с лососем слабосолёным', price: 180, weight: '40 г', desc: 'Чиабатта, лосось слабосолёный, сливочный сыр, авокадо.', photo: ASSET('/images/Брускетта с лососем слабосоленым.jpeg'), step: 5 },
-      { name: 'Брускетта с тар-таром из лосося', price: 180, weight: '50 г', desc: 'Чиабатта, лосось с/с, огурцы свежие, сыр сливочный, яйцо перепелиное, имитация чёрной икры.', photo: ASSET('/images/Брускетта с тар-таром из слабосоленого лосося.jpeg'), step: 5 },
+      { name: 'Брускетта с подкопченной индейкой', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, лист салата.', photo: ASSET('/images/Брускетта с подкопченной индейкой.jpeg'), step: 5 },
       { name: 'Брускетта с тигровой креветкой и салатом чука', price: 170, weight: '40 г', desc: 'Чиабатта, тигровая креветка, салат чука, соус азиатский, кунжут.', photo: ASSET('/images/Брускетта с тигровой креветкой и салатом чука.jpeg'), step: 5 },
+      { name: 'Брускетта с черри, песто, моцарелла', price: 170, weight: '40 г', desc: 'Чиабатта, томаты черри, соус песто, сыр моцарелла.', photo: ASSET('/images/Брускетта черри песто моцарелла.jpeg'), step: 5 },
       { name: 'Брускетта с сыром дор блю и грушей', price: 180, weight: '40 г', desc: 'Чиабатта, сыр дор блю, груши, мёд, орехи.', photo: ASSET('/images/Брускетта с сыром дор блю и с грушей.jpeg'), step: 5 },
+      { name: 'Брускетта с тар-таром из лосося', price: 180, weight: '50 г', desc: 'Чиабатта, лосось с/с, огурцы свежие, сыр сливочный, яйцо перепелиное, имитация чёрной икры.', photo: ASSET('/images/Брускетта с тар-таром из слабосоленого лосося.jpeg'), step: 5 },
       { name: 'Брускетта овощи гриль с мягким сыром', price: 170, weight: '40 г', desc: 'Чиабатта, мягкий сыр, печёные овощи, зелень.', photo: ASSET('/images/Брускетта овощи гриль.jpeg'), step: 5 },
     ],
     'mini-salad': [
@@ -664,54 +1017,66 @@ const MenuHighlights = ({ label = '03 · Меню' } = {}) => {
       { name: 'Овощные палочки', price: 110, weight: '100 г', desc: 'Морковь, перец, сельдерей, огурцы, соус тар-тар.', photo: ASSET('/images/Овощные палочки с соусом тартар.jpeg'), step: 5 },
     ],
     cold: [
+      { name: 'Ассорти фермера в стол на 10–12 человек', price: 6300, weight: '2000 г', desc: 'Шашлычки из говядины, куриного филе, свиной шеи; люля-кебаб из баранины; картофель запечённый, овощи гриль, соус томатный.', photo: ASSET('/images/Ассорти фермера в стол.png') },
+      { name: '«Татарское трио» на 8–10 человек', price: 3300, weight: '2150 г', desc: 'Отварное мясо конины, курицы, говядины; картофель отварной; пассированный лук и морковь на сливочном масле.', photo: ASSET('/images/Татарское трио.png') },
+      { name: 'Мясное ассорти «Фермерский»', price: 1500, weight: '340 г', desc: 'Язык говяжий, куриный рулет, ростбиф, казы.', photo: ASSET('/images/Ассорти фермерский.png') },
       { name: 'Мясное ассорти', price: 1050, weight: '375 г', desc: 'Говядина европейская, сырокопчёные деликатесы, буженина из индейки, казылык.', photo: ASSET('/images/Мясное ассорти.png') },
       { name: 'Мясное ассорти «Татарстан»', price: 1300, weight: '300 г', desc: 'Язык говяжий, филе утиной грудки сыровяленое, казылык.', photo: ASSET('/images/Ассорти татарстан.png') },
-      { name: 'Мясное ассорти «Фермерский»', price: 1500, weight: '340 г', desc: 'Язык говяжий, куриный рулет, ростбиф, казы.', photo: ASSET('/images/Ассорти фермерский.png') },
-      { name: 'Сырное плато', price: 820, weight: '260 г', desc: '3–4 вида сыра, орехи, мёд.', photo: ASSET('/images/Сырное плато.png') },
-      { name: 'Рыбное плато', price: 950, weight: '220 г', desc: 'Сёмга слабосолёная, масляная х/к, кальмар г/к, морепродукты.', photo: ASSET('/images/Рыбное плато.png') },
-      { name: 'Средиземноморская закуска', price: 1400, weight: '310 г', desc: 'Сёмга с/с, тунец с/с, креветки тигровые, лайм, маслины, зелень.', photo: ASSET('/images/Средиземноморская закуска.png') },
       { name: 'Овощное ассорти', price: 650, weight: '510 г', desc: 'Огурцы, томаты, перец, редис, морковь, зелень.', photo: ASSET('/images/Овощное ассорти.png') },
       { name: 'Ассорти из солений', price: 550, weight: '460 г', desc: 'Огурцы малосольные, томаты черри, капуста квашеная, морковь по-корейски.', photo: ASSET('/images/Асорти из солений.png') },
-      { name: 'Фруктовое ассорти', price: 1850, weight: '1500 г', desc: 'Сезонные фрукты.', photo: ASSET('/images/Плато фруктовый микс.jpeg') },
+      { name: 'Сырное плато', price: 820, weight: '260 г', desc: '3–4 вида сыра, орехи, мёд.', photo: ASSET('/images/Сырное плато.png') },
       { name: 'Закуска «Старорусская»', price: 520, weight: '360 г', desc: 'Филе сельди, запечённый картофель бэби, лук маринованный.', photo: ASSET('/images/Закуска старорусская .png') },
       { name: 'Капрезе', price: 1150, weight: '400 г', desc: 'Сыр моцарелла, томаты, соус песто.', photo: ASSET('/images/Капрезе.png') },
-      { name: '«Татарское трио» на 8–10 человек', price: 3300, weight: '2150 г', desc: 'Отварное мясо конины, курицы, говядины; картофель отварной; пассированный лук и морковь на сливочном масле.', photo: ASSET('/images/Татарское трио.png') },
-      { name: 'Ассорти фермера в стол на 10–12 человек', price: 6300, weight: '2000 г', desc: 'Шашлычки из говядины, куриного филе, свиной шеи; люля-кебаб из баранины; картофель запечённый, овощи гриль, соус томатный.', photo: ASSET('/images/Ассорти фермера в стол.png') },
+      { name: 'Средиземноморская закуска', price: 1400, weight: '310 г', desc: 'Сёмга с/с, тунец с/с, креветки тигровые, лайм, маслины, зелень.', photo: ASSET('/images/Средиземноморская закуска.png') },
+      { name: 'Рыбное плато', price: 950, weight: '220 г', desc: 'Сёмга слабосолёная, масляная х/к, кальмар г/к, морепродукты.', photo: ASSET('/images/Рыбное плато.png') },
+      { name: 'Фруктовое ассорти', price: 1850, weight: '1500 г', desc: 'Сезонные фрукты.', photo: ASSET('/images/Плато фруктовый микс.jpeg') },
     ],
     'hot-snack': [
-      { name: 'Мини-шашлычки из курицы', price: 130, weight: '50 г', desc: 'Шашлык из филе куриной грудки, болгарский перец.', photo: ASSET('/images/Мини шашлычки из курицы.jpeg'), step: 5 },
-      { name: 'Мини-шашлычки из говядины', price: 350, weight: '50 г', desc: 'Шашлык из говядины, овощи на мангале.', photo: ASSET('/images/Мини шашлычки из говядины.jpeg'), step: 5 },
-      { name: 'Мини-шашлычки из сёмги', price: 470, weight: '50 г', desc: 'Шашлык из филе сёмги, овощи на мангале.', photo: ASSET('/images/Мини шашлычки из семги.jpeg'), step: 5 },
-      { name: 'Мини-шашлычки из тигровых креветок', price: 250, weight: '50 г', desc: 'Шашлык из тигровых креветок, овощи на мангале.', photo: ASSET('/images/Мини шашлычки из тигровых креветок.jpeg'), step: 5 },
+      { name: 'Мини-шашлычки из курицы', price: 130, weight: '50 г', desc: 'Шашлык из филе куриной грудки, болгарский перец. Цена за 1 шт.', photo: ASSET('/images/Мини шашлычки из курицы.jpeg'), step: 5 },
+      { name: 'Мини-шашлычки из говядины', price: 350, weight: '50 г', desc: 'Шашлык из говядины, овощи на мангале. Цена за 1 шт.', photo: ASSET('/images/Мини шашлычки из говядины.jpeg'), step: 5 },
+      { name: 'Мини-шашлычки из сёмги', price: 470, weight: '50 г', desc: 'Шашлык из филе сёмги, овощи на мангале. Цена за 1 шт.', photo: ASSET('/images/Мини шашлычки из семги.jpeg'), step: 5 },
+      { name: 'Мини-шашлычки из тигровых креветок', price: 250, weight: '50 г', desc: 'Шашлык из тигровых креветок, овощи на мангале. Цена за 1 шт.', photo: ASSET('/images/Мини шашлычки из тигровых креветок.jpeg'), step: 5 },
       { name: 'Мидии, запечённые под сыром', price: 410, weight: '120 г', desc: 'Новозеландские мидии, запечённые под сыром, 3 шт.', photo: ASSET('/images/Новозеландские мидии.jpeg') },
       { name: 'Гранд микс', price: 950, weight: '200 г', desc: 'Креветки, кальмар, морской гребешок в чесночно-соевом соусе.', photo: ASSET('/images/Гранд микс.jpeg') },
       { name: 'Жареный сыр на мангале', price: 280, weight: '150 г', desc: 'Жареный сыр адыгейский, брусничный соус.', photo: ASSET('/images/Жареный сыр адыгейский.jpeg') },
     ],
     hot: [
-      { name: 'Томлёная телятина', price: 560, weight: '180 г', desc: 'Телячья щека 8 часов в красном вине, пюре из корня сельдерея, демиглас, жареный лук-шалот.' },
-      { name: 'Лосось на гриле', price: 640, tag: 'хит', weight: '160 г', desc: 'Филе лосося, соус бёрр-блан, спаржа гриль, лимон, укропное масло.' },
-      { name: 'Утиная грудка · апельсин', price: 590, weight: '170 г', desc: 'Грудка утки medium, апельсиновый жю, пюре из батата, свекольные чипсы.' },
-      { name: 'Ризотто с белыми грибами', price: 420, tag: 'veg', weight: '220 г', desc: 'Арборио, белые грибы, пармезан 24 мес, трюфельное масло, петрушка.' },
-      { name: 'Стейк мираторг · картофель', price: 780, weight: '200 г', desc: 'Стейк Рибай Black Angus, картофель бейби на углях, розмарин, соус BBQ домашний.' },
-      { name: 'Треска · цветная капуста', price: 480, weight: '160 г', desc: 'Филе трески су-вид, пюре из цветной капусты, капуста романеско, соус на белом вине.' },
+      { name: 'Плов из телятины (от 10 порций)', price: 410, weight: '300 г', desc: 'Лук, морковь, рис узбекский, телятина, масло хлопковое, специи. Цена за 1 порцию.', photo: ASSET('/images/Плов из телятины.jpeg') },
+      { name: 'Мини-манты по-казански, 3 шт.', price: 450, weight: '150 г', desc: 'Мини-манты по-казански, 3 шт.', photo: ASSET('/images/Мини манты по-казански.jpeg') },
+      { name: 'Азу по-татарски', price: 510, weight: '300 г', desc: 'Телятина, картофель, огурцы маринованные, лук, морковь, зелень, сметана.', photo: ASSET('/images/Азу по-татарски.jpeg') },
+      { name: 'Филе дорадо с пастой птитим в соусе песто', price: 1050, weight: '120/150/30 гр', desc: 'Филе дорадо, паста птитим, соус песто.', photo: ASSET('/images/Филе дорады с с пастой птитим в соусе песто.jpeg') },
+      { name: 'Филе судака со сливочным соусом', price: 620, weight: '100/150/30 гр', desc: 'Филе судака, овощи пассированные, соус сливочный.', photo: ASSET('/images/Филе судака с овощами со сливочным соусом.jpeg') },
+      { name: 'Филе семги со сливочным соусом', price: 1200, weight: '100/150/30 гр', desc: 'Брокколи, цветная капуста, кабачки, томаты черри.', photo: ASSET('/images/Филе семги с овощами со сливочным соусом.jpeg') },
+      { name: 'Медальоны из фермерской телятины', price: 950, weight: '120/150/30 гр', desc: 'Телятина, картофель бэби, соус брусничный.', photo: ASSET('/images/Медальоны из фермерской телятины,картофель бэби,  соус брусничный..jpeg') },
+      { name: 'Медальоны из телятины в соусе сальса', price: 950, weight: '120/150/30 гр', desc: 'Говядина вырезка, морковь, китайская капуста, кабачки, лук, перец, фасоль, грибы.', photo: ASSET('/images/Медальоны из телятины с овощами и с соусом сальса.jpeg') },
+      { name: 'Куриное филе с картофелем бэби и домашним сырным соусом', price: 530, weight: '120/150/30 гр', desc: 'Филе куриное, картофель бэби, соус сырный, зелень.', photo: ASSET('/images/Куриное филе с картофелем бэби, с домашним сырным соусом.jpeg') },
+      { name: 'Телятина тушёная с черносливом и картофелем по-деревенски', price: 600, weight: '300 г', desc: 'Телятина тушёная, чернослив пассированный, картофель по-деревенски.', photo: ASSET('/images/Телятина тушеная с черносливом с картофелем по-деревенски.jpeg') },
     ],
-    salad: [
-      { name: 'Цезарь с креветкой', price: 380, weight: '220 г', desc: 'Микс-салат, тигровые креветки, черри, гренки из чиабатты, пармезан, классический соус цезарь.' },
-      { name: 'Руккола · груша · пармезан', price: 340, tag: 'veg', weight: '200 г', desc: 'Руккола, груша конференс, пармезан хлопьями, кедровый орех, бальзамический крем.' },
-      { name: 'Тёплый салат с уткой', price: 420, weight: '210 г', desc: 'Копчёная утиная грудка, микс-салат, печёная свёкла, апельсин, малиновый соус.' },
-      { name: 'Оливье премиум', price: 360, weight: '220 г', desc: 'Телячий язык, перепелиные яйца, корнишоны, картофель, домашний майонез, чёрная икра.' },
+    soup: [
+      { name: 'Шурпа из говядины', price: 370, weight: '300 г', desc: 'Говяжьи рёбра, морковь, лук, сельдерей, томаты, перец, картофель.', photo: ASSET('/images/Шурпа из говядины.jpeg'), step: 5 },
+      { name: 'Уха', price: 350, weight: '300 г', desc: 'Несколько видов рыбы, картофель, лук, морковь, томаты.', photo: ASSET('/images/Уха.jpeg'), step: 5 },
+      { name: 'Солянка мясная', price: 350, weight: '300 г', desc: 'Мясные деликатесы, маслины, сметана, лимон, картофель, лук, морковь, томаты.', photo: ASSET('/images/Солянка мясная.jpeg'), step: 5 },
+      { name: 'Лапша домашняя с курицей', price: 300, weight: '300 г', desc: 'Бульон куриный, лапша домашняя, куриное филе, картофель, морковь.', photo: ASSET('/images/Лапша домашняя с курицей .jpeg'), step: 5 },
+      { name: 'Бульон с эчпочмаком', price: 300, weight: '350 г', desc: 'Мини-эчпочмак, бульон куриный.', photo: ASSET('/images/Бульон  с эч-почмаком.jpeg'), step: 5 },
+      { name: 'Суп-пюре грибной', price: 300, weight: '250 г', desc: 'Грибы шампиньоны, картофель, лук, сливки, сыр, сухарики.', photo: ASSET('/images/Суп пюре грибной.jpeg'), step: 5 },
+      { name: 'Томатный суп с морепродуктами', price: 670, weight: '300 г', desc: 'Томаты в с/с, креветки тигровые, сёмга, кальмар.', photo: ASSET('/images/Томатный суп с морепродуктами.jpeg'), step: 5 },
+      { name: 'Тайский острый суп «Том-ям»', price: 680, weight: '300 г', desc: 'Мидии, креветки, кальмар, молоко кокосовое.', photo: ASSET('/images/Тайский острый суп «Том-ям».jpeg'), step: 5 },
     ],
     dessert: [
-      { name: 'Павлова с ягодами', price: 240, tag: 'хит', weight: '90 г', desc: 'Безе, крем маскарпоне с ванилью, свежая клубника, малина, голубика, мятный сироп.' },
-      { name: 'Трюфели ручной работы', price: 180, weight: '3 шт', desc: 'Шоколад 70%, сливки, ассорти: фундук, какао, малина. Ручная работа.' },
-      { name: 'Чизкейк нью-йорк', price: 220, weight: '110 г', desc: 'Классический чизкейк на песочной основе, сливочный сыр, ягодный кули.' },
-      { name: 'Эклеры ассорти · 3 шт', price: 260, weight: '3 шт', desc: 'Ваниль, фисташка, шоколад. Заварное тесто, крем на сливочном масле.' },
+      { name: 'Мини-эклеры «Ассорти»', price: 1290, weight: '400 г', desc: 'Мини-эклер шоколадный — 5 шт, мини-эклер ванильный — 5 шт.', photo: ASSET('/images/Мини-эклеры Ассорти.jpeg') },
+      { name: 'Профитроли в шоколаде', price: 900, weight: '400 г', desc: 'Профитроли с кремом, шоколад молочный, орехи — 10 шт.', photo: ASSET('/images/Профитроли в шоколаде с орехами.jpeg') },
+      { name: 'Трайфл «Вишня-шоколад»', price: 190, weight: '110 г', desc: 'Шоколад, бисквит шоколадный, крем сливочный, вишня, вишнёвый сироп. Цена за 1 шт.', photo: ASSET('/images/Трайфл "Вишня-шоколад".jpeg'), step: 5 },
+      { name: 'Тирамису в стаканчике', price: 180, weight: '100 г', desc: 'Сыр маскарпоне, печенье савоярди, кофе, бисквит. Цена за 1 шт.', photo: ASSET('/images/Тирамису в стаканчике.jpeg'), step: 5 },
+      { name: 'Панна-котта ягодная', price: 210, weight: '110 г', desc: 'Сливки, ваниль, желатин, ягоды свежие, ягодный сироп. Цена за 1 шт.', photo: ASSET('/images/Панна-котта ягодная.jpeg'), step: 5 },
+      { name: '«Наполеон» в стаканчике', price: 220, weight: '110 г', desc: 'Торт «Наполеон» в стаканчике, ягоды. Цена за 1 шт.', photo: ASSET('/images/"Наполеон" в стаканчике.jpeg'), step: 5 },
     ],
     drinks: [
-      { name: 'Домашний лимонад', price: 180, weight: '300 мл', desc: 'На выбор: облепиха-имбирь, малина-базилик, тархун-лайм. Без сахара, на стевии по запросу.' },
-      { name: 'Вино Rioja, 150мл', price: 420, weight: '150 мл', desc: 'Испания, Rioja Reserva 2019, темпранильо. Ноты вишни, ванили и табака.' },
-      { name: 'Свежий сок апельсин', price: 220, weight: '250 мл', desc: 'Фреш из сицилийского апельсина, отжим в день мероприятия.' },
-      { name: 'Чайная станция', price: 80, tag: 'на гостя', weight: 'станция', desc: 'Ассорти чаёв: эрл грей, зелёный жасмин, ройбуш, травяные сборы. Термосы, чашки, мёд, лимон.' },
+      { name: 'Морс ягодный', price: 600, weight: '1 л', desc: 'Морс ягодный в ассортименте.', photo: ASSET('/images/Морс ягодный.png') },
+      { name: 'Лимонад домашний', price: 600, weight: '1 л', desc: 'Лимонад домашний в ассортименте.', photo: ASSET('/images/Лимонад "Дюшес".png') },
+      { name: 'Сок апельсиновый свежевыжатый', price: 800, weight: '1 л', desc: 'Сок апельсиновый, свежевыжатый.', photo: ASSET('/images/Сок апельсиновый.png') },
+      { name: 'Мохито безалкогольное', price: 700, weight: '1 л', desc: 'Газировка «Спрайт», лайм, мята.', photo: ASSET('/images/Мохито безалкогольное.png') },
+      { name: 'Глинтвейн алкогольный', price: 980, weight: '1 л', desc: 'Глинтвейн алкогольный в ассортименте.', photo: ASSET('/images/Глинтвейн алкогольный.png') },
+      { name: 'Чай в ассортименте', price: 350, weight: '1 л', desc: 'Чай чёрный/зелёный в ассортименте.', photo: ASSET('/images/Чай в ассортименте.png') },
     ],
   };
   const list = items[cat];
@@ -1081,7 +1446,7 @@ const MenuCard = ({ item, delay, onClick }) => {
         display: 'flex', flexDirection: 'column',
       }}
     >
-      <div style={{height: 225, position:'relative'}}>
+      <div style={{height: 250, position:'relative'}}>
         {item.photo ? (
           <OptImg photo={item.photo} alt={item.name} sizes="(max-width: 640px) 48vw, 300px" style={{width:'100%', height:'100%', objectFit:'cover', display:'block'}}/>
         ) : (
